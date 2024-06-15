@@ -1,0 +1,54 @@
+{{ $image := .Page.Resources.GetMatch .Destination }}
+
+{{ $used:= $image}}
+
+{{ $webpsrc := "" }}
+{{ $jpgsrc := "" }}
+{{ $webpsrc2 := "" }}
+{{ $jpgsrc2 := "" }}
+{{ $usedsrc:= $image }}
+
+{{ if ne $image.MediaType.SubType  "gif" }}
+{{ $jpgsrc = (($image.Fit "720x720 jpg" )).Permalink }}
+{{ $webpsrc = ($image.Fit "1440x1440 q95 webp" ).Permalink }}
+{{ $jpgsrc2 = (($image.Fit "1440x1440 jpg" )).Permalink }}
+{{ $usedsrc = $jpgsrc}}
+{{ else }}
+{{ $usedsrc = $image.Permalink  }}
+{{ end }}
+
+
+<figure>
+   
+{{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
+<picture>
+
+{{ with $webpsrc }}<source type="image/webp" srcset="{{ . }}" > {{ end }}
+{{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ $jpgsrc }} 1x, {{ $jpgsrc2 }} 2x" >{{ end }}
+   
+    <img 
+    class="post-img" 
+    src="{{ $usedsrc }}" 
+    {{ with .Text}}  alt="{{ . }}" {{ end }} 
+    {{ with .Title}} title="{{ . }}"{{ end }} 
+    loading="lazy"
+    width="{{$used.Width}}" 
+    height="{{$used.Height}}"
+
+    onclick="openLightbox(this, {{ .Ordinal  }} )"
+     >
+   </picture>
+     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
+ 
+     {{- with .Text}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
+</figure>
+<dialog id="lb-{{ .Ordinal  }}">
+    <img
+        class="dialogimg"
+        src="{{ $image.Permalink  }}"
+
+        width="{{ $image.Width}}"
+        height="{{ $image.Height}}"
+        
+        >
+</dialog>

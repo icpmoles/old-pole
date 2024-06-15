@@ -1,0 +1,6 @@
+{{- if .Site.Param "htmltitle" }}
+    <h1>{{ $.Site.Params.htmltitle   | safeHTML }}</h1>
+{{- else}}
+<h1>{{ .site.Title | safeHTML }}</h1>
+{{- end }}
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}

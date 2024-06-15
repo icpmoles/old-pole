@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{ .Content }}
+  {{ range site.RegularPages }}
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    <div class="time-container">
+    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+    <relative-time datetime={{ .Date.Format "2006-01-02T15:04:05-0700" }}  tense="past">
+      {{ .Date.Format (.Site.Params.dateFormat | default "Jan 02, 2006") }}
+    </relative-time>
+    </div>
+    {{ .Summary }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,9 @@
+{{ if (.HasShortcode "youtube") }}
+<link  rel="preconnect" href="https://www.youtube-nocookie.com" />
+<link  rel="preconnect" href="https://www.google.com" />
+<link  rel="preconnect" href="https://fonts.gstatic.com/" />
+{{- $ytlitecss := resources.Get "css/lite-yt-embed.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $ytlitecss.RelPermalink }}" integrity="{{ $ytlitecss.Data.Integrity }}" crossorigin="anonymous">
+{{- $ytlitejs := resources.Get "js/ytlt.js" | resources.Minify }}
+<script defer src="{{ $ytlitejs.Permalink }}" integrity="{{ $ytlitejs.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}

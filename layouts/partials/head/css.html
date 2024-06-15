@@ -1,0 +1,18 @@
+{{- $darkmodepreferenceop := "@media (prefers-color-scheme: dark) {"  | resources.FromString "tempcssd.css" }}
+{{- $lightmodepreferenceop := "@media (prefers-color-scheme: light) {"  | resources.FromString "tempcssl.css" }}
+{{- $closingbracket := "}"  | resources.FromString "tempcss2.css"  }}
+{{- $syntaxdark := resources.Get "css/syntax-dark.css" }}
+{{- $darkcode := slice $darkmodepreferenceop $syntaxdark $closingbracket | resources.Concat "css/syntax-dark2.css" }}
+{{- $syntaxlight := resources.Get "css/syntax-light.css" }}
+{{- $lightcode := slice $lightmodepreferenceop $syntaxlight $closingbracket | resources.Concat "css/syntax-light2.css" }}
+
+{{- $main := resources.Get "css/main.css" }}
+{{- with slice $main $darkcode $lightcode  | resources.Concat "css/bundle.css"  }}
+  {{- if eq hugo.Environment "development" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{- else }}
+    {{- with . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{- end }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,83 @@
+
+<script>
+    function openLightbox(element,id) {
+ //     console.log("new click \n\n\n");
+        let dialog=document.getElementById("lb-"+id);
+        dialog.showModal();
+        let imgDOM = dialog.querySelector("img");
+        let imgwidth = parseInt(imgDOM.getAttribute("width"));
+        let imgheight = parseInt(imgDOM.getAttribute("height"));
+        
+//        dialog.addEventListener("click", e => {
+//            if (
+//                e.clientX < dialogDimensions.left ||
+//                e.clientX > dialogDimensions.right ||
+//                e.clientY < dialogDimensions.top ||
+//                e.clientY > dialogDimensions.bottom
+//            ) {
+//                dialog.close()
+////                console.log("singlecl outside")
+//            }
+//        });
+        if (dialog.dataset.eventAttached !="1")
+     {
+        dialog.addEventListener("click", e => {
+        let dialogDimensions = dialog.getBoundingClientRect()
+        dialog.dataset.eventAttached = "1";
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+ //              console.log("doublecl outside")
+               dialog.className = "";
+               imgDOM.className = "dialogimg";
+                dialog.close();
+        }
+        else {
+//            console.log("doublecl inside")
+            /*  if (dialog.style.width == "")
+            dialog.style.width = "100%";
+            else
+            dialog.style.width = "";     */
+//            console.log("---- image toggling");
+ //           console.log("width : " + imgwidth + " heigth:  " + imgheight);
+            
+            if ( imgwidth  > imgheight ) // wide -> EXPAND VERTICALLY
+            {
+ //           console.log("wide image, dialog class " + dialog.className);
+                if (dialog.className == "") {  
+                
+ //               console.log("resizing wide image");
+                imgDOM.classList.add("dialogimg-ev");
+                dialog.className = "dialogcontainer-ev";
+                } else{
+                    
+//                console.log("resetting wide image");
+                dialog.className = "";
+                imgDOM.className = "dialogimg";
+            }
+                }
+            else { // tall -> EXPAND horizontally
+            
+//                console.log("wide image, dialog class " +dialog.className);
+                if (dialog.className == "") {  
+                
+ //                   console.log("resizing tall image");
+                    imgDOM.classList.add("dialogimg-eh");
+                    dialog.className = "dialogcontainer-eh";
+                } else {
+                        
+ //                   console.log("resetting tall image");
+                    imgDOM.className = "dialogimg";
+                    dialog.className = "";
+                }
+//                console.log(" tall image toggled");
+            };
+        }
+        
+    } );}
+    };
+
+</script>

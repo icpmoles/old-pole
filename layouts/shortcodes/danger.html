@@ -1,0 +1,3 @@
+<blockquote  class="notification-boxes notification-danger" >
+    <span class="blocktitle" >{{ if isset .Site.Params.alert "error" }}{{ .Site.Params.alert.error }}{{ end }} {{ index .Params 0 }}</span><br>   <p> {{ .Inner  | markdownify }} </p> 
+</blockquote>

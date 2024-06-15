@@ -1,0 +1,2 @@
+{{- $timejs := resources.Get "js/relative-time-element.js" | resources.Minify -}}
+<script  type="module" src="{{ $timejs.Permalink }}" integrity="{{ $timejs.Data.Integrity }}"></script>
