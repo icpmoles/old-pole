@@ -1,110 +1,6 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-// dist/duration-format-ponyfill.js
-var __classPrivateFieldSet = function(receiver, state, value, kind, f) {
-  if (kind === "m")
-    throw new TypeError("Private method is not writable");
-  if (kind === "a" && !f)
-    throw new TypeError("Private accessor was defined without a setter");
-  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-    throw new TypeError("Cannot write private member to an object whose class did not declare it");
-  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
-};
-var __classPrivateFieldGet = function(receiver, state, kind, f) {
-  if (kind === "a" && !f)
-    throw new TypeError("Private accessor was defined without a getter");
-  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-    throw new TypeError("Cannot read private member from an object whose class did not declare it");
-  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _DurationFormat_options;
-var ListFormatPonyFill = class {
-  formatToParts(members) {
-    const parts = [];
-    for (const value of members) {
-      parts.push({ type: "element", value });
-      parts.push({ type: "literal", value: ", " });
-    }
-    return parts.slice(0, -1);
-  }
-};
-__name(ListFormatPonyFill, "ListFormatPonyFill");
-var ListFormat = typeof Intl !== "undefined" && Intl.ListFormat || ListFormatPonyFill;
-var partsTable = [
-  ["years", "year"],
-  ["months", "month"],
-  ["weeks", "week"],
-  ["days", "day"],
-  ["hours", "hour"],
-  ["minutes", "minute"],
-  ["seconds", "second"],
-  ["milliseconds", "millisecond"]
-];
-var twoDigitFormatOptions = { minimumIntegerDigits: 2 };
-var DurationFormat = class {
-  constructor(locale, options = {}) {
-    _DurationFormat_options.set(this, void 0);
-    let style = String(options.style || "short");
-    if (style !== "long" && style !== "short" && style !== "narrow" && style !== "digital")
-      style = "short";
-    let prevStyle = style === "digital" ? "numeric" : style;
-    const hours = options.hours || prevStyle;
-    prevStyle = hours === "2-digit" ? "numeric" : hours;
-    const minutes = options.minutes || prevStyle;
-    prevStyle = minutes === "2-digit" ? "numeric" : minutes;
-    const seconds = options.seconds || prevStyle;
-    prevStyle = seconds === "2-digit" ? "numeric" : seconds;
-    const milliseconds = options.milliseconds || prevStyle;
-    __classPrivateFieldSet(this, _DurationFormat_options, {
-      locale,
-      style,
-      years: options.years || style === "digital" ? "short" : style,
-      yearsDisplay: options.yearsDisplay === "always" ? "always" : "auto",
-      months: options.months || style === "digital" ? "short" : style,
-      monthsDisplay: options.monthsDisplay === "always" ? "always" : "auto",
-      weeks: options.weeks || style === "digital" ? "short" : style,
-      weeksDisplay: options.weeksDisplay === "always" ? "always" : "auto",
-      days: options.days || style === "digital" ? "short" : style,
-      daysDisplay: options.daysDisplay === "always" ? "always" : "auto",
-      hours,
-      hoursDisplay: options.hoursDisplay === "always" ? "always" : style === "digital" ? "always" : "auto",
-      minutes,
-      minutesDisplay: options.minutesDisplay === "always" ? "always" : style === "digital" ? "always" : "auto",
-      seconds,
-      secondsDisplay: options.secondsDisplay === "always" ? "always" : style === "digital" ? "always" : "auto",
-      milliseconds,
-      millisecondsDisplay: options.millisecondsDisplay === "always" ? "always" : "auto"
-    }, "f");
-  }
-  resolvedOptions() {
-    return __classPrivateFieldGet(this, _DurationFormat_options, "f");
-  }
-  formatToParts(duration) {
-    const list = [];
-    const options = __classPrivateFieldGet(this, _DurationFormat_options, "f");
-    const style = options.style;
-    const locale = options.locale;
-    for (const [unit, nfUnit] of partsTable) {
-      const value = duration[unit];
-      if (options[`${unit}Display`] === "auto" && !value)
-        continue;
-      const unitStyle = options[unit];
-      const nfOpts = unitStyle === "2-digit" ? twoDigitFormatOptions : unitStyle === "numeric" ? {} : { style: "unit", unit: nfUnit, unitDisplay: unitStyle };
-      list.push(new Intl.NumberFormat(locale, nfOpts).format(value));
-    }
-    return new ListFormat(locale, {
-      type: "unit",
-      style: style === "digital" ? "short" : style
-    }).formatToParts(list);
-  }
-  format(duration) {
-    return this.formatToParts(duration).map((p) => p.value).join("");
-  }
-};
-__name(DurationFormat, "DurationFormat");
-_DurationFormat_options = /* @__PURE__ */ new WeakMap();
-
 // dist/duration.js
 var durationRe = /^[-+]?P(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)W)?(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/;
 var unitNames = ["year", "month", "week", "day", "hour", "minute", "second", "millisecond"];
@@ -228,44 +124,28 @@ function roundToSingleUnit(duration, { relativeTo = Date.now() } = {}) {
   const currentYear = relativeTo.getFullYear();
   let currentMonth = relativeTo.getMonth();
   const currentDate = relativeTo.getDate();
-  if (days >= 27 || years + months + days) {
-    const newDate = new Date(relativeTo);
-    newDate.setFullYear(currentYear + years * sign);
-    newDate.setMonth(currentMonth + months * sign);
-    newDate.setDate(currentDate + days * sign);
-    const yearDiff = newDate.getFullYear() - relativeTo.getFullYear();
-    const monthDiff = newDate.getMonth() - relativeTo.getMonth();
-    const daysDiff = Math.abs(Math.round((Number(newDate) - Number(relativeTo)) / 864e5));
-    const monthsDiff = Math.abs(yearDiff * 12 + monthDiff);
-    if (daysDiff < 27) {
-      if (days >= 6) {
-        weeks += Math.round(days / 7);
-        days = 0;
-      } else {
-        days = daysDiff;
-      }
-      months = years = 0;
-    } else if (monthsDiff < 11) {
-      months = monthsDiff;
-      years = 0;
-    } else {
-      months = 0;
-      years = yearDiff * sign;
-    }
-    if (months || years)
+  if (days >= 27 || years + months && days) {
+    relativeTo.setDate(currentDate + days * sign);
+    months += Math.abs(relativeTo.getFullYear() >= currentYear ? relativeTo.getMonth() - currentMonth : relativeTo.getMonth() - currentMonth - 12);
+    if (months) {
       days = 0;
+    }
     currentMonth = relativeTo.getMonth();
   }
-  if (years)
-    months = 0;
+  if (days >= 6)
+    weeks += Math.round(days / 7);
+  if (weeks || months || years)
+    days = 0;
   if (weeks >= 4)
     months += Math.round(weeks / 4);
   if (months || years)
     weeks = 0;
-  if (days && weeks && !months && !years) {
-    weeks += Math.round(days / 7);
-    days = 0;
+  if (months >= 11 || years && months) {
+    relativeTo.setMonth(relativeTo.getMonth() + months * sign);
+    years += Math.abs(currentYear - relativeTo.getFullYear());
   }
+  if (years)
+    months = 0;
   return new Duration(years * sign, months * sign, weeks * sign, days * sign, hours * sign, minutes * sign, seconds * sign, milliseconds * sign);
 }
 __name(roundToSingleUnit, "roundToSingleUnit");
