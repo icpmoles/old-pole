@@ -3,18 +3,21 @@
 {{ $used:= $image}}
 
 {{ $webpsrc := "" }}
+{{ $webpsrcfit := "" }}
 {{ $jpgsrc := "" }}
 {{ $webpsrc2 := "" }}
 {{ $jpgsrc2 := "" }}
 {{ $usedsrc:= $image }}
+{{ $animated := false }}
 
 {{ if ne $image.MediaType.SubType  "gif" }}
 {{ $jpgsrc = (($image.Fit "720x720 jpg" )).Permalink }}
-{{ $webpsrc = ($image.Fit "1440x1440 q95 webp" ).Permalink }}
-{{ $jpgsrc2 = (($image.Fit "1440x1440 jpg" )).Permalink }}
+{{ $webpsrcfit = ($image.Fit "1440x1440 q95 webp" ).Permalink }}
+{{ $webpsrc = (($image.Process "webp q95" )).Permalink }}
 {{ $usedsrc = $jpgsrc}}
 {{ else }}
 {{ $usedsrc = $image.Permalink  }}
+{{ $animated = true  }}
 {{ end }}
 
 
@@ -23,7 +26,7 @@
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
-{{ with $webpsrc }}<source type="image/webp" srcset="{{ . }}" > {{ end }}
+{{ with $webpsrcfit }}<source type="image/webp" srcset="{{ . }}" > {{ end }}
 {{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ $jpgsrc }} 1x, {{ $jpgsrc2 }} 2x" >{{ end }}
    
     <img 
@@ -43,12 +46,13 @@
      {{- with .Text}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
 </figure>
 <dialog id="lb-{{ .Ordinal  }}">
+    
     <img
         class="dialogimg"
-        src="{{ $image.Permalink  }}"
-
+        src="{{ if $animated }}{{ $usedsrc  }}{{ else }}{{ $webpsrc  }}{{ end }}   "
+        loading="lazy"
+        
         width="{{ $image.Width}}"
         height="{{ $image.Height}}"
-        loading="lazy"
         >
 </dialog>

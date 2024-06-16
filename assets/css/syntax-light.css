@@ -69,7 +69,7 @@
 /* CommentHashbang */ .chroma .ch { color: #60a0b0; font-style: italic }
 /* CommentMultiline */ .chroma .cm { color: #60a0b0; font-style: italic }
 /* CommentSingle */ .chroma .c1 { color: #60a0b0; font-style: italic }
-/* CommentSpecial */ .chroma .cs { color: #60a0b0; background-color: #fff0f0 }
+/* CommentSpecial */ .chroma .cs { color: #60a0b0; background-color: var(--cbg) }
 /* CommentPreproc */ .chroma .cp { color: #007020 }
 /* CommentPreprocFile */ .chroma .cpf { color: #007020 }
 /* Generic */ .chroma .g {  }

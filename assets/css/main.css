@@ -67,10 +67,10 @@ Table of Contents:
 	--ornament: "‹‹‹ ›››";
 	/* foreground   | background color */
 	--cfg:   #000;    --cbg:    #fff;
-	--cdark: #888;    --clight: #f5f6f7;
+	--cdark: #383838;    --clight: #f5f6f7;
 	--cmed:  #d1d1d1;
 	--clink: rgb(55, 69, 80);
-	--cemph: #088;    --cemphbg: #0881;
+	--cemph: oklch(0.45 0.09 188.55 / 1);    --cemphbg: #0881;
 
 	--t-lum: 21%;
 	--yellow-hue: 64; --yellow-sat: 87%; --yellow-l: 50%; 
@@ -101,7 +101,7 @@ Table of Contents:
 	--cdark: #f5f6f7;    --clight: #141414;
 	--cmed:  #d1d1d1;
 	--clink: #afc3d3;
-	--cemph: #088;    --cemphbg: #7aaaaa;
+	--cemph: #00b0b0;    --cemphbg: #7aaaaa;
 	--t-lum: 50%;
 	}
 }
