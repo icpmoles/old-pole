@@ -67,6 +67,7 @@ Table of Contents:
 	--ornament: "‹‹‹ ›››";
 	/* foreground   | background color */
 	--cfg:   #000;    --cbg:    #fff;
+	--fg:   var(--cfg); --bg:   var(--cbg);
 	--cdark: #383838;    --clight: #f5f6f7;
 	--cmed:  #d1d1d1;
 	--clink: rgb(55, 69, 80);
@@ -98,6 +99,7 @@ Table of Contents:
 	/* foreground   | background color */
 	:root {
 	--cfg:   #fff;    --cbg:    #000;
+	--fg:   var(--cfg); --bg:   var(--cbg);
 	--cdark: #f5f6f7;    --clight: #141414;
 	--cmed:  #d1d1d1;
 	--clink: #afc3d3;
@@ -113,7 +115,7 @@ Table of Contents:
 /* reset block elements  */
 * { box-sizing: border-box; border-spacing: 0; margin: 0; padding: 0;}
 header, footer, figure, table, video, details, blockquote,
-ul, ol, dl, fieldset, pre, pre > code, caption {
+ul, ol, dl, fieldset, pre, pre > code, caption,#TableOfContents {
 	display: block;
 	margin: 0.5rem 0rem 1rem;
 	width: 100%;
@@ -138,7 +140,7 @@ body {
 	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
 }
-body > footer { margin: 10rem 0rem 0rem; font-size: 90%;  }
+body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { margin: .6em 0; }
 
 /* links */
@@ -209,10 +211,10 @@ code{
 kbd { border: 1px solid var(--cmed); }
 
 /* misc */
-blockquote { border-left: 0.4rem solid var(--cmed); padding: 0 0 0 1rem;  }
+blockquote,#TableOfContents { border-left: 0.4rem solid var(--cmed); padding: 0 0 0 1rem;  }
 time, relative-time{ color: var(--cdark); }
 hr { border: 0; border-top: 0.1rem solid var(--cmed); }
-nav { width: 100%; background-color: var(--clight); }
+header nav { width: 100%; background-color: var(--clight); }
 ::selection, mark { background: var(--cemph); color: var(--cbg); }
 
 
@@ -316,23 +318,25 @@ article p>cite:hover > *:only-child,
 }
 abbr[title], [data-tooltip] { cursor: help; }
 
-/* navbar */
-nav+* { margin-top: 3rem; }
-body>nav, header nav {
+/* navbar body>nav, */
+
+header nav+* { margin-top: 3rem; }
+header nav {
 	position: var(--navpos);
 	top: 0; left: 0; right: 0;
 	z-index: 41;	
 	border-bottom: .1rem solid var(--cfg);
 
 }
-nav ul { list-style-type: none; }
-nav ul:first-child { margin: 0; padding: 0; overflow: visible; }
-nav ul:first-child > li {
+header nav ul { list-style-type: none; }
+header nav ul:first-child { margin: 0; padding: 0; overflow: visible; }
+header nav ul:first-child > li {
 	display: inline-block;
 	margin: 0;
 	padding: 0.8rem .6rem;
 }
-nav ul > li > ul {
+
+header nav ul > li > ul {
 	display: none;
 	width: auto;
 	position: absolute;
@@ -343,12 +347,15 @@ nav ul > li > ul {
 	border-radius: 4px;
 	z-index: 42;
 }
-nav ul > li > ul > li { white-space: nowrap; }
-nav ul > li:hover > ul { display: block; }
+header nav ul > li > ul > li { white-space: nowrap; }
+header nav ul > li:hover > ul { display: block; }
+
+header nav ul:first-child > li:first-child { display: none; } 
 @media (max-width: 40rem) {
-	nav ul:first-child > li:first-child:after { content: " \25BE"; }
-	nav ul:first-child > li:not(:first-child):not(.sticky) { display: none; }
-	nav ul:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
+	header	nav ul:first-child > li:first-child {  display: inline-block;}
+	header	nav ul:first-child > li:first-child:after { content: " \25BE"; }
+	header	nav ul:first-child > li:not(:first-child):not(.sticky) { display: none; }
+	header	nav ul:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
 }
 
 /* details/cards */
@@ -397,7 +404,7 @@ main aside {
 /*@media (max-width: 70rem) { main aside { display: none; } }*/
 
 /* forms and inputs  */
-textarea, input:not([type=range]), button, select {
+/* textarea, input:not([type=range]), button, select {
 	font: var(--font-h);
 	border-radius: 4px;
 	border: 1.5px solid var(--cmed);
@@ -409,7 +416,7 @@ fieldset select, input:not([type=checkbox]):not([type=radio]) {
 	display: block;
 	width: 100%;
 	margin: 0 0 1rem;
-}
+} */
 button, select {
 	font-weight: bold;
 	margin: .5em;
@@ -418,13 +425,15 @@ button, select {
 button { padding: 0.4em 1em; font-size: 85%; letter-spacing: 0.1em; }
 button[disabled]{ color: var(--cdark); border-color: var(--cmed); }
 fieldset { border-radius: 4px; border: var(--border); padding: .5em 1em;}
-textarea:hover, input:not([type=checkbox]):not([type*='ra']):hover, select:hover{
+
+/* textarea:hover, input:not([type=checkbox]):not([type*='ra']):hover, select:hover{
   border: 1.5px solid var(--cemph);
-}
-textarea:focus, input:not([type=checkbox]):not([type*='ra']):focus{
+} */
+
+/* textarea:focus, input:not([type=checkbox]):not([type*='ra']):focus{
 	border: 1.5px solid var(--clink);
 	box-shadow: 0 0 5px var(--clink);
-}
+} */
 p>button { padding: 0 .5em; margin: 0 .5em; }
 p>select { padding: 0;      margin: 0 .5em; }
 
@@ -577,9 +586,9 @@ img {
 	font-size: 2rem; /* 1 */
 	font-weight: normal; /* 1 */
 	margin-bottom: 1rem; /* 1 */
-	background: var(--bg); /* 2 */
-	color: var(--fg); /* 2 */
-	border: .2rem solid var(--fg); /* 2 */
+	background: var(--cbg); /* 2 */
+	color: var(--cfg); /* 2 */
+	border: .2rem solid var(--cfg); /* 2 */
 	border-radius: 0; /* 2 */
 	cursor: pointer; /* 3 */
   }
@@ -610,7 +619,7 @@ img {
    */
   
   fieldset {
-	border: .2rem solid var(--fg);
+	border: .2rem solid var(--cfg);
   }
   
   /**
@@ -629,7 +638,7 @@ img {
    * 2. Set the color and border of the text input.
    */
   
-  input[type="email"],
+ input[type="email"],
   input[type="number"],
   input[type="password"],
   input[type="search"],
@@ -646,15 +655,12 @@ img {
 	padding: .4rem 1rem; /* 1 */
 	width: 100%; /* 1 */
 	font-size: 2rem; /* 1 */
-	color: var(--fg); /* 2 */
-	background-color: var(--bg); /* 2 */
-	border: .2rem solid var(--fg); /* 2 */
+	color: var(--cfg); /* 2 */
+	background-color: var(--cbg); /* 2 */
+	border: .2rem solid var(--cfg); /* 2 */
 	border-radius: 0; /* 2 */
   }
-  
-  /**
-   * Set margin for form elements.
-   */
+   
   
   fieldset, input, select, textarea {
 	margin: 0 0 1.6rem 0;
@@ -667,7 +673,7 @@ img {
   
   input::placeholder,
   textarea::placeholder {
-	color: var(--fg); /* 1 */
+	color: var(--cfg); /* 1 */
 	font-style: italic; /* 2 */
   }
   
@@ -711,7 +717,7 @@ img {
    */
   
   th {
-	border-bottom: .2rem solid var(--fg); /* 1 */
+	border-bottom: .2rem solid var(--cfg); /* 1 */
 	text-align: left; /* 2 */
   }
   
@@ -720,9 +726,13 @@ img {
    */
   
   td {
-	border-bottom: .1rem solid var(--fg);
+	border-bottom: .1rem solid var(--cfg);
   }
   
+
+  #TableOfContents:empty{
+	display: none;
+  } 
   /**
    * 1. Change the margins and padding.
    * 2. Add a border on the left of these elements.
@@ -730,11 +740,11 @@ img {
    */
   
   /* blockquote, pre { */
-	blockquote{
+	blockquote , #TableOfContents {
 	margin-left: 0; /* 1 */
 	margin-right: 0; /* 1 */
 	padding: 1rem 1.6rem; /* 1 */
-	border-left: .2rem solid var(--fg); /* 2 */
+	border-left: .2rem solid var(--cfg); /* 2 */
 	overflow-y: hidden; /* 3 */
   }
   
@@ -743,10 +753,10 @@ img {
    * 2. Re-set the left border style.
    */
   
-  pre {
-	border: 0.1rem dotted var(--fg);
-	border-left: 0.2rem solid var(--fg);
-  }
+  /* pre {
+	border: 0.1rem dotted var(--cfg);
+	border-left: 0.2rem solid var(--cfg);
+  } */
   
   /**
    * 1. Modify the display of the code block.
@@ -810,45 +820,67 @@ img {
   /**
    * 1. Modify the display of the progress bar in all browsers.
    * 2. Set the colors and border of the progress bar.
+ 	background: var(--cbg); 
+	 color: var(--cfg); 
+	 border: .2rem solid var(--cfg); 
+ 
+
+
+	   progress[value]::-webkit-progress-bar {
+	background-color: red;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
    */
   
   progress {
-	-moz-appearance: none; /* 1 */
-	-webkit-appearance: none; /* 1 */
+	 -moz-appearance: none; 
+	 -webkit-appearance: none;
+	 appearance: none;
 	display: block; /* 1 */
 	height: 1rem; /* 1 */
 	overflow: hidden; /* 1 */
 	padding: 0; /* 1 */
 	width: 100%; /* 1 */
-	background: var(--bg); /* 2 */
-	color: var(--fg); /* 2 */
-	border: .2rem solid var(--fg); /* 2 */
+
 	border-radius: 0; /* 2 */
   }
+
+
+
+   progress:not([value]) {
+	background: var(--cbg);
+	color: var(--cfg); 
+ }
+  
   
   /**
    * Set the background color of the webkit progress bar.
    */
   
-  progress::-webkit-progress-bar {
-	background-color: var(--bg);
-  }
+  /* progress::-webkit-progress-bar {
+	background-color: var(--cfg);
+  } */
   
   /**
    * Set the color of the webkit progress bar.
    */
   
-  progress::-webkit-progress-value {
-	background-color: var(--fg);
-  }
+  /* progress::-webkit-progress-value {
+	background-color: var(--cfg);
+  } */
   
   /**
    * Set the color of the mozilla progress bar.
    */
   
-  progress::-moz-progress-bar {
-	background-color: var(--fg);
+  /* progress::-moz-progress-bar {
+	background-color: var(--cfg);
   }
+
+  progress:not([value]) {
+	background-color: var(--cbg);
+ } */
   
   /**
    * Set the border for the horizontal rule.
@@ -965,4 +997,41 @@ dialog {
 
 .dialogcontainer-eh{
 	width: fit-content;
+}
+
+.searchbutton{
+	aspect-ratio: 1/1;
+	font-size: 1rem;
+	filter: grayscale(1);
+	
+}
+
+.flex-h{
+	display: flex;
+}
+
+.flex-h > input {
+	height: 1.9em;
+}
+
+footer nav ul{
+	display: flex;
+	justify-content: space-evenly;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+	list-style-type: none;
+	
+}
+
+footer nav li{
+	
+}
+
+footer{
+	max-width: var(--width);
+	width: 100%;
+    padding: 0 .5rem;
+	margin: auto;
 }

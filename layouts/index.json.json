@@ -1,0 +1,13 @@
+{{ $articlelist := slice }}
+{{ range  site.RegularPages }}
+  {{ $post := dict 
+  "url" .RelPermalink 
+  "time" .Date.Unix  
+  "title" .Title 
+  "content" ( .Plain | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` `  ) 
+  "tags" .Params.Tags 
+  "wordcount" .FuzzyWordCount 
+  }}
+  {{ $articlelist = $articlelist | append $post }}
+{{ end }}
+{{ $articlelist| jsonify  }}

@@ -2,6 +2,7 @@
 <html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
   {{ partial "head.html" . }}
+  {{ block "headHook" . }}{{ end }}
 </head>
 <body>
   <header>
@@ -12,6 +13,7 @@
   </main>
   <footer>
     {{ partial "footer.html" . }}
+    {{ block "footerHook" . }}{{ end }}
   </footer>
 </body>
 </html>

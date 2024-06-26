@@ -11,12 +11,12 @@
 {{ $animated := false }}
 
 {{ if ne $image.MediaType.SubType  "gif" }}
-{{ $jpgsrc = (($image.Fit "720x720 jpg" )).Permalink }}
-{{ $webpsrcfit = ($image.Fit "1440x1440 q95 webp" ).Permalink }}
-{{ $webpsrc = (($image.Process "webp q95" )).Permalink }}
+{{ $jpgsrc = (($image.Fit "720x720 jpg" )).RelPermalink }}
+{{ $webpsrcfit = ($image.Fit "1440x1440 q95 webp" ).RelPermalink }}
+{{ $webpsrc = (($image.Process "webp q95" )).RelPermalink }}
 {{ $usedsrc = $jpgsrc}}
 {{ else }}
-{{ $usedsrc = $image.Permalink  }}
+{{ $usedsrc = $image.RelPermalink  }}
 {{ $animated = true  }}
 {{ end }}
 
