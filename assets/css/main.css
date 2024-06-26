@@ -1015,6 +1015,7 @@ dialog {
 }
 
 footer nav ul{
+	padding: 0;
 	display: flex;
 	justify-content: space-evenly;
     align-items: stretch;
@@ -1026,7 +1027,6 @@ footer nav ul{
 }
 
 footer nav li{
-	
 }
 
 footer{
