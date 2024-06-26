@@ -144,7 +144,9 @@ body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { margin: .6em 0; }
 
 /* links */
-a[href]{ text-decoration: underline solid var(--cmed); text-underline-position: under; }
+
+/* a[href]{ text-decoration: underline solid var(--cmed); text-underline-position: under; } */
+
 a[href^="#"] {text-decoration: none; }
 a:hover, button:not([disabled]):hover, summary:hover {
 	filter: brightness(92%); color: var(--cemph); border-color: var(--cemph);
@@ -325,7 +327,7 @@ header nav {
 	position: var(--navpos);
 	top: 0; left: 0; right: 0;
 	z-index: 41;	
-	border-bottom: .1rem solid var(--cfg);
+	border-bottom: .2rem solid var(--cfg);
 
 }
 header nav ul { list-style-type: none; }
@@ -888,7 +890,7 @@ img {
   
   hr {
 	margin: 2rem 8px;
-    height: 1px;
+    height: .15rem;
     border-width: 0;
     color: var(--cfg);
     background-color: var(--cfg);
@@ -1001,7 +1003,7 @@ dialog {
 
 .searchbutton{
 	aspect-ratio: 1/1;
-	font-size: 1rem;
+	font-size: 1em;
 	filter: grayscale(1);
 	
 }
@@ -1011,7 +1013,8 @@ dialog {
 }
 
 .flex-h > input {
-	height: 1.9em;
+	height: 2.2em;
+	font-size: 1.5em;
 }
 
 footer nav ul{
@@ -1063,4 +1066,10 @@ footer{
 
 .yeargroup{
 	padding: 2rem 0;
+}
+
+#search-input:placeholder-shown{
+	font-style: italic;
+	color: var(--clink);
+	font-weight: lighter;
 }
