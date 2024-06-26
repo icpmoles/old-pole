@@ -1035,3 +1035,32 @@ footer{
     padding: 0 .5rem;
 	margin: auto;
 }
+
+.archive,.yeargroup{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+/* .yeargroup time{
+	text-decoration: underline dotted var(--cemph);
+    text-underline-position: under;
+} */
+/* 
+.yeargroup:not(:last-child)::after{
+
+	display: block;
+	margin: .1em 0;
+	color: var(--cmed);
+	text-align: center;
+	font-size: 1.5em;
+	content: var(--ornament);
+} */
+
+.yeargroup:not(:last-child){
+	border-bottom: .2rem solid var(--cfg);
+
+}
+
+.yeargroup{
+	padding: 2rem 0;
+}
