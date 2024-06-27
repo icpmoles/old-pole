@@ -35,8 +35,8 @@
 </script>
 
 {{/*  I dont know how to self host this damn library, pls help  */}}
-<script src="https://unpkg.com/lunr/lunr.js"></script>
-
+{{ $script := resources.GetRemote "https://unpkg.com/lunr/lunr.js" | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 
 {{end}}
 
