@@ -10,7 +10,10 @@
 {{ $usedsrc:= $image }}
 {{ $animated := false }}
 
-{{ if ne $image.MediaType.SubType  "gif" }}
+
+
+
+{{ if ne $image.MediaType.SubType  "gif"  }}
 {{ $jpgsrc = (($image.Fit "720x720 jpg" )).RelPermalink }}
 {{ $webpsrcfit = ($image.Fit "1440x1440 q95 webp" ).RelPermalink }}
 {{ $webpsrc = (($image.Process "webp q95" )).RelPermalink }}
@@ -22,13 +25,13 @@
 
 
 <figure>
-   
+  
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
 {{ with $webpsrcfit }}<source type="image/webp" srcset="{{ . }}" > {{ end }}
 {{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ $jpgsrc }} 1x, {{ $jpgsrc2 }} 2x" >{{ end }}
-   
+  
     <img 
     class="post-img" 
     src="{{ $usedsrc }}" 
@@ -39,11 +42,11 @@
     height="{{$used.Height}}"
 
     onclick="openLightbox(this, {{ .Ordinal  }} )"
-     >
-   </picture>
-     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
- 
-     {{- with .Text}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
+    >
+  </picture>
+    <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
+
+    {{- with .Text}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
 </figure>
 <dialog id="lb-{{ .Ordinal  }}">
     
@@ -56,3 +59,4 @@
         height="{{ $image.Height}}"
         >
 </dialog>
+

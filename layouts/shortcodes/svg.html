@@ -1,0 +1,7 @@
+{{ $svg_name := .Get "file" }}
+{{ $svg_file := (.Page.Resources.GetMatch (printf "%s.svg" $svg_name)) }}
+<figure>
+    <picture>
+<img src= {{ $svg_file.RelPermalink }} /></picture>
+{{- with (.Get "caption")}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
+</figure>
