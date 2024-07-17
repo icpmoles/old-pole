@@ -57,6 +57,7 @@ Table of Contents:
 
 
 :root, html[data-theme='light'] {
+
 	--rem: 12pt;
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
@@ -65,6 +66,7 @@ Table of Contents:
 	--font-c: .9em/1.4 'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
+	
 	/* foreground   | background color */
 	--cfg:   #000;    --cbg:    #fff;
 	--fg:   var(--cfg); --bg:   var(--cbg);
@@ -93,6 +95,9 @@ Table of Contents:
 	--t-green: hsl(var(--green-hue) var(--green-sat) var(--t-lum)); 
 	--c-green: hsl(var(--green-hue) var(--green-sat) var(--green-l) / 9%);
 	--green: hsl(var(--green-hue) var(--green-sat) var(--green-l) );
+
+	--ligthvisibility: unset;
+	--darkvisibility: none
 }
 
 @media (prefers-color-scheme: dark) {
@@ -105,7 +110,11 @@ Table of Contents:
 	--clink: #afc3d3;
 	--cemph: #00b0b0;    --cemphbg: #7aaaaa;
 	--t-lum: 50%;
+	--ligthvisibility: none;
+	--darkvisibility: unset
 	}
+
+	
 }
 
 
@@ -1122,3 +1131,11 @@ footer{
     border-radius: 10px;
 	margin: auto;
   }
+
+.ligthversion{
+	display: var(--ligthvisibility);
+}
+
+.darkversion{
+	display: var(--darkvisibility);
+}

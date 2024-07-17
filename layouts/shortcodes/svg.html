@@ -1,7 +1,22 @@
 {{ $svg_name := .Get "file" }}
 {{ $svg_file := (.Page.Resources.GetMatch (printf "%s.svg" $svg_name)) }}
+{{ $svg_file_d := (.Page.Resources.GetMatch (printf "%s_d.svg" $svg_name)) }}
 <figure>
-    <picture>
-<img src= {{ $svg_file.RelPermalink }} /></picture>
+
+
+{{ if  $svg_file_d }}
+    <picture class="ligthversion">
+    <img src= {{ $svg_file.RelPermalink }} />
+    </picture>
+    <picture class="darkversion">
+    <img src= {{ $svg_file_d.RelPermalink }} />
+    </picture>
+
+{{else }}
+    <picture >
+    <img src= {{ $svg_file.RelPermalink }} />
+    </picture>
+{{ end }}
 {{- with (.Get "caption")}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
 </figure>
+
