@@ -1139,3 +1139,11 @@ footer{
 .darkversion{
 	display: var(--darkvisibility);
 }
+
+#TableOfContents li::marker{
+	content: "↩ ";
+}
+
+article h1 {
+	text-decoration: underline;
+}
