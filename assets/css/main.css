@@ -377,6 +377,7 @@ header nav ul > li > ul > li { white-space: nowrap; }
 header nav ul > li:hover > ul { display: block; }
 
 header nav ul:first-child > li:first-child { display: none; } 
+
 @media (max-width: 40rem) {
 	header	nav ul:first-child > li:first-child {  display: inline-block;}
 	header	nav ul:first-child > li:first-child:after { content: " \25BE"; }
@@ -577,7 +578,7 @@ img {
    */
   
   header { /* 1 */
-	font-size: 1.2em; /* 2 */
+	font-size: 1.2rem; /* 2 */
   }
   
   /**
@@ -988,6 +989,7 @@ img {
 } */
 
 code:not(.codeblock code){
+	text-underline-offset: 0.2em;
 	text-decoration:  underline var(--cemph) dotted 2px;
 }
 
@@ -1141,7 +1143,7 @@ footer{
 }
 
 #TableOfContents li::marker{
-	content: "↩ ";
+	content: "↪ ";
 }
 
 article h1 {
