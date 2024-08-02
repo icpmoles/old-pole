@@ -950,6 +950,7 @@ img {
   }
 
   .time-container{
+	font-style:italic;
     display: flex;
     justify-content: space-between;
   }
