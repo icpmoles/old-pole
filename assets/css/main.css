@@ -1073,7 +1073,15 @@ footer nav ul{
 	
 }
 
+footer nav li a {
+    text-align: center;
+    display: block;
+    /* color: red; */
+}
+
 footer nav li{
+	
+    flex: 1;
 }
 
 footer{
