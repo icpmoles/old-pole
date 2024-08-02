@@ -1,6 +1,6 @@
 {{ $svg_name := .Get "file" }}
-{{ $svg_file := (.Page.Resources.GetMatch (printf "%s.svg" $svg_name)) }}
-{{ $svg_file_d := (.Page.Resources.GetMatch (printf "%s_d.svg" $svg_name)) }}
+{{ $svg_file := (.Page.Resources.GetMatch (printf "%s.svg" $svg_name)) | resources.Minify  }}
+{{ $svg_file_d := (.Page.Resources.GetMatch (printf "%s_d.svg" $svg_name)) | resources.Minify  }}
 <figure>
 
 
