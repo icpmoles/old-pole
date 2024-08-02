@@ -6,7 +6,7 @@
 }}
 
 {{ $filter := images.Dither $opts }}
-<div class="lite-youtube-container">
+<figure class="lite-youtube-container">
 {{- $thumbnailUrl := printf "https://i.ytimg.com/vi_webp/%s/hqdefault.webp" $ytid }}
 {{- with $thumbnail := resources.GetRemote $thumbnailUrl }}
 {{- with .Err }}
@@ -19,11 +19,12 @@
   {{- else }}
   {{- with . | images.Filter $filter  }}
     <lite-youtube videoid="{{ $ytid }}" style="background-image: url({{ .RelPermalink }});">
-    <a href="https://youtube.com/watch?v={{ $ytid }}" class="lty-playbtn" title="Play Video">
+    <a href="https://youtube-nocookie.com/watch?v={{ $ytid }}" class="lty-playbtn" title="Play Video">
       <span class="lyt-visually-hidden">Youtube video</span>
     </a>
     </lite-youtube>
 {{- end }}
 {{- end }}
 {{- end }}
-</div>
+<figcaption class="small" > <a href="https://youtube.com/watch?v={{ $ytid }}" >Youtube Video</a></figcaption>
+</figure>

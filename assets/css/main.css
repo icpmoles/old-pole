@@ -159,6 +159,7 @@ body {
 	color: var(--cfg);
 	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
+	font-variation-settings: "wght" 100;
 }
 body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { margin: .6em 0; }
