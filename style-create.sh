@@ -7,3 +7,7 @@ do
    hugo gen chromastyles --style "$i" > "$i".css
    # or do whatever with individual element of the array
 done
+
+# then replace with regex in vscode:
+# \.(bg|chroma) \{( color: #.{3,6};)? background-color: #.{3,6}; \}
+# .$1 { color: var(--cfg); background-color: var(--cbg); }
