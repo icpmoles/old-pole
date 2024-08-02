@@ -1,9 +1,9 @@
 {{- $darkmodepreferenceop := "@media (prefers-color-scheme: dark) {"  | resources.FromString "tempcssd.css" }}
 {{- $lightmodepreferenceop := "@media (prefers-color-scheme: light) {"  | resources.FromString "tempcssl.css" }}
 {{- $closingbracket := "}"  | resources.FromString "tempcss2.css"  }}
-{{- $syntaxdark := resources.Get "css/syntax-dark.css" }}
+{{- $syntaxdark := resources.Get (printf "css/chroma/%s.css" .Site.Params.syntaxDark) }} 
 {{- $darkcode := slice $darkmodepreferenceop $syntaxdark $closingbracket | resources.Concat "css/syntax-dark2.css" }}
-{{- $syntaxlight := resources.Get "css/syntax-light.css" }}
+{{- $syntaxlight := resources.Get  (printf "css/chroma/%s.css" .Site.Params.syntaxLight) }}
 {{- $lightcode := slice $lightmodepreferenceop $syntaxlight $closingbracket | resources.Concat "css/syntax-light2.css" }}
 
 {{- $main := resources.Get "css/main.css" }}
