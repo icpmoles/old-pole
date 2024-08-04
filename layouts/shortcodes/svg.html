@@ -5,17 +5,15 @@
 
 
 {{ if  $svg_file_d }}
-    <picture class="ligthversion">
-    <img src= {{ $svg_file.RelPermalink }} />
-    </picture>
-    <picture class="darkversion">
+<picture >
+    <source media="(prefers-color-scheme: light)" srcset={{ $svg_file.RelPermalink }} />
+    <source media="(prefers-color-scheme: dark)" srcset={{ $svg_file_d.RelPermalink }} >
     <img src= {{ $svg_file_d.RelPermalink }} />
-    </picture>
-
+</picture>
 {{else }}
-    <picture >
+<picture >
     <img src= {{ $svg_file.RelPermalink }} />
-    </picture>
+</picture>
 {{ end }}
 {{- with (.Get "caption")}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
 </figure>
