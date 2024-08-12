@@ -107,6 +107,12 @@ Table of Contents:
 	--c-green: hsl(var(--green-hue) var(--green-sat) var(--green-l) / 9%);
 	--green: hsl(var(--green-hue) var(--green-sat) var(--green-l) );
 
+	--violet-hue: 288; --violet-sat: 80%; --violet-l: 68%; 
+	--t-violet: hsl(var(--violet-hue) var(--violet-sat) var(--t-lum)); 
+	--c-violet: hsl(var(--violet-hue) var(--violet-sat) var(--violet-l) / 9%);
+	--violet: hsl(var(--violet-hue) var(--violet-sat) var(--violet-l) );
+	--alert-text: oklch(0.17 0.03 189.46); 
+
 	--ligthvisibility: unset;
 	--darkvisibility: none
 }
@@ -122,7 +128,8 @@ Table of Contents:
 	--cemph: #00b0b0;    --cemphbg: #7aaaaa;
 	--t-lum: 50%;
 	--ligthvisibility: none;
-	--darkvisibility: unset
+	--darkvisibility: unset;
+	--alert-text: #98ffff; 
 	}
 
 	
@@ -826,7 +833,7 @@ img {
 	overflow-x: auto;
   }
   
-  .terminalIcon::after, .blocktitle::after{
+  .terminalIcon::after, .alert-heading::after{
 	animation: blink-animation 2s infinite both;
   }
   .terminalIcon::after{
@@ -963,38 +970,48 @@ img {
 	content: "[";
 }
 
-.blocktitle{
-	color: var(--cemph);
-	font-weight: bold;
-}
 
-.notification-boxes{
+.alert{
 	border-left: .4rem solid;
+	color: var(--alert-text);
 }
 
 
-.notification-info {
-	color:var(--t-blue);
+.alert-note {
 	border-left-color:var(--blue);
 	background:var(--c-blue);
+	--alert-title: var(--t-blue);
 }
-.notification-danger {
-	color:var(--t-red);
+.alert-warning {
+	--alert-title:var(--t-red);
 	border-left-color: var(--red);
 	background:var(--c-red);
 	
 }
-.notification-warning {
-	color:var(--t-yellow);
+.alert-caution {
+	--alert-title:var(--t-yellow);
 	border-left-color: var(--yellow);
 	background:var(--c-yellow)
 }
 
-.notification-success{
+.alert-tip{
 	border-left-color:var(--green);
 	background:var(--c-green);
-	color: var(--t-green) 
+	--alert-title: var(--t-green) 
 }
+
+.alert-important{
+	border-left-color:var(--violet);
+	background:var(--c-violet);
+	--alert-title: var(--t-violet);
+}
+
+
+.alert-heading{
+	color: var(--alert-title);
+	font-weight: bold;
+}
+
 /* .notification-warning .blocktitle::after{
 	content: "❕";
 }
@@ -1177,3 +1194,12 @@ footer{
 article h1 {
 	text-decoration: underline;
 }
+
+.blockquote-caption{
+	text-align: right;
+	font-style: italic;
+}
+
+.blockquote-caption::before {
+	content: '-';
+  }
