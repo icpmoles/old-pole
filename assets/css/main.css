@@ -35,7 +35,7 @@
 	  url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2 supports variations"),
 	  url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2-variations");
 	font-weight: 100 150;
-	font-display: swap;
+	/* font-display: swap; */
 }
 
 
@@ -69,7 +69,7 @@ Table of Contents:
 
 :root, html[data-theme='light'] {
 
-	--rem: 12pt;
+	--rem: 1.1em;
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
 	--font-p: 1em/1.7  'Berkeley Mono Variable Regular','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
@@ -79,7 +79,7 @@ Table of Contents:
 	--ornament: "‹‹‹ ›››";
 	
 	/* foreground   | background color */
-	--cfg:   #000;    --cbg:    #fff;
+	--cfg:   #000;    --cbg:    #efefef;
 	--fg:   var(--cfg); --bg:   var(--cbg);
 	--cdark: #383838;    --clight: #f5f6f7;
 	--cmed:  #d1d1d1;
@@ -120,20 +120,57 @@ Table of Contents:
 @media (prefers-color-scheme: dark) {
 	/* foreground   | background color */
 	:root {
-	--cfg:   #fff;    --cbg:    #000;
-	--fg:   var(--cfg); --bg:   var(--cbg);
-	--cdark: #f5f6f7;    --clight: #141414;
-	--cmed:  #d1d1d1;
-	--clink: #afc3d3;
-	--cemph: #00b0b0;    --cemphbg: #7aaaaa;
-	--t-lum: 50%;
-	--ligthvisibility: none;
-	--darkvisibility: unset;
-	--alert-text: #98ffff; 
+		--cfg:#fff;
+        --cbg: #1e1e2e;
+        --fg: var(--cfg);
+        --bg: var(--cbg);
+        --cdark: #f5f6f7;
+        --clight: #24273a;
+        --cmed: #d1d1d1;
+        --clink: #afc3d3;
+        --cemph: #00b0b0;
+        --cemphbg: #7aaaaa;
+        --t-lum: 50%;
+        --ligthvisibility: none;
+        --darkvisibility: unset;
+        --alert-text: #98ffff
 	}
 
 	
 }
+
+
+@media (prefers-contrast: more) {
+	:root {
+		--cfg:   #fff;    --cbg:    #000;
+		--fg:   var(--cfg); --bg:   var(--cbg);
+		--cdark: #f5f6f7;    --clight: #141414;
+		--cmed:  #d1d1d1;
+		--clink: #afc3d3;
+		--cemph: #00b0b0;    --cemphbg: #7aaaaa;
+		--t-lum: 50%;
+		--ligthvisibility: none;
+		--darkvisibility: unset;
+		--alert-text: #98ffff; 
+	}
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+	:root {
+		--cfg:   #fff;    --cbg:    #000;
+		--fg:   var(--cfg); --bg:   var(--cbg);
+		--cdark: #f5f6f7;    --clight: #141414;
+		--cmed:  #d1d1d1;
+		--clink: #afc3d3;
+		--cemph: #00b0b0;    --cemphbg: #7aaaaa;
+		--t-lum: 50%;
+		--ligthvisibility: none;
+		--darkvisibility: unset;
+		--alert-text: #98ffff; 
+	}
+}
+
+
 
 
 
@@ -194,11 +231,11 @@ h1, h2, h3, h4, h5 {
 	font-variation-settings: "wght" 150;
  }
 h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }  /* non-clashing headings */
-h1 { font-size: 2.2em; font-weight: 300; }
-h2 { font-size: 2.0em; font-weight: 300; font-variant: small-caps; }
-h3 { font-size: 1.5em; font-weight: 400; }
+h1 { font-size: 2em; font-weight: 300; }
+h2 { font-size: 1.8em; font-weight: 300; font-variant: small-caps; }
+h3 { font-size: 1.2em; font-weight: 400; }
 h4 { font-size: 1.1em; font-weight: 700; }
-h5 { font-size: 1.2em; font-weight: 400; color: var(--cfg); }
+h5 { font-size: 1.05em; font-weight: 400; color: var(--cfg); }
 h6 { font-size: 1.0em; font-weight: 700; font-style: italic; display: inline; }
 h6 + p { display: inline; }
 
@@ -242,8 +279,9 @@ code, kbd, samp, nav a {
 	border-radius: 4px;
 	font-variation-settings: "wght" 100;
 }
-code{
+.chroma code{
   background-color: unset;
+  min-width: 100%;
 }
 kbd { border: 1px solid var(--cmed); }
 
