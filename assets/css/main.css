@@ -206,7 +206,8 @@ body {
 	font-variation-settings: "wght" 100;
 }
 body > footer { margin-top: 10rem ; font-size: 90%;  }
-p { margin: .6em 0; }
+p { margin: .6em 0;
+	letter-spacing: -.05em; }
 
 /* links */
 
