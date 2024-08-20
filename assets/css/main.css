@@ -30,11 +30,35 @@
 
 
 @font-face {
-	font-family: "Berkeley Mono Variable Regular";
+	font-family: "Berkeley Mono";
 	src:
-	  url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2 supports variations"),
-	  url("/fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2-variations");
-	font-weight: 100 150;
+		url('/fonts/berkeleymono-regular-webfont.woff2') format('woff2'),
+		url('/fonts/berkeleymono-regular-webfont.woff') format('woff'),
+		url('/fonts/berkeleymono-regular-webfont.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	/* font-display: swap; */
+}
+
+@font-face {
+	font-family: "Berkeley Mono";
+	src:
+		url('/fonts/berkeleymono-bold-webfont.woff2') format('woff2'),
+		url('/fonts/berkeleymono-bold-webfont.woff') format('woff'),
+		url('/fonts/berkeleymono-bold-webfont.ttf') format('truetype');
+	font-weight: 150;
+	font-style: normal;
+	/* font-display: swap; */
+}
+
+@font-face {
+	font-family: "Berkeley Mono";
+	src:
+		url('/fonts/berkeleymono-italic-webfont.woff2') format('woff2'),
+		url('/fonts/berkeleymono-italic-webfont.woff') format('woff'),
+		url('/fonts/berkeleymono-italic-webfont.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
 	/* font-display: swap; */
 }
 
@@ -72,9 +96,9 @@ Table of Contents:
 	--rem: 1.1em;
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
-	--font-p: 1em/1.7  'Berkeley Mono Variable Regular','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: .9em/1.5 'Berkeley Mono Variable Regular','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: .9em/1.4 'Berkeley Mono Variable Regular','DejaVu Sans Mono', monospace;
+	--font-p: 1em/1.7  'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: .9em/1.5 'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-c: .9em/1.4 'Berkeley Mono','DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	
@@ -99,7 +123,7 @@ Table of Contents:
 
 	--red-hue: 354; --red-sat: 62%; --red-l: 38%; 
 	--t-red: hsl(var(--red-hue) var(--red-sat) var(--t-lum)); 
-	--c-red: hsl(var(--red-hue) var(--red-sat) var(--red-l) / 9%);
+	--c-red: hsl(var(--red-hue) var(--red-sat) var(--red-l) / 11%);
 	--red: hsl(var(--red-hue) var(--red-sat) var(--red-l) );
 
 	--green-hue: 162; --green-sat: 100%; --green-l: 27%; 
@@ -203,7 +227,7 @@ body {
 	color: var(--cfg);
 	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
-	font-variation-settings: "wght" 100;
+	font-weight: 100;
 }
 body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { margin: .6em 0;
@@ -229,7 +253,7 @@ h1, h2, h3, h4, h5 {
 	font: var(--font-h); 
 	line-height: 1.2em; 
 	clear: both;
-	font-variation-settings: "wght" 150;
+	font-weight: 150;
  }
 h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }  /* non-clashing headings */
 h1 { font-size: 2em; font-weight: 300; }
@@ -266,19 +290,19 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
 
 /* code */
 /* pre > code { */
-	.codeblock{
+.codeblock{
   margin: 0;
   position: relative;
   padding: 0.8em;
   border-left: .4rem solid var(--cemph);
-  font-weight: bold;
+  font-weight: 100;
 }
 code, kbd, samp, nav a {
 	padding: 0.2em;
 	font: var(--font-c);
 	background: var(--clight);
 	border-radius: 4px;
-	font-variation-settings: "wght" 100;
+	font-weight:  100;
 }
 .chroma code{
   background-color: unset;
@@ -908,6 +932,7 @@ img {
   .codelang {
 	color: var(--cemph);
 	opacity: 0.8;
+	font-weight: 150;
   }
   /**
    * 1. Modify the display of the progress bar in all browsers.
@@ -988,6 +1013,7 @@ img {
 
   figcaption{
 	text-align: center;
+	font-style: italic;
   }
 
   .lite-youtube-container, figure{
