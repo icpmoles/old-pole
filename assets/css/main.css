@@ -616,7 +616,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 /* math */
 
 math {
-	padding: 1rem;
+	padding: 1rem 0;
     overflow: auto hidden;
 	/* font-family:"TexGyreSchola", FSNeohellenicMath,Asana, FiraMath,  math,sans-serif,serif; */
 	color: var(--sec-text);
