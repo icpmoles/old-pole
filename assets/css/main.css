@@ -618,9 +618,13 @@ p>select { padding: 0;      margin: 0 .5em; }
 math {
 	padding: 1rem;
     overflow: auto hidden;
-	font-family:"TexGyreSchola", FSNeohellenicMath,Asana, FiraMath,  math,sans-serif,serif;
+	/* font-family:"TexGyreSchola", FSNeohellenicMath,Asana, FiraMath,  math,sans-serif,serif; */
 	color: var(--sec-text);
 	max-width: 100%;
+}
+
+ .inlinemath math{
+	padding: unset;
 }
 
 
@@ -1214,10 +1218,10 @@ footer{
 }
 
 
-.footnotes li:target  {
+.footnotes li:target , article sup:target a {
 	background: color-mix(in oklab , var(--cemph) 65%, var(--cfg));
 	color: var(--cbg);
-	background-alpha:0.8;
+	/* opacity: 0.8; */
 }
 
 .footnotes li::marker{
