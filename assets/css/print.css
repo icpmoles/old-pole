@@ -1,10 +1,12 @@
 @media print {
     /* All your print styles go here  */
     
-    body{
+    main, body{
         background-color: #fff;
         padding: 0;
+        max-width: unset;
     }
+   
 
     footer,
     nav
