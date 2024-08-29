@@ -6,8 +6,6 @@
 <link rel="me" href="{{ .Site.Params.mastodon_profile }}" /> 
 {{end}}
 
-{{ partialCached "head/css.html" . }}
-
 {{- if eq hugo.Environment "development" }}
     {{- partial "head/css.html" . -}}
 {{- else }}

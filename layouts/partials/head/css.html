@@ -6,8 +6,10 @@
 {{- $syntaxlight := resources.Get  (printf "css/chroma/%s.css" .Site.Params.syntaxLight) }}
 {{- $lightcode := slice $lightmodepreferenceop $syntaxlight $closingbracket | resources.Concat "css/syntax-light2.css" }}
 
+
+{{- $print := resources.Get "css/print.css" }}
 {{- $main := resources.Get "css/main.css" }}
-{{- with slice $main $darkcode $lightcode  | resources.Concat "css/bundle.css"  }}
+{{- with slice $main $darkcode $lightcode $print | resources.Concat "css/bundle.css"  }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
   {{- else }}
@@ -16,3 +18,4 @@
     {{- end }}
   {{- end }}
 {{- end }}
+

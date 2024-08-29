@@ -1,0 +1,63 @@
+@media print {
+    /* All your print styles go here  */
+    
+    body{
+        background-color: #fff;
+        padding: 0;
+    }
+
+    footer,
+    nav
+    {
+        display: none !important;
+    }
+
+    .codeblock, blockquote {
+        border: 1px solid black;
+        padding: 2px;
+        background-color: white !important;
+
+    }
+
+    code {
+        overflow: hidden;
+        line-break: anywhere;
+        width: 100%;
+    }
+
+    .highlight{
+        overflow: hidden;
+    }
+/* 
+    pre{
+        white-space:pre-wrap;
+         word-wrap:break-word;
+         overflow: auto;
+    } */
+
+    pre > code {
+        white-space: pre-wrap;
+        word-wrap:break-word;
+        /* display: block; */
+        /* overflow-x: hidden; */
+        /* width: fit-content; */
+    }
+
+    .lntable td:nth-child(1){
+        display: none;
+    }
+
+    .lntable td:nth-child(1){
+        display: none;
+    }
+
+    .lntable td:nth-child(2) pre code .line:nth-child(even) {
+        background-color: bisque !important;
+    }
+
+
+    h1{
+        margin-block-start: 0;
+
+    }
+    }
