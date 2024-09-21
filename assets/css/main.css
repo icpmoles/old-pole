@@ -203,7 +203,7 @@ Table of Contents:
 /* reset block elements  */
 * { box-sizing: border-box; border-spacing: 0; margin: 0; padding: 0;}
 header, footer, figure, table, video, details, blockquote,
-ul, ol, dl, fieldset, pre, pre > code, caption,#TableOfContents {
+ul, ol, dl, fieldset, pre, caption {
 	display: block;
 	margin: 0.5rem 0rem 1rem;
 	width: 100%;
@@ -296,6 +296,7 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
   padding: 0.8em;
   border-left: .4rem solid var(--cemph);
   font-weight: 100;
+  background-color: var(--cbg);
 }
 code, kbd, samp, nav a {
 	padding: 0.2em;
