@@ -298,7 +298,7 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
   font-weight: 100;
   background-color: var(--cbg);
 }
-code, kbd, samp, nav a {
+p code, kbd, samp, nav a {
 	padding: 0.2em;
 	font: var(--font-c);
 	background: var(--clight);
