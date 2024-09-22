@@ -2,6 +2,8 @@
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <link rel="icon" href="/favicon.ico">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#efefef" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e1e2e" />
 {{ if isset .Site.Params  "fediverse_creator" }}
     <meta property="fediverse:creator" content={{ .Site.Params.fediverse_creator }} >
     <link rel="me" href="{{ .Site.Params.mastodon_profile }}" /> 

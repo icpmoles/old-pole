@@ -239,7 +239,9 @@ p { margin: .6em 0;
 
 a[href^="#"] {text-decoration: none; }
 a:hover, button:not([disabled]):hover, summary:hover {
-	filter: brightness(92%); color: var(--cemph); border-color: var(--cemph);
+	filter: brightness(92%); 
+	color: var(--cemph); 
+	border-color: var(--cemph);
 }
 
 /* lists */
@@ -1116,7 +1118,13 @@ code:not(.codeblock code){
 	text-underline-offset: 0.2em;
 	text-decoration:  underline var(--cemph) dotted 2px;
 }
- summary{user-select: none;}
+ summary{
+	user-select: none;
+	background-color: var(--cbg);
+}
+ .codeblock summary{
+	background-color: var();
+ }
  
 .codeblock summary::marker{
 	display: none; 
@@ -1149,9 +1157,9 @@ dialog {
     width: auto;
 }
 
-.dialogcontainer-ev{
+/* .dialogcontainer-ev{
 
-}
+} */
 
 .dialogcontainer-eh{
 	width: fit-content;
