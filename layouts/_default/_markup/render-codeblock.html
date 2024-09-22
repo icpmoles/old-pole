@@ -1,10 +1,13 @@
-<div class="codeblock">
+<details class="codeblock" open>
 {{ $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
 {{ if in $terminal .Type  }}
-<div class="codelang terminalIcon" contenteditable="true" spellcheck="false" >{{ .Type  }}</div>
+    <summary class="codelang terminalIcon" contenteditable="true" spellcheck="false" >{{ .Type  }}</summary>
 {{ else }}
-<div class="codelang codeIcon">{{ .Type  }}</div>
+    <summary class="codelang codeIcon">{{ .Type  }}</summary>
 {{ end }}
+<div>
 {{ $result := transform.HighlightCodeBlock . }}
 {{ $result.Wrapped }}
 </div>
+</details>
+
