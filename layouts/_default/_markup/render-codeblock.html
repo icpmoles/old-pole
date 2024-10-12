@@ -1,7 +1,7 @@
 <details class="codeblock" open>
 {{ $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
 {{ if in $terminal .Type  }}
-    <summary class="codelang terminalIcon" contenteditable="true" spellcheck="false" >{{ .Type  }}</summary>
+    <summary class="codelang terminalIcon">{{ .Type  }}</summary>
 {{ else }}
     <summary class="codelang codeIcon">{{ .Type  }}</summary>
 {{ end }}
