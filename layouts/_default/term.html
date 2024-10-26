@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <h1>{{ .Data.Singular | strings.FirstUpper }}: {{ .Title }}</h1>
+  <h1>{{ .Data.Singular | inflect.Humanize }}: {{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
   {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
