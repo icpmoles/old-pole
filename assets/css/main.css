@@ -93,11 +93,11 @@ Table of Contents:
 
 :root, html[data-theme='light'] {
 
-	--rem: 1.1em;
+	--rem: 1em;
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
-	--font-p: 1em/1.7  'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: .9em/1.5 'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-p:  clamp(12px, 1vw, 19px)  'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: clamp(1.5em, 2.5vw, 4em) 'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-c: .9em/1.4 'Berkeley Mono','DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
@@ -230,8 +230,11 @@ body {
 	font-weight: 100;
 }
 body > footer { margin-top: 10rem ; font-size: 90%;  }
-p { margin: .6em 0;
-	letter-spacing: -.05em; }
+p { 
+	margin: .6em 0;
+	line-height: 1.2em;
+	/* letter-spacing: -.05em;  */
+}
 
 /* links */
 
@@ -690,10 +693,10 @@ img {
    * 2. Increase the size of text in the header.
    */
   
-  header { /* 1 */
-	font-size: 1.2rem; /* 2 */
+  /* header { 
+	font-size: 1.2rem;
   }
-  
+   */
   /**
    * Center the text in the footer.
    */
