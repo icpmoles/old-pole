@@ -46,7 +46,7 @@
   </picture>
     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
 
-    {{- with .Text}}   <figcaption class="small" > {{ . }}</figcaption> {{ end -}}
+    {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
 </figure>
 <dialog id="lb-{{ .Ordinal  }}">
     

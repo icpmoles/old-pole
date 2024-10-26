@@ -134,7 +134,7 @@ Table of Contents:
 	--navpos: absolute;  /* fixed | absolute */
 	--font-p: 1rem  "Red Hat Mono", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-h: 1.5rem 'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: 1rem "Red Hat Mono",'DejaVu Sans Mono', monospace;
+	--font-c: 0.9rem "Red Hat Mono",'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	
@@ -254,8 +254,8 @@ a, button, select, summary { color: var(--clink); cursor: pointer; }
 
 /* 3. Base Style ––––––––––––––––––––––––––––––––––––––– */
 html { 
-	font-size: 100%; 
-	 /* var(--rem);  */
+	/* font-size: 100%;  */
+	 font-size: var(--rem); 
 	background: var(--cbg); 
 }
 body {
@@ -344,7 +344,7 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
   font-weight: 100;
   background-color: var(--cbg);
 }
-p code, kbd, samp, nav a {
+p code, kbd, samp, code {
 	padding: 0.2em;
 	font: var(--font-c);
 	background: var(--clight);
@@ -488,6 +488,8 @@ header nav {
 	top: 0; left: 0; right: 0;
 	z-index: 41;	
 	border-bottom: .2rem solid var(--cfg);
+	font: var(--font-h);
+	font-size: 1.1em; font-weight: 100;
 
 }
 header nav ul { list-style-type: none; }
