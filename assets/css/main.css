@@ -62,6 +62,49 @@
 	/* font-display: swap; */
 }
 
+@font-face {
+	font-family: "Berkeley Mono Var";
+	src: 
+		url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2-variations');
+		/* url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff'),
+		url('/fonts/BerkeleyMonoVariable-Regular.ttf') format('truetype'); */
+	font-weight: 100 150;
+	font-style: normal;
+	/* font-display: swap; */
+}
+
+@font-face {
+	font-family: "Berkeley Mono Var";
+	src: 
+		url('/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2-variations');
+		/* url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff'),
+		url('/fonts/BerkeleyMonoVariable-Regular.ttf') format('truetype'); */
+	font-weight: 100 150;
+	font-style: italic;
+	/* font-display: swap; */
+}
+
+@font-face {
+	font-family: "Red Hat Mono Var";
+	src: 
+		url('/fonts/RedHatMonoVF.woff2') format('woff2-variations');
+		/* url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff'),
+		url('/fonts/BerkeleyMonoVariable-Regular.ttf') format('truetype'); */
+	font-weight: 300 400 500 700;
+	font-style: normal;
+	/* font-display: swap; */
+}
+
+@font-face {
+	font-family: "Red Hat Mono Var";
+	src: 
+		url('/fonts/RedHatMonoVF-Italic.woff2') format('woff2-variations');
+		/* url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff'),
+		url('/fonts/BerkeleyMonoVariable-Regular.ttf') format('truetype'); */
+		font-weight: 300 400 500 700;
+	font-style: italic;
+	/* font-display: swap; */
+}
 
 
 @font-face {
@@ -132,9 +175,9 @@ Table of Contents:
 	--rem: clamp(12px, 1.1em, 20px);
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
-	--font-p: 1rem  "Red Hat Mono", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: 1.5rem 'Berkeley Mono','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: 0.9rem "Red Hat Mono",'DejaVu Sans Mono', monospace;
+	--font-p: 1rem  "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: 1.5rem 'Berkeley Mono Var','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-c: 0.9rem "Red Hat Mono Var" ,'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	
@@ -363,7 +406,7 @@ blockquote,#TableOfContents {
 	padding: 0 0 0 1rem;
 }
 
-time, relative-time{ color: var(--cdark);
+time, relative-time{ color: var(--cdark); font-style: italic;
 }
 
 hr { border: 0;
