@@ -415,9 +415,7 @@ hr { border: 0;
 	border-top: 0.1rem solid var(--cmed);
 }
 
-header nav { width: 100%;
-	background-color: var(--clight);
-}
+
 
 ::selection, mark {
 	background: var(--cemph);
@@ -527,13 +525,17 @@ abbr[title], [data-tooltip] { cursor: help; }
 
 /* navbar body>nav, */
 
+nav{
+	font-family: "Berkeley Mono Var";
+}
 header nav+* { margin-top: 3rem; }
 header nav {
+	width: 100%;
+	background-color: var(--clight);
 	position: var(--navpos);
 	top: 0; left: 0; right: 0;
 	z-index: 41;	
 	border-bottom: .2rem solid var(--cfg);
-	font: var(--font-h);
 	font-size: 1.1em; font-weight: 100;
 
 }
