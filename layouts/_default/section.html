@@ -1,12 +1,5 @@
 {{ define "main" }}
   <h1 id="Section">{{ .Title }}</h1>
   {{ .Content }}
-  {{ $partialPath :=  printf "partials/content/%s/short.html" .Section }}
-  {{ range .Pages }}
-    {{ if templates.Exists ( $partialPath ) }}
-      {{ partial $partialPath . }}
-    {{ else }}
-      {{ partial "content/short.html" . }}
-    {{ end }}
-  {{ end }}
+  {{ partial "partials/range_content.html" . }}
 {{ end }}
