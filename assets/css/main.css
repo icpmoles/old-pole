@@ -177,7 +177,7 @@ Table of Contents:
 	--navpos: absolute;  /* fixed | absolute */
 	--font-p: 1rem  "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-h: 1.5rem 'Berkeley Mono Var','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: 0.9rem "Red Hat Mono Var" ,'DejaVu Sans Mono', monospace;
+	--font-c: 0.9rem monospace ,'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	
