@@ -172,12 +172,12 @@ Table of Contents:
 
 :root, html[data-theme='light'] {
 
-	--rem: clamp(12px, 1.1em, 20px);
+	--rem: clamp(12px, 1.1em, 17px);
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
 	--font-p: 1rem  "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-h: 1.5rem 'Berkeley Mono Var','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: 0.9rem monospace ,'DejaVu Sans Mono', monospace;
+	--font-c: 1rem monospace ,'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	
@@ -217,7 +217,8 @@ Table of Contents:
 	--alert-text: oklch(0.17 0.03 189.46); 
 
 	--ligthvisibility: unset;
-	--darkvisibility: none
+	--darkvisibility: none;
+	--font-w-p: 400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -236,7 +237,8 @@ Table of Contents:
         --t-lum: 50%;
         --ligthvisibility: none;
         --darkvisibility: unset;
-        --alert-text: #98ffff
+        --alert-text: #98ffff;
+		--font-w-p: 300;
 	}
 
 	
@@ -312,12 +314,12 @@ body {
 	color: var(--cfg);
 	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
-	font-weight: 100;
+	font-weight: var(--font-w-p);
 }
 body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { 
 	margin: .6em 0;
-	line-height: 1.2em;
+	/* line-height: 1.2em; */
 	
 	/* letter-spacing: -.05em;  */
 }
@@ -384,7 +386,7 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
 .codeblock{
   margin: 0;
   position: relative;
-  padding: 0.8em;
+  padding: 0.2rem 0.8rem;
   border-left: .4rem solid var(--cemph);
   font-weight: 100;
   background-color: var(--cbg);
@@ -392,7 +394,7 @@ figure > *:not(:last-child) { margin-bottom: 0.4rem; }
 p code, kbd, samp, code {
 	padding: 0.2em;
 	font: var(--font-c);
-	background: var(--clight);
+	background: var(--cemphbg);
 	border-radius: 4px;
 	font-weight:  100;
 }
@@ -408,7 +410,11 @@ blockquote,#TableOfContents {
 	padding: 0 0 0 1rem;
 }
 
-time, relative-time{ color: var(--cdark); font-style: italic;
+time, relative-time{ 
+	color: var(--cdark); 
+	font-weight: 100;
+	font-size: 0.9rem;
+	font-style: italic;
 }
 
 hr { border: 0;
@@ -1208,8 +1214,9 @@ img {
 } */
 
 code:not(.codeblock code){
-	text-underline-offset: 0.2em;
-	text-decoration:  underline var(--cemph) dotted 2px;
+	font-style: italic;
+	/* text-underline-offset: 0.2em; */
+	/* text-decoration:  underline var(--cemph) dotted 2px; */
 }
  summary{
 	user-select: none;
