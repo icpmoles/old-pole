@@ -1406,7 +1406,25 @@ article h1 {
   }
 
 
+.bitsInfo{
+	display: flex;
+	/* flex-direction: row-reverse; */
+	margin-bottom: 2rem;
+}
 
+.bitsTags {
+	margin-top: 2rem;
+	display: flex;
+}
+
+.bitsTags a{
+	margin-left: 1rem;
+}
+
+.bithr {
+	height: .1px;
+	opacity: 0.6;
+}
 /* h2, h3, h4, h5 {
 	display: inline;
 } */
