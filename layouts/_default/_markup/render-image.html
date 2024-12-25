@@ -7,6 +7,7 @@
 {{ $jpgsrc := "" }}
 {{ $webpsrc2 := "" }}
 {{ $jpgsrc2 := "" }}
+{{ $webpsrc720 := "" }}
 {{ $usedsrc:= $image }}
 {{ $animated := false }}
 
@@ -14,9 +15,11 @@
 
 
 {{ if ne $image.MediaType.SubType  "gif"  }}
-{{ $jpgsrc = (($image.Fit "720x720 jpg" )).RelPermalink }}
-{{ $webpsrcfit = ($image.Fit "1440x1440 q95 webp" ).RelPermalink }}
+{{ $jpgsrc = (($image.Resize "720x jpg" )).RelPermalink }}
+{{ $jpgsrc2 = (($image.Resize "1440x jpg" )).RelPermalink }}
+{{ $webpsrcfit = ($image.Resize "1440x q95 webp" ).RelPermalink }}
 {{ $webpsrc = (($image.Process "webp q95" )).RelPermalink }}
+{{ $webpsrc720 = (($image.Resize "720x q95 webp" )).RelPermalink }}
 {{ $usedsrc = $jpgsrc}}
 {{ else }}
 {{ $usedsrc = $image.RelPermalink  }}
@@ -29,8 +32,8 @@
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
-{{ with $webpsrcfit }}<source type="image/webp" srcset="{{ . }}" > {{ end }}
-{{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ $jpgsrc }} 1x, {{ $jpgsrc2 }} 2x" >{{ end }}
+{{ with $webpsrc720 }}<source type="image/webp" srcset="{{ . }} 720w, {{ $webpsrcfit }} 1440w" > {{ end }}
+{{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
   
     <img 
     class="post-img" 
