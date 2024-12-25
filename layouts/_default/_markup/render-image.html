@@ -38,8 +38,8 @@
     <img 
     class="post-img" 
     src="{{ $usedsrc }}" 
-    {{ with .Text}}  alt="{{ . }}" {{ end }} 
-    {{ with .Title}} title="{{ . }}"{{ end }} 
+    {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
+    {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
     loading="lazy"
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
