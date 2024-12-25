@@ -122,30 +122,51 @@ function roundToSingleUnit(duration, { relativeTo = Date.now() } = {}) {
   if (days || weeks || months || years)
     hours = 0;
   const currentYear = relativeTo.getFullYear();
-  let currentMonth = relativeTo.getMonth();
+  const currentMonth = relativeTo.getMonth();
   const currentDate = relativeTo.getDate();
-  if (days >= 27 || years + months && days) {
-    relativeTo.setDate(currentDate + days * sign);
-    months += Math.abs(relativeTo.getFullYear() >= currentYear ? relativeTo.getMonth() - currentMonth : relativeTo.getMonth() - currentMonth - 12);
-    if (months) {
-      days = 0;
+  if (days >= 27 || years + months + days) {
+    const newMonthDate = new Date(relativeTo);
+    newMonthDate.setDate(1);
+    newMonthDate.setMonth(currentMonth + months * sign + 1);
+    newMonthDate.setDate(0);
+    const monthDateCorrection = Math.max(0, currentDate - newMonthDate.getDate());
+    const newDate = new Date(relativeTo);
+    newDate.setFullYear(currentYear + years * sign);
+    newDate.setDate(currentDate - monthDateCorrection);
+    newDate.setMonth(currentMonth + months * sign);
+    newDate.setDate(currentDate - monthDateCorrection + days * sign);
+    const yearDiff = newDate.getFullYear() - relativeTo.getFullYear();
+    const monthDiff = newDate.getMonth() - relativeTo.getMonth();
+    const daysDiff = Math.abs(Math.round((Number(newDate) - Number(relativeTo)) / 864e5)) + monthDateCorrection;
+    const monthsDiff = Math.abs(yearDiff * 12 + monthDiff);
+    if (daysDiff < 27) {
+      if (days >= 6) {
+        weeks += Math.round(days / 7);
+        days = 0;
+      } else {
+        days = daysDiff;
+      }
+      months = years = 0;
+    } else if (monthsDiff <= 11) {
+      months = monthsDiff;
+      years = 0;
+    } else {
+      months = 0;
+      years = yearDiff * sign;
     }
-    currentMonth = relativeTo.getMonth();
+    if (months || years)
+      days = 0;
   }
-  if (days >= 6)
-    weeks += Math.round(days / 7);
-  if (weeks || months || years)
-    days = 0;
+  if (years)
+    months = 0;
   if (weeks >= 4)
     months += Math.round(weeks / 4);
   if (months || years)
     weeks = 0;
-  if (months >= 11 || years && months) {
-    relativeTo.setMonth(relativeTo.getMonth() + months * sign);
-    years += Math.abs(currentYear - relativeTo.getFullYear());
+  if (days && weeks && !months && !years) {
+    weeks += Math.round(days / 7);
+    days = 0;
   }
-  if (years)
-    months = 0;
   return new Duration(years * sign, months * sign, weeks * sign, days * sign, hours * sign, minutes * sign, seconds * sign, milliseconds * sign);
 }
 __name(roundToSingleUnit, "roundToSingleUnit");
@@ -293,6 +314,7 @@ var RelativeTimeElement = class extends HTMLElement {
       "precision",
       "format",
       "format-style",
+      "no-title",
       "datetime",
       "lang",
       "title"
@@ -459,6 +481,12 @@ var RelativeTimeElement = class extends HTMLElement {
   set formatStyle(value) {
     this.setAttribute("format-style", value);
   }
+  get noTitle() {
+    return this.hasAttribute("no-title");
+  }
+  set noTitle(value) {
+    this.toggleAttribute("no-title", value);
+  }
   get datetime() {
     return this.getAttribute("datetime") || "";
   }
@@ -488,6 +516,7 @@ var RelativeTimeElement = class extends HTMLElement {
       __classPrivateFieldSet2(this, _RelativeTimeElement_updating, (async () => {
         await Promise.resolve();
         this.update();
+        __classPrivateFieldSet2(this, _RelativeTimeElement_updating, false, "f");
       })(), "f");
     }
   }
@@ -503,7 +532,7 @@ var RelativeTimeElement = class extends HTMLElement {
     const now = Date.now();
     if (!__classPrivateFieldGet2(this, _RelativeTimeElement_customTitle, "f")) {
       newTitle = __classPrivateFieldGet2(this, _RelativeTimeElement_instances, "m", _RelativeTimeElement_getFormattedTitle).call(this, date) || "";
-      if (newTitle)
+      if (newTitle && !this.noTitle)
         this.setAttribute("title", newTitle);
     }
     const duration = elapsedTime(date, this.precision, now);
@@ -529,7 +558,6 @@ var RelativeTimeElement = class extends HTMLElement {
     } else {
       dateObserver.unobserve(this);
     }
-    __classPrivateFieldSet2(this, _RelativeTimeElement_updating, false, "f");
   }
 };
 __name(RelativeTimeElement, "RelativeTimeElement");
@@ -595,7 +623,7 @@ _RelativeTimeElement_customTitle = /* @__PURE__ */ new WeakMap(), _RelativeTimeE
     duration = emptyDuration;
   const [int, unit] = getRelativeTimeUnit(duration);
   if (unit === "second" && int < 10) {
-    return relativeFormat.format(0, "second");
+    return relativeFormat.format(0, this.precision === "millisecond" ? "second" : this.precision);
   }
   return relativeFormat.format(int, unit);
 }, "_RelativeTimeElement_getRelativeFormat"), _RelativeTimeElement_getDateTimeFormat = /* @__PURE__ */ __name(function _RelativeTimeElement_getDateTimeFormat2(date) {
