@@ -1,2 +1,10 @@
-{{- $timejs := resources.Get "js/relative-time-element.js" | resources.Minify -}}
-<script  type="module" src="{{ $timejs.RelPermalink }}" integrity="{{ $timejs.Data.Integrity }}"></script>
+{{- with resources.Get "js/relative-time-element.js" -}}
+{{/*  <script  type="module" src="{{ $timejs.RelPermalink }}" integrity="{{ $timejs.Data.Integrity }}"></script>  */}}
+    {{- if eq hugo.Environment "development" }}
+        <script type="module" src="{{ .RelPermalink }}"></script>
+    {{- else }}
+        {{- with . | minify | fingerprint }}
+        <script type="module" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+        {{- end }}
+     {{- end }}
+{{- end }}
