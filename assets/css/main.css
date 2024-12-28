@@ -3,7 +3,7 @@
 @font-face {
 	font-family: "FiraMath";
 	src:
-	  url("/fonts/FiraMath.otf") format("opentype") 
+	  url("/fonts/FiraMath.woff2") format("woff2") 
 }
 @font-face {
 	font-family: "Asana";
