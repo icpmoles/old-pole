@@ -12,7 +12,7 @@
 {{- if eq hugo.Environment "development" }}
     {{- partial "head/css.html" . -}}
 {{- else }}
-    {{- partialCached "head/css.html" . -}}
+    {{- partial "head/css.html" . -}}
 {{- end }}
 <!-- MATH Rendering -->
 {{ partial "head/math.html" . }}

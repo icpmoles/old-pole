@@ -1,6 +1,25 @@
 @media print {
     /* All your print styles go here  */
+    /* be print-friendly */
+    @font-face {
+        font-family: "IBM Plex Math";
+        src:
+            url('/fonts/IBMPlexMath-Regular.woff2') format('woff2');
+        font-weight: 100;
+        font-style: normal;
+        font-display: block; 
+    }
     
+
+	@page { margin: 1.5cm 2cm; } 
+	html {font-size: 9pt!important; } 
+	body { max-width: 27cm; }
+	p { orphans: 2; widows: 2; }
+	caption, figcaption { page-break-before: avoid; }
+	h2, h3, h4, h5 { page-break-after: avoid;}
+	.noprint, body>nav, section:after { display: none; }
+	.row { flex-direction: row; }
+
     main, body{
         background-color: #fff;
         padding: 0;
@@ -39,7 +58,7 @@
 
     pre > code {
         white-space: pre-wrap;
-        word-wrap:break-word;
+        word-wrap: break-word;
         /* display: block; */
         /* overflow-x: hidden; */
         /* width: fit-content; */
@@ -60,6 +79,18 @@
 
     h1{
         margin-block-start: 0;
+    }
 
+    .chroma, html { 
+        /* color: var(--cfg);  */
+        background-color: unset;
+     }
+
+     math {
+        /* display: inline-block; */
+        padding: 1rem 0;
+        /* overflow: hidden; */
+        font-family: "IBM Plex Math", math, sans-serif, serif !important;
+        max-width: 100%;
     }
-    }
+}

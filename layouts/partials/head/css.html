@@ -19,3 +19,13 @@
   {{- end }}
 {{- end }}
 
+{{- with resources.Get "css/critical.css" | minify }}
+  <style>{{ .Content | safeCSS  }}</style>
+{{- end -}}
+
+{{- with .Params.customCSSFile  -}}
+{{- $filename := printf "%s" . -}}
+  {{- with resources.Get $filename | minify  -}}
+  <style>{{ .Content | safeCSS  }}</style>
+  {{- end -}}
+{{- end -}}
