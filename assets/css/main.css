@@ -68,23 +68,6 @@ ul, ol, dl { margin: 1rem 0; padding: 0 0 0 2em; }
 li:not(:last-child), dd:not(:last-child) { margin-bottom: 0.5rem; }
 dt { font-weight: bold; }
 
-/* headings */
-h1, h2, h3, h4, h5 { 
-	margin: 1.5em 0 .5rem; 
-	font: var(--font-h); 
-	line-height: 1.2em; 
-	clear: both;
-	font-weight: 150;
- }
-h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }  /* non-clashing headings */
-h1 { font-size: 2em; font-weight: 300; }
-h2 { font-size: 1.8em; font-weight: 300; font-variant: small-caps; }
-h3 { font-size: 1.2em; font-weight: 400; }
-h4 { font-size: 1.1em; font-weight: 700; }
-h5 { font-size: 1.05em; font-weight: 400; color: var(--cfg); }
-h6 { font-size: 1.0em; font-weight: 700; font-style: italic; display: inline; }
-h6 + p { display: inline; }
-
 /* tables */
 td, th {
   padding: 0.5em 0.8em;
@@ -277,7 +260,8 @@ header nav {
 	top: 0; left: 0; right: 0;
 	z-index: 41;	
 	border-bottom: .2rem solid var(--cfg);
-	font-size: 1.1em; font-weight: 100;
+	font-size: 1.1em; 
+	/* font-weight: 100; */
 
 }
 header nav ul { list-style-type: none; }

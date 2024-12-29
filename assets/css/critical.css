@@ -1,3 +1,28 @@
+@font-face {
+	font-family: "IBM Plex Math";
+	src:
+		url('/fonts/IBMPlexMath-Regular.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: optional; 
+}
+/* @font-face {
+	font-family: "TX-02";
+	src:
+		url('/fonts/TX-02-Data-Regular.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap; 
+} */
+
+@font-face {
+	font-family: "TX-02";
+	src:
+		url('/fonts/TX-02-Data-Bold.woff2') format('woff2');
+	font-weight: 150;
+	font-style: normal;
+	font-display: swap; 
+}
 
 @font-face {
 	font-family: "Berkeley Mono";
@@ -125,8 +150,9 @@
 	--rem: clamp(12px, 1.1em, 17px);
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
+	--h-font-family: 'TX-02';
 	--font-p: 1rem  "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: 1.5rem 'Berkeley Mono Var','Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: 1.5rem var(--h-font-family),'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-c: 1rem monospace ,'DejaVu Sans Mono', monospace;
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
@@ -238,6 +264,25 @@ body {
 	font-weight: var(--font-w-p);
 }
 
+
+/* headings */
+h1, h2, h3, h4, h5 { 
+	margin: 1.5em 0 .5rem; 
+	font: var(--font-h); 
+	line-height: 1.2em; 
+	clear: both;
+	font-weight: 150;
+ }
+h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }  /* non-clashing headings */
+h1 { font-size: 2em; font-weight: 300; }
+h2 { font-size: 1.8em; font-weight: 300; font-variant: small-caps; }
+h3 { font-size: 1.2em; font-weight: 400; }
+h4 { font-size: 1.1em; font-weight: 700; }
+h5 { font-size: 1.05em; font-weight: 400; color: var(--cfg); }
+h6 { font-size: 1.0em; font-weight: 700; font-style: italic; display: inline; }
+h6 + p { display: inline; }
+
+
 figcaption, caption { 
     font: var(--font-c); 
     color: var(--cdark); 
@@ -257,8 +302,12 @@ p code, kbd, samp, code {
 	font-family: monospace;
 }
 nav{
-	font-family: "Berkeley Mono Var";
+	font-family: var(--h-font-family);
+	font-weight: 300;
+	
 }
+
+
 math {
 	padding: 1rem 0;
     overflow: auto hidden;
@@ -269,3 +318,4 @@ math {
  .inlinemath math{
 	padding: unset;
 }
+
