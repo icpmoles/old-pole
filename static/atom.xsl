@@ -5,7 +5,7 @@
   exclude-result-prefixes="atom"
 >
   <xsl:template match="/">
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    <html>
       <head>
         <title><xsl:value-of select="atom:feed/atom:title"/>RSS Feed</title>
         <style type="text/css">@import url(/rss.css);</style>
@@ -16,7 +16,7 @@
       <p>You are viewing an <acronym title="Really Simple Syndication">RSS</acronym> feed.  An RSS feed is a file
       allowing users a way to read updates to a website either through a third party RSS aggregator or other form of RSS
       syndication service.  You can find out more about the RSS file format at the
-      <a href="http://en.wikipedia.org/wiki/RSS_(file_format)">Wikipedia RSS entry</a>.</p>
+      <a href="https://en.wikipedia.org/wiki/RSS_(file_format)">Wikipedia RSS entry</a>.</p>
       <p>You may use the <acronym title="Uniform Resource Locater">URL</acronym> of this document for any RSS purposes.</p>
     </div>
     <div id="content">
@@ -30,7 +30,7 @@
     <article>
       <a href="{atom:id}" rel="bookmark">
         <h2>
-        <xsl:value-of select="atom:title"/>
+        <xsl:value-of select="atom:section"/>: <xsl:value-of select="atom:title"/>
         </h2>
       </a>
       <a href="{atom:id}" rel="bookmark">
