@@ -4,7 +4,7 @@
 		url('/fonts/IBMPlexMath-Regular.woff2') format('woff2');
 	font-weight: 100;
 	font-style: normal;
-	font-display: optional; 
+	font-display: swap; 
 }
 /* @font-face {
 	font-family: "TX-02";
@@ -142,7 +142,7 @@
 	font-family: "FiraMath";
 	src:
 	  url("/fonts/FiraMath.woff2") format("woff2");
-	font-display: optional; 
+	font-display: swap; 
 }
 
 :root, html[data-theme='light'] {

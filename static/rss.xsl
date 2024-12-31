@@ -4,10 +4,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="/">
 <html>
   <head>
-    <title><xsl:value-of select="rss/channel/title"/> RSS Feed</title>
-    <style type="text/css">
-    @import url(/rss.css);
-    </style>
+    <title><xsl:value-of select="rss/channel/title"/>RSS Feed</title>
+    <style type="text/css">@import url(/rss.css);</style>
   </head>
   <body>
     <div id="explanation">
@@ -23,7 +21,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <div class="article">
         <h2><a href="{link}" rel="bookmark"><xsl:value-of select="title"/></a></h2>
         <p><xsl:value-of select="pubDate"/></p>
-        <xsl:value-of select="description"/>
+        <xsl:value-of select="preview"/>
       </div>
       </xsl:for-each>
     </div>
