@@ -17,9 +17,6 @@
 {{ if ne $image.MediaType.SubType  "gif"  }}
 {{ $jpgsrc = (($image.Resize "720x jpg" )).Permalink  }}
 {{ $jpgsrc2 = (($image.Resize "1440x jpg" )).Permalink  }}
-{{ $webpsrcfit = ($image.Resize "1440x q95 webp" ).Permalink  }}
-{{ $webpsrc = (($image.Process "webp q95" )).Permalink  }}
-{{ $webpsrc720 = (($image.Resize "720x q95 webp" )).Permalink  }}
 {{ $usedsrc = $jpgsrc}}
 {{ else }}
 {{ $usedsrc = $image.Permalink   }}
@@ -32,7 +29,6 @@
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
-{{ with $webpsrc720 }}<source type="image/webp" srcset="{{ . }} 720w, {{ $webpsrcfit }} 1440w" > {{ end }}
 {{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
   
     <img 
