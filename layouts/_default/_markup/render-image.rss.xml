@@ -1,61 +1,61 @@
-{{ $image := .Page.Resources.GetMatch .Destination }}
+{{- $image := .Page.Resources.GetMatch .Destination -}}
 
-{{ $used:= $image}}
+{{- $used:= $image}}
 
-{{ $webpsrc := "" }}
-{{ $webpsrcfit := "" }}
-{{ $jpgsrc := "" }}
-{{ $webpsrc2 := "" }}
-{{ $jpgsrc2 := "" }}
-{{ $webpsrc720 := "" }}
-{{ $usedsrc:= $image }}
-{{ $animated := false }}
-
-
+{{- $webpsrc := "" -}}
+{{- $webpsrcfit := "" -}}
+{{- $jpgsrc := "" -}}
+{{- $webpsrc2 := "" -}}
+{{- $jpgsrc2 := "" -}}
+{{- $webpsrc720 := "" -}}
+{{- $usedsrc:= $image -}}
+{{- $animated := false -}}
 
 
-{{ if ne $image.MediaType.SubType  "gif"  }}
-{{ $jpgsrc = (($image.Resize "720x jpg" )).Permalink  }}
-{{ $jpgsrc2 = (($image.Resize "1440x jpg" )).Permalink  }}
-{{ $usedsrc = $jpgsrc}}
-{{ else }}
-{{ $usedsrc = $image.Permalink   }}
-{{ $animated = true  }}
-{{ end }}
+
+
+{{- if ne $image.MediaType.SubType  "gif"  -}}
+{{- $jpgsrc = (($image.Resize "720x jpg" )).Permalink  -}}
+{{- $jpgsrc2 = (($image.Resize "1440x jpg" )).Permalink  -}}
+{{- $usedsrc = $jpgsrc}}
+{{- else -}}
+{{- $usedsrc = $image.Permalink   -}}
+{{- $animated = true  -}}
+{{- end -}}
 
 
 <figure>
   
-{{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
+{{- with .Title}}   <div class="title-img">{{- . -}}</div> {{- end -}}
 <picture>
 
-{{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
+{{- with $jpgsrc -}}<source type="image/jpeg" srcset="{{- . -}} 720w, {{- $jpgsrc2 -}} 1440w" >{{- end -}}
   
     <img 
     class="post-img" 
-    src="{{ $usedsrc }}" 
-    {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
-    {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
+    src="{{- $usedsrc -}}?rss=true" 
+    {{- with .Text}}  alt="{{-  plainify  . | safeHTML}}" {{- end -}} 
+    {{- with .Title}} title="{{-  plainify  . | safeHTML}}"{{- end -}} 
     loading="lazy"
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
 
-    onclick="openLightbox(this, {{ .Ordinal  }} )"
+    onclick="openLightbox(this, {{- .Ordinal  -}} )"
     >
   </picture>
-    <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
+    <!--<a href="{{- .Destination | safeURL -}}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
 
-    {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
+    {{- with .Text}}<figcaption class="small" > {{- . | safeHTML}}</figcaption> {{- end -}}
 </figure>
-<dialog id="lb-{{ .Ordinal  }}">
+<dialog id="lb-{{- .Ordinal  -}}">
     
     <img
         class="dialogimg"
-        src="{{ if $animated }}{{ $usedsrc  }}{{ else }}{{ $webpsrc  }}{{ end }}   "
+        src="{{- if $animated -}}{{- $usedsrc -}}{{- else -}}{{- $webpsrc -}}{{- end -}}   "
         loading="lazy"
         
-        width="{{ $image.Width}}"
-        height="{{ $image.Height}}"
+        width="{{- $image.Width}}"
+        height="{{- $image.Height}}"
         >
 </dialog>
 
