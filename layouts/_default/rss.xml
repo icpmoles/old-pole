@@ -1,7 +1,8 @@
 {{ printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }} {{/* ref: https://validator.w3.org/feed/docs/atom.html */}}
-{{- printf "<?xml-stylesheet href=\"/atom.xsl\" type=\"text/xsl\" media=\"screen\"?>" | safeHTML }}
+{{- printf "<?xml-stylesheet href=\"/atom.xsl?rss=true\" type=\"text/xsl\" media=\"screen\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom"{{ with site.LanguageCode }} xml:lang="{{ . }}"{{ end }}>
     <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
+    <icon>/favicon.ico</icon>
     {{- $title := site.Title -}}
     {{- with .Title -}}
         {{- if (not (eq . site.Title)) -}}
@@ -51,10 +52,10 @@
             <logo>{{ (. | fingerprint).Permalink }}</logo>
         {{- end }}
     {{ end }}
-    {{ with site.Author.name -}}
+    {{ with .Site.Params.Author.name -}}
         <author>
             <name>{{ . }}</name>
-            {{ with site.Author.email }}
+            {{ with $.Site.Params.Author.email }}
                 <email>{{ . }}</email>
             {{ end -}}
         </author>

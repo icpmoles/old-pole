@@ -1,0 +1,7 @@
+{{ if eq .Type "block" }}
+  <img src="https://latex.codecogs.com/png.latex?{{ .Inner }}"/>
+{{ else }}
+<span class="inlinemath">
+  <img src="https://latex.codecogs.com/png.latex?{{ .Inner }}"/>
+</span>
+{{ end }}

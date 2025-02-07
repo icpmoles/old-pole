@@ -8,7 +8,7 @@
     <html>
       <head>
         <title><xsl:value-of select="atom:feed/atom:title"/>RSS Feed</title>
-        <style type="text/css">@import url(/rss.css);</style>
+        <style type="text/css">@import url(/rss.css?rss=true);</style>
       </head>
       <body style="font-family:Arial;font-size:12pt;background-color:#EEEEEE">
       <div id="explanation">
