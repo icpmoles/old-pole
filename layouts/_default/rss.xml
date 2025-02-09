@@ -2,7 +2,7 @@
 {{- printf "<?xml-stylesheet href=\"/atom.xsl?rss=true\" type=\"text/xsl\" media=\"screen\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom"{{ with site.LanguageCode }} xml:lang="{{ . }}"{{ end }}>
     <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
-    <icon>/favicon.ico</icon>
+    <icon>{{ absURL "/favicon.ico" }}</icon>
     {{- $title := site.Title -}}
     {{- with .Title -}}
         {{- if (not (eq . site.Title)) -}}
