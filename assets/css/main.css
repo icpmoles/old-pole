@@ -152,7 +152,10 @@ hr { border: 0;
 /* 4. Extra Style –––––––––––––––––––––––––––––––––––––– */
 
 /* Auto Numbering: figure/tables/headings/cite */
-article { counter-reset: h2 0 h3 0 tab 0 fig 0 lst 0 ref 0 eq 0; }
+article { 
+	counter-reset: h2 0 h3 0 tab 0 fig 0 lst 0 ref 0 eq 0;
+	word-break: break-all;
+}
 article figure figcaption:before {
 	color: var(--cemph);
 	counter-increment: fig;
