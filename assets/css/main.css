@@ -994,7 +994,16 @@ footer{
 
 .yeargroup{
 	padding: 2rem 0;
+
 }
+.yeargroup time{
+	font-style: normal;
+}
+
+/* .yeargroup li{
+	display: flex;
+	justify-content: space-between
+} */
 
 #search-input:placeholder-shown{
 	font-style: italic;

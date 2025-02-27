@@ -9,6 +9,7 @@ article{
      max-width: 100%;
      margin: 0 1em;
      border-bottom:1px solid rgb(55, 69, 80); 
+	word-break: break-all;
 }
 time{
      display: block;

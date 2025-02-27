@@ -1,5 +1,6 @@
 {{ define "main" }}
   <article>
+    {{ .Content }}
     <ul class="archive">
     {{ $pages := ( where .Site.RegularPages "Section" "posts")  }}
     {{ $bits := ( where .Site.RegularPages "Section" "bits")  }}
