@@ -1,4 +1,3 @@
 <li class="archive-post">
-<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time> (B)
-<a href="{{ .RelPermalink }}" class="permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
+<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time><span class="archive-type">(B)</span><a href="{{ .RelPermalink }}" class="permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
 </li>
