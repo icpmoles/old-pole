@@ -972,7 +972,14 @@ footer{
 	padding-left: 0;
 }
 
-/* .yeargroup time{
+
+.yeargroup li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* .yeargroup time{ 
 	text-decoration: underline dotted var(--cemph);
     text-underline-position: under;
 } */
