@@ -994,6 +994,10 @@ footer{
 	content: var(--ornament);
 } */
 
+.yeargroup time {
+	font-size: 0.9em;
+}
+
 .archive-type{
 	padding-left: clamp(0.1rem, 1vw, 2rem); 
 	padding-right: clamp(0.1rem, 1vw, 2rem); 
