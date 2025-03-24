@@ -255,7 +255,6 @@ html {
 	/* font-size: 100%;  */
 	font-size: var(--rem); 
 	background: var(--cbg); 
-	/* min-height: 105vh; */
 	scrollbar-gutter: stable both-edges;
 }
 
@@ -271,6 +270,11 @@ body {
 	padding: 3.0rem 0.6rem 0;
 	overflow-x: hidden;
 	font-weight: var(--font-w-p);
+	/* min-height: 100vh; */
+	
+	min-height: 100vh; 
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 }
 
 

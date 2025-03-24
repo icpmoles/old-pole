@@ -427,20 +427,20 @@ img {
    * 2. Set the width of the element to 640px, with padding for mobile screens.
    */
   
-	main {
-		margin: auto; /* 1 */
-		}
-
-	main, header h1 {
-		max-width: var(--width);; /* 2 */
-		width: 100%; /* 2 */
-
-		padding: 0 .5rem; /* 2 */
+main {
+	margin: 0 auto; /* 1 */
 	}
-	header h1 {
+
+main, header h1 {
+	max-width: var(--width);; /* 2 */
+	width: 100%; /* 2 */
+
+	padding: 0 .5rem; /* 2 */
+}
+header h1 {
 	margin-left: auto;
 	margin-right: auto;
-	}
+}
 
   /**
    * 1. Add some padding around the header.
