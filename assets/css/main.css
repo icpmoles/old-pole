@@ -111,6 +111,7 @@ figure > *:not(:last-child) {
   border-left: .4rem solid var(--cemph);
   font-weight: 100;
   background-color: var(--cbg);
+  margin: 1rem auto;
 }
 
 .chroma code{
@@ -149,8 +150,14 @@ hr { border: 0;
 /* Auto Numbering: figure/tables/headings/cite */
 article { 
 	counter-reset: h2 0 h3 0 tab 0 fig 0 lst 0 ref 0 eq 0;
+	
+}
+
+article a{
 	word-break: break-all;
 }
+
+
 article figure figcaption:before {
 	color: var(--cemph);
 	counter-increment: fig;
@@ -690,9 +697,10 @@ img {
   .codelang::before, .codelang::after{
 	font-stretch: condensed;
   }
-  .terminalIcon::before{
+
+  /* .terminalIcon::before{
 	content: "〉";
-  }
+  } */
   
 
   .codeIcon::before{
@@ -875,6 +883,10 @@ code:not(.codeblock code){
 }
  .codeblock summary{
 	background-color: var(--cbg);
+	display: flex;
+	justify-content: flex-end;
+	border-bottom-style: solid;
+
  }
  
 .codeblock summary::marker{
