@@ -37,12 +37,7 @@ a, button, select, summary { color: var(--clink); cursor: pointer; }
 
 
 /* 3. Base Style ––––––––––––––––––––––––––––––––––––––– */
-html { 
-	/* font-size: 100%;  */
-	font-size: var(--rem); 
-	background: var(--cbg); 
-	min-height: 105vh;
-}
+
 
 body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { 
