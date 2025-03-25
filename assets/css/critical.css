@@ -263,18 +263,15 @@ body {
 	font-size: var(--rem); 
 	position: relative;
 	margin: auto;
-/*	max-width: var(--width);*/
 	width: 100%;
 	font: var(--font-p);
 	color: var(--cfg);
 	padding: 3.0rem 0.6rem 0;
-	overflow-x: hidden;
 	font-weight: var(--font-w-p);
-	/* min-height: 100vh; */
-	
 	min-height: 100vh; 
 	display: grid;
 	grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
 }
 
 
