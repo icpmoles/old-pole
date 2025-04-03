@@ -7,24 +7,28 @@
 {{ $jpgsrc := "" }}
 {{ $webpsrc2 := "" }}
 {{ $jpgsrc2 := "" }}
+{{ $webp720  := ""  }}
 {{ $webpsrc720 := "" }}
 {{ $usedsrc:= $image }}
 {{ $animated := false }}
-
+{{ $colors := "" }}
 
 
 
 {{ if ne $image.MediaType.SubType  "gif"  }}
-{{ $jpgsrc = (($image.Resize "720x jpg" )).RelPermalink }}
-{{ $jpgsrc2 = (($image.Resize "1440x jpg" )).RelPermalink }}
+{{ $jpgsrc = ($image.Resize "720x jpg" ).RelPermalink }}
+{{ $jpgsrc2 = ($image.Resize "1440x jpg" ).RelPermalink }}
 {{ $webpsrcfit = ($image.Resize "1440x q95 webp" ).RelPermalink }}
-{{ $webpsrc = (($image.Process "webp q95" )).RelPermalink }}
-{{ $webpsrc720 = (($image.Resize "720x q95 webp" )).RelPermalink }}
+{{ $webpsrc = ($image.Process "webp q95" ).RelPermalink }}
+{{ $webp720 = $image.Resize "720x q95 webp"  }}
+{{ $webpsrc720 = $webp720.RelPermalink }}
 {{ $usedsrc = $jpgsrc}}
+{{ $colors = $webp720.Colors }}
 {{ else }}
 {{ $usedsrc = $image.RelPermalink  }}
 {{ $animated = true  }}
 {{ end }}
+
 
 
 <figure>
@@ -34,10 +38,10 @@
 
 {{ with $webpsrc720 }}<source type="image/webp" srcset="{{ . }} 720w, {{ $webpsrcfit }} 1440w" > {{ end }}
 {{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
-  
+    
     <img 
     class="post-img" 
-    src="{{ $usedsrc }}" 
+    src="{{ $usedsrc }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
     loading="lazy"
@@ -45,6 +49,11 @@
     height="{{$used.Height}}"
 
     onclick="openLightbox(this, {{ .Ordinal  }} )"
+
+    style="
+    background-image:
+    linear-gradient(to bottom right, {{- delimit $colors ", "   }} );
+    "
     >
   </picture>
     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
