@@ -32,9 +32,6 @@ ul, ol, dl, fieldset, pre, caption {
 }
 video, summary, input, select { outline:none; }
 
-/* reset clickable things  (FF Bug: select:hover prevents usage) */
-a, button, select, summary { color: var(--clink); cursor: pointer; }
-
 
 /* 3. Base Style ––––––––––––––––––––––––––––––––––––––– */
 
@@ -153,10 +150,6 @@ article {
 	
 }
 
-article a{
-	word-break: break-all;
-}
-
 
 article figure figcaption:before {
 	color: var(--cemph);
@@ -254,51 +247,6 @@ article p>cite:hover > *:only-child,
 }
 abbr[title], [data-tooltip] { cursor: help; }
 
-/* navbar body>nav, */
-
-
-header nav+* { margin-top: 3rem; }
-header nav {
-	width: 100%;
-	background-color: var(--clight);
-	position: var(--navpos);
-	top: 0; left: 0; right: 0;
-	z-index: 41;	
-	border-bottom: .2rem solid var(--cfg);
-	font-size: 1.1em; 
-	/* font-weight: 100; */
-
-}
-header nav ul { list-style-type: none; }
-header nav ul:first-child { margin: 0; padding: 0; overflow: visible; }
-header nav ul:first-child > li {
-	display: inline-block;
-	margin: 0;
-	padding: 0.8rem .6rem;
-}
-
-header nav ul > li > ul {
-	display: none;
-	width: auto;
-	position: absolute;
-	margin: 0.5rem 0;
-	padding: 1rem 2rem;
-	background-color: var(--clight);
-	border: var(--border);
-	border-radius: 4px;
-	z-index: 42;
-}
-header nav ul > li > ul > li { white-space: nowrap; }
-header nav ul > li:hover > ul { display: block; }
-
-header nav ul:first-child > li:first-child { display: none; } 
-
-@media (max-width: 40rem) {
-	header	nav ul:first-child > li:first-child {  display: inline-block;}
-	header	nav ul:first-child > li:first-child:after { content: " \25BE"; }
-	header	nav ul:first-child > li:not(:first-child):not(.sticky) { display: none; }
-	header	nav ul:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
-}
 
 /* details/cards */
 summary>* { display: inline; }
@@ -415,32 +363,6 @@ p>select { padding: 0;      margin: 0 .5em; }
 
 
 
-/*concrete.css */
-img {
-/*	max-width: 100%;*/
-	max-height: var(--width); /* 1 */
-	height: auto; /* 2 */
-  }
-  
-  /** 
-   * 1. Center the main element horizontally.
-   * 2. Set the width of the element to 640px, with padding for mobile screens.
-   */
-  
-main {
-	margin: 0 auto; /* 1 */
-	}
-
-main, header h1 {
-	max-width: var(--width);; /* 2 */
-	width: 100%; /* 2 */
-
-	padding: 0 .5rem; /* 2 */
-}
-header h1 {
-	margin-left: auto;
-	margin-right: auto;
-}
 
   /**
    * 1. Add some padding around the header.
