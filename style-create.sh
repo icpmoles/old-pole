@@ -9,5 +9,5 @@ do
 done
 
 # then replace with regex in vscode:
-# \.(bg|chroma) \{( color: #.{3,6};)? background-color: #.{3,6}; \}
+# \.(bg|chroma) \{ ((background-|)color:#.{3,6};)+ \}
 # .$1 { color: var(--cfg); background-color: var(--cbg); }
