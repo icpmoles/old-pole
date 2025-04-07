@@ -1,3 +1,5 @@
 <li class="archive-post">
-<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time><span class="archive-type">(μ)</span><a href="{{ .RelPermalink }}" class="permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
+<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
+<b class="archive-type">{{- if isset site.Params.archive "bitssymbol" }}{{- site.Params.archive.bitsSymbol }}{{- else }}μ{{- end }}</b>
+<a href="{{ .RelPermalink }}" class="permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
 </li>
