@@ -18,19 +18,6 @@
 
 
 
-/* 2. Reset –––––––––––––––––––––––––––––––––––––––––––– */
-
-/* reset block elements  */
-* { box-sizing: border-box; border-spacing: 0; margin: 0; padding: 0;}
-header, footer, figure, table, video, details, blockquote,
-ul, ol, dl, fieldset, pre, caption {
-	display: block;
-	margin: 0.5rem 0rem 1rem;
-	width: 100%;
-	overflow: auto hidden;
-	text-align: left;
-}
-video, summary, input, select { outline:none; }
 
 
 /* 3. Base Style ––––––––––––––––––––––––––––––––––––––– */
