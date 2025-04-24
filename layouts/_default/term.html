@@ -1,5 +1,5 @@
 {{ define "main" }}
   <h1 id="Term">{{ .Data.Singular | inflect.Humanize }}: {{ .Title }}</h1>
   {{ .Content }}
-  {{ partial "partials/range_content.html" . }}
+  {{ partial "range_content.html" . }}
 {{ end }}
