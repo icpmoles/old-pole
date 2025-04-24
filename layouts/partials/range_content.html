@@ -1,8 +1,0 @@
-{{ range .Pages }}
-{{ $partialPath :=  printf "content/%s/short.html" .Section }}
-{{ if templates.Exists ( $partialPath ) }}
-    {{ partial $partialPath . }}
-{{ else }}
-    {{ partial "content/short.html" . }}
-{{ end }}
-{{ end }}

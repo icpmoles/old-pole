@@ -1016,8 +1016,11 @@ article h1 {
 }
 
 .bithr {
-	height: .1px;
-	opacity: 0.6;
+	border: none;
+  	border-top: 3px dashed ;
+	height: 5px;
+	opacity: 0.6; 
+	background: none;
 }
 /* h2, h3, h4, h5 {
 	display: inline;
