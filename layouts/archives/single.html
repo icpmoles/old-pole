@@ -13,11 +13,12 @@
           {{ end }}  */}}
 
           {{ range .Pages }}
-          {{ $partialPath :=  printf "content/%s/archive.html" .Section }}
+          {{ $partialPath :=  printf "_partials/content/%s/archive.html" .Section }}
           {{ if templates.Exists ( $partialPath ) }}
-              {{ partial $partialPath . }}
+            {{ $partialPathClean :=  printf "content/%s/archive.html" .Section }}
+            {{ partial $partialPathClean . }}
           {{ else }}
-              {{ partial "content/archive.html" . }}
+              {{ partial "_partials/content/archive.html" . }}
           {{ end }}
           {{ end }}
     </ul>

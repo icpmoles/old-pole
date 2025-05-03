@@ -9,6 +9,9 @@
     {{ partial "header.html" . }}
   </header>
   <main>
+    {{ if site.Params.debug }}
+      <div class="debug">[entering {{ templates.Current.Filename }}]</div>
+    {{ end }}
     {{ block "main" . }}{{ end }}
   </main>
   <footer>
