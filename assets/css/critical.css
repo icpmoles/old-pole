@@ -382,11 +382,11 @@ header nav {
 	/* font-weight: 100; */
 
 }
-header nav ul { 
+header nav menu { 
 	list-style-type: none; 
 }
 
-header nav ul:first-child 
+header nav menu:first-child 
 { 
 	margin: 0; 
 	padding: 0; 
@@ -396,23 +396,23 @@ header nav ul:first-child
 	
 }
 
-header nav ul:first-child > li {
+header nav menu:first-child > li {
 	display: inline-block;
 	margin: 0;
 	padding: 0.8rem .6rem;
 }
 
 
-header nav ul > li > ul > li { white-space: nowrap; }
-header nav ul > li:hover > ul { display: block; }
+header nav menu > li > ul > li { white-space: nowrap; }
+header nav menu > li:hover > ul { display: block; }
 
-header nav ul:first-child > li:first-child { display: none; } 
+header nav menu:first-child > li:first-child { display: none; } 
 
 @media (max-width: 40rem) {
-	header	nav ul:first-child > li:first-child {  display: inline-block;}
-	header	nav ul:first-child > li:first-child:after { content: " \25BE"; }
-	header	nav ul:first-child > li:not(:first-child):not(.sticky) { display: none; }
-	header	nav ul:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
+	header	nav menu:first-child > li:first-child {  display: inline-block;}
+	header	nav menu:first-child > li:first-child:after { content: " \25BE"; }
+	header	nav menu:first-child > li:not(:first-child):not(.sticky) { display: none; }
+	header	nav menu:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
 }
 
 
