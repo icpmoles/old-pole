@@ -132,13 +132,13 @@ hr { border: 0;
 /* 4. Extra Style –––––––––––––––––––––––––––––––––––––– */
 
 /* Auto Numbering: figure/tables/headings/cite */
-article { 
+.posts-article { 
 	counter-reset: h2 0 h3 0 tab 0 fig 0 lst 0 ref 0 eq 0;
 	
 }
 
 
-article figure figcaption:before {
+.posts-article figure figcaption:before {
 	color: var(--cemph);
 	counter-increment: fig;
 	content: "Figure " counter(fig) ": ";
@@ -149,10 +149,10 @@ figure {
 	counter-reset: subfig 0 ;
 	object-fit: scale-down;
 }
-article figure figure { counter-reset: none; }
-article figure > figure { display: inline-grid; width: auto; }
+.posts-article figure figure { counter-reset: none; }
+.posts-article figure > figure { display: inline-grid; width: auto; }
 figure > figure:not(:last-of-type) { padding-right: 1rem; }
-article figure figure figcaption:before {
+.posts-article figure figure figcaption:before {
 	counter-increment: subfig 1;
 	content: counter(subfig, lower-alpha) ": ";
 }
@@ -162,30 +162,30 @@ article figure figure figcaption:before {
 /*}*/
 
 /* listings */
-article figure pre + figcaption:before {
+.posts-article figure pre + figcaption:before {
 	counter-increment: lst 1;
 	content: "Listing " counter(lst) ": ";
 }
 
 /* tables */
 figure > table:only-of-type { display: table; margin: 0.5em auto !important; width: fit-content; }
-article figure > table caption { display: table-caption; caption-side: bottom; }
-article figure > table + figcaption:before,
-article table caption:before {
+.posts-article figure > table caption { display: table-caption; caption-side: bottom; }
+.posts-article figure > table + figcaption:before,
+.posts-article table caption:before {
 	color: var(--cemph);
 	counter-increment: tab 1;
 	content: "Table " counter(tab) ": ";
 }
 
 /* headings */
-article h2, h3 { 
+.posts-article h2, h3 { 
 	text-decoration: underline;
 	position: relative; 
 }
 
 @media (min-width: 67rem) {
-article h2:before,
-article h3:before {
+.posts-article h2:before,
+.posts-article h3:before {
 	display: inline-block;
 	position: relative;
 	text-align: right;
@@ -197,25 +197,25 @@ article h3:before {
 }
 }
 
-article h2:before,
-article h3:before {
+.posts-article h2:before,
+.posts-article h3:before {
 	font-size: 0.6em;
 
 }
 
-article h1 { counter-set: h2; }
-article h2:before { counter-increment: h2; content: counter(h2) ". "; counter-set: h3; }
-article h3:before { counter-increment: h3; content: counter(h2) "." counter(h3) ". ";}
+.posts-article h1 { counter-set: h2; }
+.posts-article h2:before { counter-increment: h2; content: counter(h2) ". "; counter-set: h3; }
+.posts-article h3:before { counter-increment: h3; content: counter(h2) "." counter(h3) ". ";}
 /*@media (max-width: 60rem) { h2:before, h3:before { display: none; } }*/
 
 /* tooltip + citation */
-article p>cite:before {
+.posts-article p>cite:before {
 	padding: 0 .5em 0 0;
 	counter-increment: ref; content: " [" counter(ref) "] ";
 	vertical-align: super; font-size: .6em;
 }
-article p>cite > *:only-child { display: none; }
-article p>cite:hover > *:only-child,
+.posts-article p>cite > *:only-child { display: none; }
+.posts-article p>cite:hover > *:only-child,
 [data-tooltip]:hover:before {
 	display: inline-block; z-index: 40;
 	white-space: pre-wrap;
@@ -228,7 +228,7 @@ article p>cite:hover > *:only-child,
 	background-color: var(--cemph);
 	box-shadow: 0 2px 10px 0 black;
 }
-[data-tooltip], article p>cite:before { 
+[data-tooltip], .posts-article p>cite:before { 
 	color: var(--clink);
 	border: .8rem solid transparent; margin: -.8rem;
 }
