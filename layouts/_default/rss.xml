@@ -100,7 +100,7 @@
             {{- else -}}
                 <id>{{- .Permalink -}}</id>
             {{- end -}}
-            {{- with .Params.author -}}
+            {{- with $.Params.author -}}
                 {{- range . -}} <!-- Assuming the author front-matter to be a list -->
                     <author>
                         <name>{{- . -}}</name>
