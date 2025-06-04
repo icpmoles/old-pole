@@ -1040,3 +1040,7 @@ article h1 {
 	height: 90vh;
 	border: 3px dashed;
 }
+
+.highlight .line:hover {
+	  background-color: var(--hoverbg);
+}
