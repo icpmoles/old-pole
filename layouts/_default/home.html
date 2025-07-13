@@ -1,6 +1,10 @@
 {{ define "main" }}
   {{ .Content }}
+  <ul class="no-bullets">
   {{ range where site.RegularPages "Section" (.Site.Params.mainSection) }}
+    <li>
     {{ partial "content/posts/short.html" . }}
+    </li>
   {{ end }}
+  </ul>
 {{ end }}
