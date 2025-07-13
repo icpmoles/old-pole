@@ -85,7 +85,7 @@
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/space_grotesk/space-grotesk-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* space-grotesk-500 - latin */
 @font-face {
@@ -93,7 +93,7 @@
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/space_grotesk/space-grotesk-v21-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* space-grotesk-600 - latin */
 @font-face {
@@ -101,7 +101,7 @@
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/space_grotesk/space-grotesk-v21-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* space-grotesk-700 - latin */
 @font-face {
@@ -109,7 +109,7 @@
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/space_grotesk/space-grotesk-v21-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 @font-face {
@@ -117,7 +117,7 @@
   font-family: 'Space Mono';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/space_mono/space-mono-v17-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/space_mono/space-mono-v17-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 @font-face {
