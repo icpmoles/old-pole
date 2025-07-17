@@ -1,13 +1,20 @@
-{{ $articlelist := slice }}
-{{ range  site.RegularPages }}
-  {{ $post := dict 
+{{- $articlelist := slice -}}
+{{- range  site.RegularPages -}}
+  {{- $smartTitle :=  "" -}}
+  {{- if gt (len .Title) 2 -}}
+    {{ $smartTitle =  .Title -}}
+  {{- else  -}}
+    {{ $smartTitle =  (printf "Bit: %s" .Slug) -}}
+  {{- end  -}}
+  {{- $post := dict 
   "url" .RelPermalink 
-  "time" .Date.Unix  
-  "title" .Title 
-  "content" ( .Plain | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` `  ) 
+  "time" (.Date | time.Format ":date_long")
+  "unixtime" (.Date).Unix
+  "title" $smartTitle 
+  "content" ( .Plain | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` ` | htmlUnescape  ) 
   "tags" .Params.Tags 
   "wordcount" .FuzzyWordCount 
-  }}
-  {{ $articlelist = $articlelist | append $post }}
-{{ end }}
-{{ $articlelist| jsonify  }}
+  -}}
+  {{- $articlelist = $articlelist | append $post -}}
+{{- end -}}
+{{- $articlelist| jsonify  -}}

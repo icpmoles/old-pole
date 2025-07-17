@@ -467,10 +467,11 @@ header nav menu:first-child > li:first-child { display: none; }
 
 
 /*concrete.css */
-img {
+	  img {
 	/*	max-width: 100%;*/
-		max-height: 50vh; /* 1 */
-		height: auto; /* 2 */
+		/*max-height: min(70vh, calc(var(--width) * 1.77));  1 */
+		max-height: min(50vh, calc(var(--width) * 1.77));
+		height: auto;
 	  }
 	  
 	  /** 

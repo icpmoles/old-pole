@@ -117,7 +117,8 @@ time, relative-time{
 	font-style: italic;
 }
 
-hr { border: 0;
+hr { 
+	border: 0;
 	border-top: 0.1rem solid var(--cmed);
 }
 
@@ -694,7 +695,7 @@ p>select { padding: 0;      margin: 0 .5em; }
    * Set the border for the horizontal rule.
    */
   
-  hr {
+  .posts-article  hr {
 	margin: 2rem 8px;
     height: .15rem;
     border-width: 0;
@@ -937,9 +938,14 @@ footer{
 	justify-content: space-between
 } */
 
-#search-input:placeholder-shown{
+#searchbar{
+	width: 100%;
+	padding: 1em;
+}
+
+#searchbar::placeholder{
 	font-style: italic;
-	color: var(--clink);
+	color: var(--cemph);
 	font-weight: lighter;
 }
 
