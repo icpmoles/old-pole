@@ -11,10 +11,11 @@
   "time" (.Date | time.Format ":date_long")
   "unixtime" (.Date).Unix
   "title" $smartTitle 
-  "content" ( .Plain | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` ` | htmlUnescape  ) 
+  "raw" ( .Summary | safeHTML)
+  "content" ( .Plain | safeHTML | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` ` | htmlUnescape  ) 
   "tags" .Params.Tags 
   "wordcount" .FuzzyWordCount 
   -}}
   {{- $articlelist = $articlelist | append $post -}}
 {{- end -}}
-{{- $articlelist| jsonify  -}}
+{{- $articlelist | jsonify (dict  "noHTMLEscape" true )  -}}
