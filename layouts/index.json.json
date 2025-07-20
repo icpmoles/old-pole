@@ -11,11 +11,17 @@
   "time" (.Date | time.Format ":date_long")
   "unixtime" (.Date).Unix
   "title" $smartTitle 
-  "raw" ( .Summary | safeHTML)
   "content" ( .Plain | safeHTML | replaceRE `\\+\(\w+\\+\)` ` ` | replaceRE `\r` ` ` | replaceRE `\n` ` `  | replaceRE ` +` ` ` | htmlUnescape  ) 
   "tags" .Params.Tags 
   "wordcount" .FuzzyWordCount 
-  -}}
+  -}} 
+  {{- with .OutputFormats.Get "json" -}}
+    {{- $rawpost := dict 
+    "hasRaw" true
+    "raw" .RelPermalink 
+      -}} 
+    {{- $post =  collections.Merge $post $rawpost -}}
+  {{- end -}}
   {{- $articlelist = $articlelist | append $post -}}
 {{- end -}}
 {{- $articlelist | jsonify (dict  "noHTMLEscape" true )  -}}

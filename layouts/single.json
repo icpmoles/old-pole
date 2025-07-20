@@ -1,0 +1,16 @@
+{{- $smartTitle :=  "" -}}
+{{- if gt (len .Title) 2 -}}
+{{ $smartTitle =  .Title -}}
+{{- else  -}}
+{{ $smartTitle =  (printf "Bit: %s" .Slug) -}}
+{{- end  -}}
+{{- $post := dict 
+  "url" .RelPermalink 
+  "time" (.Date | time.Format ":date_long")
+  "unixtime" (.Date).Unix
+  "title" $smartTitle
+  "tags" .Params.Tags 
+  "raw" (.Summary | safeHTML)
+  "wordcount" .FuzzyWordCount 
+  -}}
+{{- $post | jsonify (dict  "noHTMLEscape" true )  -}}
