@@ -538,7 +538,8 @@ header nav menu:first-child > li:first-child { display: none; }
 	   * 1. Center the main element horizontally.
 	   * 2. Set the width of the element to 640px, with padding for mobile screens.
 	   */
-	   main {
+	main {
+		min-height: 55vh;
 		margin: 0 auto; /* 1 */
 		}
 	

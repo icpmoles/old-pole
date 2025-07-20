@@ -23,7 +23,6 @@
 /* 3. Base Style ––––––––––––––––––––––––––––––––––––––– */
 
 
-body > footer { margin-top: 10rem ; font-size: 90%;  }
 p { 
 	margin: .6em 0;
 	/* line-height: 1.2em; */
@@ -367,6 +366,13 @@ p>select { padding: 0;      margin: 0 .5em; }
   
   footer {
 	text-align: center;
+	font-size: 90%;  
+	max-width: var(--width);
+	width: 100%;
+    padding: 0 .5rem;
+	margin: auto;
+	
+	margin-top: 2em;
   }
   
   /**
@@ -854,6 +860,7 @@ dialog {
 	font-size: 1.5em;
 }
 
+
 footer nav ul{
 	padding: 0;
 	display: flex;
@@ -865,6 +872,13 @@ footer nav ul{
 	list-style-type: none;
 	
 }
+@media (max-width: 40rem) {
+	footer nav ul{
+    flex-direction: column;
+	}
+}
+
+
 
 footer nav li a {
     text-align: center;
@@ -877,12 +891,7 @@ footer nav li{
     flex: 1;
 }
 
-footer{
-	max-width: var(--width);
-	width: 100%;
-    padding: 0 .5rem;
-	margin: auto;
-}
+
 
 .archive,.yeargroup{
 	list-style-type: none;
