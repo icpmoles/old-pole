@@ -1029,7 +1029,7 @@ article h1 {
 	background: none;
 }
 
-.bits-list-element{
+.separated-element{
 	
 	background-color: var(--clight);
 	border: 2px dashed ;

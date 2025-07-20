@@ -49,11 +49,11 @@ fetch(url)
           let body = document.createElement("div"); 
           let h2 = document.createElement("h1");
           h2.append(jsEl.title)
+          h2.setAttribute("style","margin:0")
 
           let link = document.createElement("a");
           link.setAttribute("href",completeURL)
           link.append(h2);
-          var rawhtml
           if (jsEl.hasRaw == true){
             fetch(jsEl.raw)
             .then(res => res.json())
@@ -64,7 +64,9 @@ fetch(url)
 
           
           li.appendChild(link) 
-          li.appendChild(body) 
+          li.appendChild(body)
+          li.classList.add('separated-element');
+
           searchres.appendChild(li)
         });
     }
