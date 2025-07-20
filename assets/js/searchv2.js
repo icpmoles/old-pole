@@ -58,13 +58,8 @@ fetch(url)
             fetch(jsEl.raw)
             .then(res => res.json())
             .then(res => {
-                console.log(res)
-                rawhtml = res.raw;
-                debugsymbol = res.raw
-            } )
-            console.log(rawhtml)
-            body.innerHTML=rawhtml
-           
+                body.innerHTML=res.raw
+            } )           
           }
 
           
