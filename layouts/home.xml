@@ -1,6 +1,6 @@
 {{- printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML -}} 
 {{- printf "<?xml-stylesheet href=\"/atom.xsl?rss=true\" type=\"text/xsl\" media=\"screen\"?>" | safeHTML -}}
-<feed xmlns="http://www.w3.org/2005/Atom"{{- with site.LanguageCode -}} xml:lang="{{- . -}}"{{- end -}}>
+<feed xmlns="http://www.w3.org/2005/Atom" {{ with site.LanguageCode }} xml:lang="{{- . -}}"{{ end }}>
     <generator uri="https://gohugo.io/" version="{{- hugo.Version -}}">Hugo</generator>
     <icon>{{- absURL "/favicon.ico" -}}</icon>
     {{- $title := site.Title -}}
@@ -112,7 +112,7 @@
             <updated>{{- .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML -}}</updated>
             {{- $description1 := .Description | default "" -}}
             {{- $description := (cond (eq "" $description1) "" (printf "<blockquote>%s</blockquote>" ($description1 | markdownify))) -}}
-            {{- printf `<content type="html"><![CDATA[%s%s]]></content>` $description .Content | safeHTML -}}
+            {{- printf `<content type="html"><![CDATA[%s%s]]></content>` ($description) (.Content | safeHTML  ) -}}
             <preview>
             {{- .Summary | plainify | transform.XMLEscape | safeHTML -}}
             </preview>

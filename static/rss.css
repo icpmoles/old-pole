@@ -4,8 +4,10 @@ html { display:block; background-color:rgb(55, 69, 80); padding-bottom:50px; }
 body { font:80% Verdana, sans-serif; color:#000;
      background:#eee  top left no-repeat; 
      padding:25px 35px; }
+     
 article{
      display: block;
+     padding: 2rem 0;
      max-width: 100%;
      margin: 0 1em;
      border-bottom:1px solid rgb(55, 69, 80); 
