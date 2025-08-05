@@ -1,13 +1,14 @@
 var idx;
 var jslist;
-let url = '/index.json';
 var searchb = document.getElementById("searchbar");
 var searchres = document.getElementById("searchresults");
+var resfield = document.getElementById("resultfield");
+
 var lastRes;
 var debugsymbol;
 
 
-fetch(url)
+fetch(url, { cache: "force-cache" })
 .then(res => res.json())
 .then(js => jslist = js )
 .then(documents  =>  {
@@ -32,7 +33,7 @@ fetch(url)
 
   
   searchb.removeAttribute("disabled");
-  searchb.setAttribute("placeholder", "Insert words");
+  searchb.setAttribute("placeholder", "Insert term (3 letters or more)");
 
 
 
@@ -42,6 +43,11 @@ fetch(url)
     }
     if (event.target.value.length > 2) {
         lastRes = idx.search(event.target.value)
+        if (lastRes.length == 0) {
+            resfield.removeAttribute("hidden")
+        } else {
+          resfield.setAttribute("hidden","")
+        }
         lastRes.forEach(res =>{
           jsEl =  jslist.filter((el) => el.url == res.ref)[0]; 
           let completeURL = res.ref.concat("#:~:text=").concat(event.target.value)
@@ -55,7 +61,7 @@ fetch(url)
           link.setAttribute("href",completeURL)
           link.append(h2);
           if (jsEl.hasRaw == true){
-            fetch(jsEl.raw)
+            fetch(jsEl.raw, { cache: "force-cache" })
             .then(res => res.json())
             .then(res => {
                 body.innerHTML=res.raw
@@ -67,8 +73,12 @@ fetch(url)
           li.appendChild(body)
           li.classList.add('separated-element');
 
-          searchres.appendChild(li)
+          att = searchres.appendChild(li)
+          att.classList.add('animated-search-element');
+          
         });
+    } else {
+      resfield.setAttribute("hidden","")
     }
 
 

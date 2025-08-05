@@ -1,11 +1,22 @@
-<input id=searchbar onload="loadIndex()" disabled="true" class="searchbar" placeholder="Loading..."></input>
+<input 
+  type="search"
+  id=searchbar 
+  onload="loadIndex()" 
+  disabled="true" 
+  class="searchbar" 
+  placeholder="Loading..."
+  minlength="3"
+  incremental
+  aria-label="Search through site content"
+  ></input>
+<output id="resultfield" hidden>No matching content</output>  
 <ul id="searchresults" class="no-bullets">
-  
+
 </ul>
 {{/*  I dont know how to self host this damn library, pls help  */}}
 {{ $lunrlibrary := resources.GetRemote "https://unpkg.com/lunr/lunr.js" | minify | fingerprint }}
 <script src="{{ $lunrlibrary.RelPermalink }}" integrity="{{ $lunrlibrary.Data.Integrity }}"></script>
-
+<script>let url = '/index.json?bts={{ time.Now.Unix }}';</script>
 {{- with resources.Get "js/searchv2.js" }}
   {{- if eq hugo.Environment "development" }}
     {{- with . | js.Build }}

@@ -18,7 +18,7 @@
   {{- with .OutputFormats.Get "json" -}}
     {{- $rawpost := dict 
     "hasRaw" true
-    "raw" .RelPermalink 
+    "raw" ( printf "%s?bts=%d" .RelPermalink time.Now.Unix )
       -}} 
     {{- $post =  collections.Merge $post $rawpost -}}
   {{- end -}}

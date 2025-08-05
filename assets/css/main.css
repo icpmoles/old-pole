@@ -947,9 +947,25 @@ footer nav li{
 	justify-content: space-between
 } */
 
-#searchbar{
+/* #searchbar{
 	width: 100%;
 	padding: 1em;
+} */
+
+@keyframes append-animate {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
+}
+
+
+.animated-search-element{
+	animation: append-animate .3s ease-in-out;
 }
 
 #searchbar::placeholder{
