@@ -10,10 +10,6 @@
 {{- $webpsrc720 := "" -}}
 {{- $usedsrc:= $image -}}
 {{- $animated := false -}}
-
-
-
-
 {{- if ne $image.MediaType.SubType  "gif"  -}}
 {{- $jpgsrc = (($image.Resize "720x jpg" )).Permalink  -}}
 {{- $jpgsrc2 = (($image.Resize "1440x jpg" )).Permalink  -}}
@@ -22,40 +18,15 @@
 {{- $usedsrc = $image.Permalink   -}}
 {{- $animated = true  -}}
 {{- end -}}
-
-
 <figure>
-  
-{{- with .Title}}   <div class="title-img">{{- . -}}</div> {{- end -}}
-<picture>
-
-{{- with $jpgsrc -}}<source type="image/jpeg" srcset="{{- . -}} 720w, {{- $jpgsrc2 -}} 1440w" >{{- end -}}
-  
-    <img 
-    class="post-img" 
-    src="{{- $usedsrc -}}?rss=true" 
-    {{- with .Text}}  alt="{{-  plainify  . | safeHTML}}" {{- end -}} 
-    {{- with .Title}} title="{{-  plainify  . | safeHTML}}"{{- end -}} 
+{{- with .Title}}<div class="title-img">{{ . }}</div> {{ end -}}
+<img 
+    src="{{- $usedsrc -}}" 
+    {{- with .Text}}  alt="{{-  plainify  . | safeHTML}}" {{- end -}}   
     loading="lazy"
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
+    />
+    {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
 
-    onclick="openLightbox(this, {{- .Ordinal  -}} )"
-    >
-  </picture>
-    <!--<a href="{{- .Destination | safeURL -}}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
-
-    {{- with .Text}}<figcaption class="small" > {{- . | safeHTML}}</figcaption> {{- end -}}
 </figure>
-<dialog id="lb-{{- .Ordinal  -}}">
-    
-    <img
-        class="dialogimg"
-        src="{{- if $animated -}}{{- $usedsrc -}}{{- else -}}{{- $webpsrc -}}{{- end -}}   "
-        loading="lazy"
-        
-        width="{{- $image.Width}}"
-        height="{{- $image.Height}}"
-        >
-</dialog>
-

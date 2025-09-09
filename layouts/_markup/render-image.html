@@ -29,10 +29,7 @@
 {{ $animated = true  }}
 {{ end }}
 
-
-
 <figure>
-  
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
@@ -54,7 +51,7 @@
     background-image:
     linear-gradient(to bottom right, {{- delimit $colors ", "   }} );
     "
-    >
+    />
   </picture>
     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
 
@@ -69,6 +66,6 @@
         
         width="{{ $image.Width}}"
         height="{{ $image.Height}}"
-        >
+        />
 </dialog>
 
