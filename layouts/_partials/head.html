@@ -34,6 +34,8 @@
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/schema.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
+{{  partialCached "head/webmention.html" . }}
+
 {{ if eq .Params.toc false }}
 <style>#TableOfContents{display: none}</style>
 {{ end }}
