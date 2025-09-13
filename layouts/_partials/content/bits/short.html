@@ -1,10 +1,8 @@
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $dateHuman := .Date | time.Format ":date_long" }}
-<article class="separated-element">
-<div class="bitsInfo"><a href={{ .RelPermalink }}><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></a></div>
-
-    {{ .Content }}
-
+<article class="separated-element h-entry">
+<div class="bitsInfo"><a class="u-url" href={{ .RelPermalink }}><time class="dt-published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></a></div>
+<div class="e-content">{{ .Content }}</div>
 {{ partial "terms_bits.html" (dict "taxonomy" "tags" "page" .) }}
 </article>
 {{/*  <hr class="bits-hr">  */}}
