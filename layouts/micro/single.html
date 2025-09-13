@@ -1,12 +1,17 @@
 {{ define "main" }}
-  <article>
-  {{ with .Date }}
-  {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := . | time.Format ":date_long" }}
-  <div class="bitsInfo"><a href={{ $.RelPermalink }}><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></a></div>
-  {{ end }}
-  {{ .TableOfContents }}
+  <article class="h-entry">
+  <div class="bitsInfo ">
+    {{ with .Date }}
+      {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman := . | time.Format ":date_long" }}
+        <a class="u-url" href={{ $.RelPermalink }}><time class="dt-published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></a>
+    {{ end }}
+  </div>
+  <div class="e-content">
   {{ .Content }}
+  </div>
   {{ partial "terms_bits.html" (dict "taxonomy" "tags" "page" .) }}
+  {{  with $.Site.Params.Bits_author }}<p class="p-author h-card">Author: {{ . }}</p>{{ end }}
+
   </article>
 {{ end }}
