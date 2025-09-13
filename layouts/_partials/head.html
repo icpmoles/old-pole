@@ -20,6 +20,7 @@
         <link rel="me" href="{{ . }}" /> 
     {{end}}
 {{end}}
+{{with .Params.headHook }}{{. | safeHTML}}{{end}}
 
 {{- if eq hugo.Environment "development" }}
     {{- partial "head/css.html" . -}}
