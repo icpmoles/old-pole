@@ -1,5 +1,5 @@
-<li class="archive-post">
-<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
+<li class="archive-post h-entry">
+<time content="{{ .Date.Format "2006-01-02"}}" class="dt-published" >[{{ .Date.Format "2006/01/02" }}]</time>
 <b class="archive-type">{{- if isset site.Params.archive "bitssymbol" }}{{- site.Params.archive.bitsSymbol }}{{- else }}μ{{- end }}</b>
-<a href="{{ .RelPermalink }}" class="permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
+<a href="{{ .RelPermalink }}" class="u-url  p-summary permalink">{{ .Plain  | htmlUnescape  | truncate 80  }}</a>
 </li>

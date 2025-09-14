@@ -1,7 +1,7 @@
 {{ define "main" }}
   <h1 id="List">{{ .Title }}</h1>
   {{ .Content }}
-  <ul>
+  <ul class="h-feed hfeed">
   {{ range .Pages }}
     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
     {{ .Summary }}
