@@ -1,3 +1,16 @@
 
-<link rel="me" href="{{ .Site.Params.github_profile }}" /> 
-<link rel="webmention" href="{{ .Site.Params.webmention }}" />
+<link rel="authorization_endpoint" href="https://indieauth.com/auth">
+<link rel="token_endpoint" href="https://tokens.indieauth.com/token"> 
+
+{{- with .Site.Params.github_profile }}
+<link rel="webmention" href="{{ . }}" />
+{{- end }} 
+
+{{- with .Site.Params.webmentionUrl }}
+<link rel="webmention" href="{{ . }}" />
+<link rel="micropub" href="{{ . }}">
+{{- end }} 
+
+{{- with .Site.Params.pingbackUrl }}
+<link rel="pingback" href="{{ . }}" />
+{{- end }}
