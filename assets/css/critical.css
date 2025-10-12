@@ -248,9 +248,10 @@ m|*.calligraphic {
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
 	--h-font-family: 'Space Mono';
-	--font-p: 1rem  "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: 1.5rem var(--h-font-family),'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: 1rem monospace ,'DejaVu Sans Mono', monospace;
+	--font-main-size: 1rem;
+	--font-p: var(--font-main-size) "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: calc(var(--font-main-size) * 1.5) var(--h-font-family),'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-c: var(--font-main-size)  monospace ,'DejaVu Sans Mono';
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
 	

@@ -1,10 +1,11 @@
 {{ define "main" }}
   {{ .Content }}
   <ul class="no-bullets">
-  {{ range where site.RegularPages "Section" (.Site.Params.mainSection) }}
+  {{ range (.Paginate (where site.RegularPages "Section" (.Site.Params.mainSection) )).Pages }}
     <li>
     {{ partial "content/posts/short.html" . }}
     </li>
   {{ end }}
   </ul>
+  {{ partial "pagination.html"  (dict "page" . "format" site.Params.paagination.style ) }}
 {{ end }}

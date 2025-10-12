@@ -1,13 +1,14 @@
 <ul class="no-bullets h-feed hfeed">
-    {{ range .Pages }}
+    {{- range (.Paginate .Pages).Pages }}
         <li>
-        {{ $partialPath :=  printf "_partials/content/%s/short.html" .Section }}
-        {{ if templates.Exists ( $partialPath ) }}
-            {{ $partialPathClean :=  printf "content/%s/short.html" .Section }}
-            {{ partial $partialPathClean . }}
-        {{ else }}
-            {{ partial "content/short.html" . }}
-        {{ end }}
+        {{- $partialPath :=  printf "_partials/content/%s/short.html" .Section }}
+        {{- if templates.Exists ( $partialPath ) }}
+            {{- $partialPathClean :=  printf "content/%s/short.html" .Section }}
+            {{- partial $partialPathClean . }}
+        {{- else }}
+            {{- partial "content/short.html" . }}
+        {{- end }}
         </li>
-    {{ end }}
+    {{- end }}
 </ul>
+{{ partial "pagination.html"  (dict "page" . "format" site.Params.paagination.style ) }}

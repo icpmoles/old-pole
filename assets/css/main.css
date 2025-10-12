@@ -42,7 +42,7 @@ a:hover, button:not([disabled]):hover, summary:hover {
 }
 
 /* lists */
-ul, ol, dl { margin: 1rem 0; padding: 0 0 0 2em; }
+ul, ol, dl { margin: 1rem 0; padding: 0 2em 0 2em; }
 li:not(:last-child), dd:not(:last-child) { margin-bottom: 0.5rem; }
 dt { font-weight: bold; }
 
@@ -1074,4 +1074,20 @@ article h1 {
 
 .highlight .line:hover {
 	  background-color: var(--hoverbg);
+}
+
+.pagination{
+	display: flex;
+	list-style-type: none;
+	justify-content: space-evenly;
+	font: var(--font-h);
+	font-size: var(--font-main-size);
+}
+
+.pagination-default .disabled a{
+	color: var(--cmed)
+}
+
+.pagination-default .active a{
+	font-weight: bolder;
 }
