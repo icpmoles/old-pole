@@ -10,25 +10,9 @@
   <div class="e-content">
   {{ .Content }}
   </div>
-  {{ partial "terms_bits.html" (dict "taxonomy" "tags" "page" .) }}
-  {{  with $.Site.Params.Bits_author }}<p class="p-author h-card">Author: {{ . }}</p>{{ end }}
+  {{- partial "terms_bits.html" (dict "taxonomy" "tags" "page" .) }}
+  {{-  with $.Site.Params.Bits_author }}
+  <p class="p-author h-card">Author: <a href={{ $.Site.Params.author.url }} rel=author>{{ . }}</a>
+  </p>{{ end }}
   </article>
-
-  {{ $headers := dict 
-      "Authorization" "Bearer ts5b-6kj6-fczf-dbxe"
-  }}
-  {{ $bridgyyReq := dict 
-      "header" $headers
-      "method" "POST"
-  }}
-  {{/*  {{ with try (resources.GetRemote  "https://brid.gy/micropub" $bridgyyReq) }}
-  {{ with .Err }}
-    {{ errorf "%s" . }}
-  {{ else with .Value }}
-    <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-  {{ else }}
-    {{ errorf "Unable to get remote resource %q" $bridgyyReq }}
-  {{ end }}  
-{{ end }}*/}}
-
 {{ end }}
