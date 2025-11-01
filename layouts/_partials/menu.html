@@ -54,7 +54,7 @@ Renders a menu for the given menu ID.
       {{- end }}
       >{{ $name }}</a>
       {{- if $isauthor }}
-        <a class="u-url" href={{ (printf "acct:%s@%s" .Params.fediverse_username (urls.Parse $.absURL).Hostname ) | safeURL }}></a>
+        <a class="u-url" href={{ (printf "acct:%s" .Params.fediverse_username  ) | safeURL }}></a>
       {{- end }}
       {{- with .Children }}
         <ul>
