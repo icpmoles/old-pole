@@ -6,9 +6,7 @@
   {{ $dateHuman := .Date | time.Format ":date_long" }}
   <div class="post-info-container">
     <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-    <span class="h-card">
-      <a href="{{ $.Site.Params.author.url }}" rel="me" class="u-url u-uid">{{ $.Site.Params.author.name }}</a>
-    </span>
+    <a href="{{ $.Site.Params.author.url }}" rel="author">{{ $.Site.Params.author.name }}</a>
   </div>
   {{ end }}
   {{ .TableOfContents }}
