@@ -12,8 +12,6 @@ Renders a menu for the given menu ID.
 {{- $firstLine := .firstLine }}
 {{- $typeOfParent_ph := .typeOfParent }}
 
-
-
 {{- with index site.Menus $menuID }}
   <nav>
     {{ (printf "<%s>" (default "ul" $typeOfParent_ph )) | safeHTML }}
@@ -50,12 +48,9 @@ Renders a menu for the given menu ID.
           {{- end }}
         {{- end -}}
       {{- if $isauthor }}
-        rel="author"  class="h-card u-url u-uid"
+        rel="author" rel="me" class="h-card u-url u-uid"
       {{- end }}
       >{{ $name }}</a>
-      {{- if $isauthor }}
-        <a class="u-url" href={{ (printf "acct:%s" .Params.fediverse_username  ) | safeURL }}></a>
-      {{- end }}
       {{- with .Children }}
         <ul>
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
