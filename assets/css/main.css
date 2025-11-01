@@ -929,15 +929,21 @@ footer nav li{
 	padding-right: clamp(0.1rem, 1vw, 2rem); 
 }
 
+/*
 .yeargroup:not(:last-child){
-	border-bottom: .2rem solid var(--cfg);
+	
 
-}
+}*/
 
 .yeargroup{
-	padding: 2rem 0;
+	border: .2rem solid var(--cfg);
 
 }
+
+.yeargroup summary{
+	padding: 1rem 0;
+}
+
 .yeargroup time{
 	font-style: normal;
 }

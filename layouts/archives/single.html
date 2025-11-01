@@ -1,11 +1,14 @@
 {{ define "main" }}
-  <article>
+  <article class="h-feed">
     {{ .Content }}
     <ul class="archive">
     {{ $pages := ( where .Site.RegularPages "Section" "posts")  }}
     {{ $bits := ( where .Site.RegularPages "Section" "bits")  }}
+    {{ $isFirst := true }}
     {{ range ( append $bits $pages  ).GroupByDate "2006" }}
-      <ul class="yeargroup"> 
+      <details class="yeargroup" {{if $isFirst }}open{{ end }} name="archive-feed"> 
+        {{- $isFirst = false }}
+        <summary>{{ .Key }}</summary>
           {{/*  {{ range .Pages }}
             <li ><time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
             <a href="{{ .RelPermalink }}" class="permalink">{{ .Title }}</a>
@@ -21,7 +24,7 @@
               {{ partial "_partials/content/archive.html" . }}
           {{ end }}
           {{ end }}
-    </ul>
+        </details>
     {{ end }}
     </ul>
   </article>
