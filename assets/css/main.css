@@ -719,7 +719,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 	padding: .5rem;
   }
 
-  .time-container{
+  .post-info-container{
 	font-style:italic;
     display: flex;
     justify-content: space-between;

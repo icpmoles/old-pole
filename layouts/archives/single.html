@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article>
     {{ .Content }}
-    <ul class="archive h-feed hfeed">
+    <ul class="archive">
     {{ $pages := ( where .Site.RegularPages "Section" "posts")  }}
     {{ $bits := ( where .Site.RegularPages "Section" "bits")  }}
     {{ range ( append $bits $pages  ).GroupByDate "2006" }}

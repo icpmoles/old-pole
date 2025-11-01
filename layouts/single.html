@@ -1,10 +1,15 @@
 {{ define "main" }}
-  <article class="posts-article">
+  <article class="posts-article h-entry">
   <h1 id="Single">{{ .Title }}</h1>
   {{ if (gt  .Date.Year 2010) }}
   {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
   {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  <div class="post-info-container">
+    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+    <span class="h-card">
+      <a href="{{ $.Site.Params.author.url }}" rel="me" class="u-url u-uid">{{ $.Site.Params.author.name }}</a>
+    </span>
+  </div>
   {{ end }}
   {{ .TableOfContents }}
   {{ .Content }}

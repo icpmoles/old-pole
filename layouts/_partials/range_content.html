@@ -1,4 +1,4 @@
-<ul class="no-bullets h-feed hfeed">
+<ul class="no-bullets">
     {{- range (.Paginate .Pages).Pages }}
         <li>
         {{- $partialPath :=  printf "_partials/content/%s/short.html" .Section }}
