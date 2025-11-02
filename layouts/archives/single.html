@@ -6,7 +6,7 @@
     {{ $bits := ( where .Site.RegularPages "Section" "bits")  }}
     {{ $isFirst := true }}
     {{ range ( append $bits $pages  ).GroupByDate "2006" }}
-      <details class="yeargroup" {{if $isFirst }}open{{ end }} name="archive-feed"> 
+      <details class="yeargroup" {{if $isFirst }}open{{ end }}> 
         {{- $isFirst = false }}
         <summary>{{ .Key }}</summary>
           {{/*  {{ range .Pages }}
