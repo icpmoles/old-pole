@@ -1,4 +1,4 @@
-{{ if (.HasShortcode "youtube") }}
+{{ if or (.HasShortcode "youtube")  (eq .Section "bits") }}
 <link  rel="preconnect" href="https://www.youtube-nocookie.com" />
 <link  rel="preconnect" href="https://www.google.com" />
 <link  rel="preconnect" href="https://fonts.gstatic.com/" />
