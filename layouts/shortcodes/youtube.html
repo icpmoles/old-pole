@@ -1,11 +1,11 @@
 {{- $ytid := (index .Params 0) }}
-{{ $opts := dict
+{{- $opts := dict
   "colors" (slice "222222" "808080" "dddddd")
   "method" "ClusteredDot4x4"
   "strength" 0.85
 }}
 
-{{ $filter := images.Dither $opts }}
+{{- $filter := images.Dither $opts }}
 <figure class="lite-youtube-container">
 {{- $thumbnailUrl := printf "https://i.ytimg.com/vi_webp/%s/hqdefault.webp" $ytid }}
 {{- with try ($thumbnail := resources.GetRemote $thumbnailUrl ) }}
@@ -19,7 +19,7 @@
   {{- else with .Value  }}
   {{- with . | images.Filter $filter  }}
     <lite-youtube videoid="{{ $ytid}}" style="background-image: url('{{ .RelPermalink }}');">
-    <a href="https://youtube-nocookie.com/watch?v={{ $ytid }}" class="lty-playbtn" title="Play Video">
+    <a href="https://youtube-nocookie.com/watch?v={{ $ytid }}" class="lty-playbtn u-repost-of" title="Play Video">
       <span class="lyt-visually-hidden">Youtube video</span>
     </a>
     </lite-youtube>

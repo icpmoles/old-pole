@@ -37,7 +37,7 @@
 {{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
     
     <img 
-    class="post-img" 
+    class="post-img u-photo" 
     src="{{ $usedsrc }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
