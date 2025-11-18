@@ -19,12 +19,12 @@
   {{- else with .Value  }}
   {{- with . | images.Filter $filter  }}
     <lite-youtube videoid="{{ $ytid}}" style="background-image: url('{{ .RelPermalink }}');">
-    <a href="https://youtube-nocookie.com/watch?v={{ $ytid }}" class="lty-playbtn u-repost-of" title="Play Video">
+    <a href="https://youtube.com/watch?v={{ $ytid }}" class="lty-playbtn u-repost-of" title="Play Video">
       <span class="lyt-visually-hidden">Youtube video</span>
     </a>
     </lite-youtube>
 {{- end }}
 {{- end }}
 {{- end }}
-<figcaption class="small" > <a href="https://youtube.com/watch?v={{ $ytid }}" >Youtube Video</a></figcaption>
+<figcaption class="small u-repost-of" > <a href="https://youtube.com/watch?v={{ $ytid }}" >Youtube Video</a></figcaption>
 </figure>
