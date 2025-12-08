@@ -813,10 +813,14 @@ code:not(.codeblock code){
 dialog {
 	width: 80%;
 	margin: auto;
+	overscroll-behavior: contain;
 }
- ::backdrop {
+
+ dialog::backdrop {
 	background-color: #aaaaaa;
 	opacity: 0.75;
+	overflow: hidden;
+	overscroll-behavior: contain;
 } 
 
 .dialogimg{
@@ -1097,3 +1101,4 @@ article h1 {
 .pagination-default .active a{
 	font-weight: bolder;
 }
+
