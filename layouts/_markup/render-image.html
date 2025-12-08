@@ -1,5 +1,5 @@
 {{ $image := .Page.Resources.GetMatch .Destination }}
-
+{{ $uniqueId := $image.Content | hash.XxHash }}
 {{ $used:= $image}}
 
 {{ $webpsrc := "" }}
@@ -7,45 +7,75 @@
 {{ $jpgsrc := "" }}
 {{ $webpsrc2 := "" }}
 {{ $jpgsrc2 := "" }}
-{{ $webp720  := ""  }}
+{{ $jpg720  := ""  }}
 {{ $webpsrc720 := "" }}
 {{ $usedsrc:= $image }}
 {{ $animated := false }}
 {{ $colors := "" }}
 
 
+{{ $sizesInt := slice "720" "1440" "1920"}}
+
+{{ $SmartSizes := slice }}
+{{ range $sizesInt }}
+  {{ if lt . $image.Width }}
+   {{  $SmartSizes = $SmartSizes | append .  }}
+  {{ else }}
+    {{ if not ( in $SmartSizes $image.Width )}}
+     {{  $SmartSizes = $SmartSizes | append ( string $image.Width) }}
+    {{ end}}
+  {{ end }}
+{{ end }}
+
+{{ $webp_opt := dict 
+  "format" "webp"
+  "resize_opt" "q70 webp"
+}}
+{{ $jpeg_opt := dict 
+  "format" "jpeg"
+  "resize_opt" "q65 jpeg"
+}}
+{{ $codec := slice $webp_opt $jpeg_opt }}
 
 {{ if ne $image.MediaType.SubType  "gif"  }}
-{{ $jpgsrc = ($image.Resize "720x jpg" ).RelPermalink }}
-{{ $jpgsrc2 = ($image.Resize "1440x jpg" ).RelPermalink }}
-{{ $webpsrcfit = ($image.Resize "1440x q95 webp" ).RelPermalink }}
-{{ $webpsrc = ($image.Process "webp q95" ).RelPermalink }}
-{{ $webp720 = $image.Resize "720x q95 webp"  }}
-{{ $webpsrc720 = $webp720.RelPermalink }}
-{{ $usedsrc = $jpgsrc}}
-{{ $colors = $webp720.Colors }}
+  {{ $jpg720 = ($image.Resize "720x jpg" ) }}
+  {{ $jpgsrc = $jpg720.RelPermalink }}
+  {{ $usedsrc = $jpgsrc}}
+  {{ $colors = $jpg720.Colors }}
+  {{ $webpsrc = ($image.Process "webp q95" ).RelPermalink }}
 {{ else }}
-{{ $usedsrc = $image.RelPermalink  }}
-{{ $animated = true  }}
+  {{ $usedsrc = $image.RelPermalink  }}
+  {{ $animated = true  }}
 {{ end }}
 
 <figure>
 {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
 <picture>
 
-{{ with $webpsrc720 }}<source type="image/webp" srcset="{{ . }} 720w, {{ $webpsrcfit }} 1440w" > {{ end }}
-{{ with $jpgsrc }}<source type="image/jpeg" srcset="{{ . }} 720w, {{ $jpgsrc2 }} 1440w" >{{ end }}
-    
+  {{ if ne $image.MediaType.SubType  "gif"  }}
+    {{ range $codec}}
+     {{ $codecOpt := (index .  "resize_opt" )  }}
+      <source 
+      type={{- printf "image/%s" (index . "format") }}
+      srcset = "{{- range $SmartSizes }}
+        {{- ($image.Resize (printf "%sx %s" . $codecOpt )).RelPermalink }} {{ (printf "%sw," .)}}
+      {{- end }}"
+      > 
+    {{ end}}
+  {{ else }}
+    {{ $usedsrc = $image.RelPermalink  }}
+    {{ $animated = true  }}
+  {{ end }}
+     
     <img 
     class="post-img u-photo" 
     src="{{ $usedsrc }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
     loading="lazy"
-    width="{{$used.Width}}" 
-    height="{{$used.Height}}"
+    aspect-ratio = "{{$used.Width}} / {{$used.Height}}"
 
-    onclick="openLightbox(this, {{ .Ordinal  }} )"
+    onclick="openLightbox(this, {{ $uniqueId  }} )"
 
     style="
     background-image:
@@ -57,7 +87,7 @@
 
     {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
 </figure>
-<dialog id="lb-{{ .Ordinal  }}">
+<dialog id="lb-{{ $uniqueId  }}">
     
     <img
         class="dialogimg"
