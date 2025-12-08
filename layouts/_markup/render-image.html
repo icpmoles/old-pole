@@ -73,8 +73,8 @@
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
     loading="lazy"
-    aspect-ratio = "{{$used.Width}} / {{$used.Height}}"
-
+    width="{{$used.Width}}" 
+    height="{{$used.Height}}"
     onclick="openLightbox(this, {{ $uniqueId  }} )"
 
     style="
