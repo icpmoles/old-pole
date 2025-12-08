@@ -49,7 +49,7 @@
 {{ end }}
 
 <figure>
-{{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}
+{{/*  {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}  */}}
 <picture>
 
   {{ if ne $image.MediaType.SubType  "gif"  }}
@@ -71,7 +71,7 @@
     class="post-img u-photo" 
     src="{{ $usedsrc }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
-    {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }} 
+    {{/*  {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }}   */}}
     loading="lazy"
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
@@ -85,7 +85,7 @@
   </picture>
     <!--<a href="{{ .Destination | safeURL }}" target="_blank"  class="fullscreen-container" aria-label="Fullscreen image"> </a>-->
 
-    {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
+    {{- with .Title}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
 </figure>
 <dialog id="lb-{{ $uniqueId  }}">
     
