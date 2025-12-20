@@ -2,13 +2,13 @@
 {{ $uniqueId := $image.Content | hash.XxHash }}
 {{ $used:= $image}}
 
-{{ $webpsrc := "" }}
-{{ $webpsrcfit := "" }}
-{{ $jpgsrc := "" }}
-{{ $webpsrc2 := "" }}
-{{ $jpgsrc2 := "" }}
-{{ $jpg720  := ""  }}
-{{ $webpsrc720 := "" }}
+{{ $modern_src := "" }}
+{{ $modern_srcfit := "" }}
+{{ $universal_src := "" }}
+{{ $modern_src2 := "" }}
+{{ $universal_src2 := "" }}
+{{ $universal_720  := ""  }}
+{{ $modern_src720 := "" }}
 {{ $usedsrc:= $image }}
 {{ $animated := false }}
 {{ $colors := "" }}
@@ -27,24 +27,43 @@
   {{ end }}
 {{ end }}
 
-{{ $webp_opt := dict 
+{{ $modern_opt := dict 
   "format" "webp"
   "resize_opt" "q70 webp"
 }}
-{{ $jpeg_opt := dict 
+{{ $universal_opt := dict 
   "format" "jpeg"
   "resize_opt" "q65 jpeg"
 }}
-{{ $codec := slice $webp_opt $jpeg_opt }}
+
+{{ $modern_animated_opt := dict 
+  "format" "webp"
+  "resize_opt" "q70 webp"
+}}
+{{ $universal_animated_opt := dict 
+  "format" "gif"
+  "resize_opt" "q65 gif"
+}}
+
+ {{ $codec := slice  }}
 
 {{ if ne $image.MediaType.SubType  "gif"  }}
-  {{ $jpg720 = ($image.Resize "720x jpg" ) }}
-  {{ $jpgsrc = $jpg720.RelPermalink }}
-  {{ $usedsrc = $jpgsrc}}
-  {{ $colors = $jpg720.Colors }}
-  {{ $webpsrc = ($image.Process "webp q95" ).RelPermalink }}
+ {{ $codec = slice $modern_opt $universal_opt }}
+  {{ $universal_720 = ($image.Resize "720x jpg" ) }}
+  {{ $universal_src = $universal_720.RelPermalink }}
+  {{ $colors = $universal_720.Colors }}
+  {{/*  {{ $usedsrc = $universal_src}}
+  
+  {{ $modern_src = ($image.Process "modern_src q95" ).RelPermalink }}  */}}
 {{ else }}
-  {{ $usedsrc = $image.RelPermalink  }}
+ {{ $codec = slice $modern_animated_opt $universal_animated_opt }}
+  {{ $universal_720 = ($image.Resize "720x gif" ) }}
+  {{ $universal_src = $universal_720.RelPermalink }}
+  {{ $colors = $universal_720.Colors }}
+  {{/*  {{ $usedsrc = $universal_src}}
+  {{ $colors = $universal_720.Colors }}
+  {{ $modern_src = ($image.Process "modern_src q95" ).RelPermalink }}  */}}
+  {{/*  {{ $usedsrc = $image.RelPermalink  }}  */}}
   {{ $animated = true  }}
 {{ end }}
 
@@ -52,8 +71,9 @@
 {{/*  {{- with .Title}}   <div class="title-img">{{ . }}</div> {{ end -}}  */}}
 <picture>
 
-  {{ if ne $image.MediaType.SubType  "gif"  }}
-    {{ range $codec}}
+  {{/*  {{ if ne $image.MediaType.SubType  "gif"  }}  */}}
+  {{/*  <p>{{ printf "%s" $SmartSizes }}</p>  */}}
+    {{ range $codec }}
      {{ $codecOpt := (index .  "resize_opt" )  }}
       <source 
       type={{- printf "image/%s" (index . "format") }}
@@ -62,10 +82,10 @@
       {{- end }}"
       > 
     {{ end}}
-  {{ else }}
+  {{/*  {{ else }}
     {{ $usedsrc = $image.RelPermalink  }}
     {{ $animated = true  }}
-  {{ end }}
+  {{ end }}  */}}
      
     <img 
     class="post-img u-photo" 
@@ -91,7 +111,7 @@
     
     <img
         class="dialogimg"
-        src="{{ if $animated }}{{ $usedsrc  }}{{ else }}{{ $webpsrc  }}{{ end }}   "
+        src="{{ $universal_src }}"
         loading="lazy"
         
         width="{{ $image.Width}}"
