@@ -72,7 +72,7 @@
 <picture>
 
   {{/*  {{ if ne $image.MediaType.SubType  "gif"  }}  */}}
-  {{/*  <p>{{ printf "%s" $SmartSizes }}</p>  */}}
+   <p>{{ printf "%s" $SmartSizes }}</p>  
     {{ range $codec }}
      {{ $codecOpt := (index .  "resize_opt" )  }}
       <source 
@@ -89,7 +89,7 @@
      
     <img 
     class="post-img u-photo" 
-    src="{{ $usedsrc }}"   
+    src="{{ $universal_src }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{/*  {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }}   */}}
     loading="lazy"
@@ -111,7 +111,7 @@
     
     <img
         class="dialogimg"
-        src="{{ $universal_src }}"
+        src="{{ $image.RelPermalink }}"
         loading="lazy"
         
         width="{{ $image.Width}}"
