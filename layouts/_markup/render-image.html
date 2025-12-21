@@ -72,7 +72,7 @@
 <picture>
 
   {{/*  {{ if ne $image.MediaType.SubType  "gif"  }}  */}}
-   <p>{{ printf "%s" $SmartSizes }}</p>  
+   {{/*  <p>{{ printf "%s" $SmartSizes }}</p>    */}}
     {{ range $codec }}
      {{ $codecOpt := (index .  "resize_opt" )  }}
       <source 
