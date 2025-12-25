@@ -1,2 +1,2 @@
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
 {{ partial "menu.html" (dict "menuID" "footer" "page" . ) }}
+{{ with site.Params.copyright }}<small>{{. | markdownify }}</small>{{end}}
