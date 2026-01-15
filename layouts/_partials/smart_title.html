@@ -1,0 +1,9 @@
+{{- $smartTitle :=  "" -}}
+{{ if .IsSection }}
+    {{- $smartTitle =  (printf "%s"  (.Section | pluralize | humanize) ) -}}
+{{- else  if ne .Section "bits" -}}
+    {{- $smartTitle =  .Title -}}
+{{- else  -}}
+    {{- $smartTitle =  (printf "Bit: %s" .Slug) -}}
+{{- end  -}}
+{{ return $smartTitle }}

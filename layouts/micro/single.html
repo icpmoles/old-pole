@@ -1,5 +1,6 @@
 {{ define "main" }}
   <article class="h-entry">
+  <h1>{{ partial "smart_title.html" . }}</h1>
   <div class="bitsInfo ">
     {{ with .Date }}
       {{ $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" }}

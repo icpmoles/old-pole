@@ -1,4 +1,4 @@
-<article class="posts-list-element h-entry">
+<article class="posts-list-element h-entry separated-element">
     {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
     {{ $dateHuman := .Date | time.Format ":date_long" }}
     <h2><a class="u-url" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>

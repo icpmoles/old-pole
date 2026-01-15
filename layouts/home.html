@@ -1,4 +1,13 @@
 {{ define "main" }}
+  {{ if .IsHome }}
+    {{- if .Site.Param "htmltitle" }}
+        <h1>{{ $.Site.Params.htmltitle   | safeHTML }}</h1>
+    {{- else}}
+        <h1>{{ .site.Title | safeHTML }}</h1>
+    {{- end }}
+  {{ else }}
+      <h1>{{ partial "smart_title.html" . }}</h1>
+  {{ end }}
   {{ .Content }}
   <ul class="no-bullets">
   {{ range (.Paginate (where site.RegularPages "Section" (.Site.Params.mainSection) )).Pages }}

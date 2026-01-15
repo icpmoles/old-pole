@@ -1072,6 +1072,10 @@ article h1 {
 	margin-bottom: 1rem;
 	padding: 2rem 1rem;
 }
+
+.separated-element h2{
+	margin-top: 0;
+}
 /* h2, h3, h4, h5 {
 	display: inline;
 } */

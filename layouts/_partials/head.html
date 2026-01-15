@@ -1,18 +1,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{{- $smartTitle :=  "" -}}
-{{ if .IsSection }}
-    {{- $smartTitle =  (printf "%s"  (.Section | pluralize | humanize) ) -}}
-{{- else  if ne .Section "bits" -}}
-    {{- $smartTitle =  .Title -}}
-{{- else  -}}
-    {{- $smartTitle =  (printf "Bit: %s" .Slug) -}}
-{{- end  -}}
 <title class="p-name">
     {{- if .IsHome }}
        {{- site.Title }}
     {{- else }}
-       {{- printf "%s | %s" $smartTitle site.Title }}
+       {{- printf "%s | %s" (partial "smart_title.html" .) site.Title }}
     {{- end }}
 </title>
 <link rel="canonical" href="{{ .Permalink }}" />
