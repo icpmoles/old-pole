@@ -1,9 +1,27 @@
 {{- $smartTitle :=  "" -}}
-{{ if .IsSection }}
+
+{{ if .IsHome }}
+    {{- if .Site.Param "htmltitle" }}
+        {{ $smartTitle =  (printf "%s" ($.Site.Params.htmltitle   | safeHTML) ) }}
+    {{- else}}
+        {{ $smartTitle =  (printf "%s" (.site.Title | safeHTML ) ) }}
+    {{- end }}
+{{  else if .IsSection }}
     {{- $smartTitle =  (printf "%s"  (.Section | pluralize | humanize) ) -}}
 {{- else  if ne .Section "bits" -}}
     {{- $smartTitle =  .Title -}}
-{{- else  -}}
+{{- else if and (eq .Section "bits") (eq .Kind "page")  -}}
     {{- $smartTitle =  (printf "Bit: %s" .Slug) -}}
+{{ else if eq .Kind "term" }}
+    {{ if eq  .Data.Singular "tag" }}
+        {{- $smartTitle =  (printf "#%s"  (.Title) ) -}}
+    {{ else }}
+        {{- $smartTitle =  (printf "#s: %s"  (.Data.Singular | humanize) (.Title) ) -}}
+    {{ end }}
+{{ else if eq .Kind "taxonomy" }}
+    {{- $smartTitle =  (printf "%s"  (.Title) ) -}}
 {{- end  -}}
+
+
+
 {{ return $smartTitle }}

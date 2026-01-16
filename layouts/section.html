@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ with .Title }}<h1 id="Section">{{ . }}</h1>{{ end }}
+  {{/*  {{ with .Title }}<h1 id="Section">{{ . }}</h1>{{ end }}  */}}
   {{ .Content }}
   {{ partial "range_content.html" . }}
 {{ end }}

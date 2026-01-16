@@ -9,6 +9,7 @@
     {{ partial "header.html" . }}
   </header>
   <main>
+    <h1>{{- printf "%s" (partial "smart_title.html" .) | safeHTML }}</h1>
     {{ block "main" . }}{{ end }}
   </main>
   <footer>
