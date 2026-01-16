@@ -400,7 +400,7 @@ a, button, select, summary {
 
 
 h1, h2, h3, h4, h5 { 
-	margin: 1.5em 0 .5rem; 
+	/* margin: 1.5em 0 .5rem;  */
 	font: var(--font-h); 
 	line-height: 1.2em; 
 	clear: both;
@@ -542,16 +542,13 @@ header nav menu:first-child > li:first-child { display: none; }
 	main {
 		min-height: 55vh;
 		margin: 0 auto; /* 1 */
+		padding: 5rem .5rem;
 		}
 	
 	main, header h1 {
 		max-width: var(--width);; /* 2 */
 		width: 100%; /* 2 */
 	
-		padding: 0 .5rem; /* 2 */
+		/* padding: 0 .5rem;  */
 	}
-	header h1 {
-		margin-left: auto;
-		margin-right: auto;
-	} 
 	
