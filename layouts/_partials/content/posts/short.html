@@ -9,6 +9,9 @@
     </div>
     <div class="e-content">
     {{ .Summary }}
+        {{ if .Truncated }}
+      <a href="{{ .RelPermalink }}">[Full article]</a>
+    {{ end }}
     <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
     </div>
 </article>
