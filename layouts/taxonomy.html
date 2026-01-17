@@ -1,5 +1,90 @@
+{{ define "headHook"}}
+
+    {{/*  Inspired by https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/  */}}
+    
+<style>
+    .tabbed-summary-grid summary {
+    grid-column: var(--n) / span 1;
+    grid-row: 1;
+    display: grid;
+    padding: 1rem;
+    border-bottom: 2px solid var(--cemph);
+    cursor: pointer;
+    z-index: 1;
+    }
+
+    .tabbed-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: auto 1fr;
+    column-gap: 1rem;
+    }
+
+    .tabbed-summary-grid details {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    }
+
+    .tabbed-summary-grid details[open] :is(summary, .summary) {
+    font-weight: bold;
+    }
+
+    .tabbed-summary-grid details::details-content {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    padding: 1rem;
+    border-bottom: 2px solid var(--cemph);
+    }
+
+    .tabbed-summary-grid details:not([open])::details-content {
+    display: none;
+    }
+
+    @media screen and (width < 40em) {
+        .tabbed-summary-grid  {
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+            column-gap: .5rem;
+        }
+
+        .tabbed-summary-grid summary,
+        .tabbed-summary-grid details::details-content {
+            padding: .5rem;
+        }
+    }
+</style>
+{{end}}
+
+
 {{ define "main" }}
-    {{/*  <h1 id="Taxonomy">{{ .Title }}</h1>  */}}
     {{ .Content }}
-    {{ partial "range_content.html" . }}
+
+    {{/*  Inspired by https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/  */}}
+    
+    <div class="tabbed-summary-grid">
+    <details open name="sorting"  style="--n: 1">
+        <summary  class="tabbed-summary">Alphabetical</summary>
+        <ul class="no-bullets single-line">
+        {{- range .Pages }}
+            <li>
+            <a href="{{ .RelPermalink }}" class="u-url  p-summary permalink">#{{ .LinkTitle }} </a>
+            </li>
+        {{- end }}
+        </ul>
+    </details>
+
+    <details name="sorting" style="--n: 2">
+        <summary class="tabbed-summary">By Count</summary>
+        <ul class="no-bullets single-line">
+        {{ $taxonomyObject := .Data.Terms.ByCount }}
+        {{- range $taxonomyObject }}
+            <li>
+            <a href="{{ .Page.RelPermalink }}" class="u-url  p-summary permalink">#{{ .Page.LinkTitle }} ({{ .Count }})</a>
+            </li>
+        {{- end }}
+        </ul>
+    </details>
+    </div>
 {{ end }}

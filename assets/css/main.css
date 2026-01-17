@@ -1105,3 +1105,7 @@ article h1 {
 .pagination-default .active a{
 	font-weight: bolder;
 }
+
+.single-line li{
+	display: inline-grid;
+}
