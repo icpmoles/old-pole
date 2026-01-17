@@ -71,14 +71,15 @@
     {{ .Content }}
 
     {{/*  Inspired by https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/  */}}
-    
+    {{ $taxonomyObject := .Data.Terms }}
+
     <div class="tabbed-summary-grid">
     <details open name="sorting"  style="--n: 1">
         <summary  class="tabbed-summary">Alphabetical</summary>
         <ul class="no-bullets single-line">
-        {{- range .Pages }}
+        {{- range $taxonomyObject.Alphabetical}}
             <li>
-            <a href="{{ .RelPermalink }}" class="u-url  p-summary permalink">#{{ .LinkTitle }} </a>
+            <a href="{{ .Page.RelPermalink }}" class="u-url  p-summary permalink">#{{ .Page.LinkTitle }}</a>
             </li>
         {{- end }}
         </ul>
@@ -87,8 +88,8 @@
     <details name="sorting" style="--n: 2">
         <summary class="tabbed-summary">By Count</summary>
         <ul class="no-bullets single-line">
-        {{ $taxonomyObject := .Data.Terms.ByCount }}
-        {{- range $taxonomyObject }}
+ 
+        {{- range $taxonomyObject.ByCount }}
             <li>
             <a href="{{ .Page.RelPermalink }}" class="u-url  p-summary permalink">#{{ .Page.LinkTitle }} ({{ .Count }})</a>
             </li>
