@@ -1106,6 +1106,21 @@ article h1 {
 	font-weight: bolder;
 }
 
+.single-line{
+	display: flex;
+	justify-content:space-around;
+	align-items: stretch;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: stretch;
+}
+
 .single-line li{
-	display: inline-grid;
+	padding-left: .5em;
+}
+
+@media (pointer: coarse) {
+  .single-line li{
+	padding-left: 1.5em;
+  }
 }
