@@ -18,7 +18,7 @@
     {{ if (eq  .Data.Singular "tag") }}
         {{- $smartTitle =  (printf "#%s"  (.Title) ) -}}
     {{ else }}
-        {{- $smartTitle =  (printf "#s: %s"  (.Data.Singular | humanize) (.Title) ) -}}
+        {{- $smartTitle =  (printf "%s: %s"  (.Data.Singular | humanize) (.Title) ) -}}
     {{ end }}
 {{ else if eq .Kind "taxonomy" }}
     {{- $smartTitle =  (printf "%s"  (.Title) ) -}}

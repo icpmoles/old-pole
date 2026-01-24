@@ -9,6 +9,17 @@
 </title>
 <link rel="canonical" href="{{ .Permalink }}" />
 <link rel="icon" href="/favicon.ico">
+
+{{- with .GetTerms "authors" }}
+    {{- range . }}
+        <meta name="author" content="{{ .LinkTitle }}"/>
+    {{- end }}
+{{- end }}
+{{- with .GetTerms "tags" }}
+    {{- range . }}
+        <meta name="keywords" content="{{ .LinkTitle }}"/>
+    {{- end }}
+{{- end }}
 <meta http-equiv="Cache-control" content="max-age=3600, must-revalidate">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f6f7" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#24273a" />

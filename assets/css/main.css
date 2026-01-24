@@ -1114,9 +1114,13 @@ article h1 {
 	flex-wrap: wrap;
 	align-content: stretch;
 }
+/* 
+.single-line li {
+  padding: 0 .5em;
+} */
 
-.single-line li{
-	padding-left: .5em;
+.single-line{
+	  column-gap: .3em;
 }
 
 @media (pointer: coarse) {
