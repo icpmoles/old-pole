@@ -523,6 +523,11 @@ header nav menu > li:hover > ul { display: block; }
 header nav menu:last-child > li:last-child { display: none; } 
 
 @media (max-width: 40rem) {
+	header nav menu:last-child:not(:hover){
+		display: flex;
+		justify-content: space-between;
+	}
+
 	header	nav menu:last-child > li:last-child {  
 		display: inline-block;
 	}
@@ -539,6 +544,7 @@ header nav menu:last-child > li:last-child { display: none; }
 	header	nav menu:hover > li:last-child { 
 		display: none; 
 	}
+
 	/* header	nav menu:last-child:hover > li:not(:last-child):not(.sticky) { display: block; float: none !important; } */
 }
 
