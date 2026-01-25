@@ -406,9 +406,15 @@ h1, h2, h3, h4, h5 {
 	clear: both;
 	font-weight: 600;
  }
-h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }  /* non-clashing headings */
-h1 { font-size: 2em; 
+h1+h2, h2+h3, h3+h4, h4+h5 { 
+	margin-top: .5em; 
+	padding-top: 0;
+ }  /* non-clashing headings */
+
+h1 { 
+	font-size: 2em; 
 	/* font-weight: 700;  */
+	margin-bottom: 2.4rem;
 }
 h2 { font-size: 1.8em; 
 	font-weight: 300; 
@@ -497,17 +503,14 @@ header nav menu {
 	list-style-type: none; 
 }
 
-header nav menu:first-child 
+header nav menu:last-child 
 { 
 	margin: 0; 
 	padding: 0; 
 	overflow: visible; 
-
-	
-	
 }
 
-header nav menu:first-child > li {
+header nav menu:last-child > li {
 	display: inline-block;
 	margin: 0;
 	padding: 0.8rem .6rem;
@@ -517,38 +520,51 @@ header nav menu:first-child > li {
 header nav menu > li > ul > li { white-space: nowrap; }
 header nav menu > li:hover > ul { display: block; }
 
-header nav menu:first-child > li:first-child { display: none; } 
+header nav menu:last-child > li:last-child { display: none; } 
 
 @media (max-width: 40rem) {
-	header	nav menu:first-child > li:first-child {  display: inline-block;}
-	header	nav menu:first-child > li:first-child:after { content: " \25BE"; }
-	header	nav menu:first-child > li:not(:first-child):not(.sticky) { display: none; }
-	header	nav menu:first-child:hover > li:not(:first-child):not(.sticky) { display: block; float: none !important; }
+	header	nav menu:last-child > li:last-child {  
+		display: inline-block;
+	}
+	header	nav menu:last-child > li:last-child:after { 
+		content: " \25BE";
+	 }
+	header	nav menu:last-child > li:not(:first-child):not(:last-child):not(.sticky) { 
+		display: none;
+	 }
+	header	nav menu:last-child:hover > li:not(:first-child):not(:last-child):not(.sticky) { 
+		display: block; 
+		float: none !important;
+	}
+	header	nav menu:hover > li:last-child { 
+		display: none; 
+	}
+	/* header	nav menu:last-child:hover > li:not(:last-child):not(.sticky) { display: block; float: none !important; } */
 }
 
 
 /*concrete.css */
-	  img {
-	/*	max-width: 100%;*/
-		/*max-height: min(70vh, calc(var(--width) * 1.77));  1 */
-		max-height: min(50vh, calc(var(--width) * 1.77));
-		height: auto;
-	  }
-	  
-	  /** 
-	   * 1. Center the main element horizontally.
-	   * 2. Set the width of the element to 640px, with padding for mobile screens.
-	   */
-	main {
-		min-height: 55vh;
-		margin: 0 auto; /* 1 */
-		padding: 5rem .5rem;
-		}
-	
-	main, header h1 {
-		max-width: var(--width);; /* 2 */
-		width: 100%; /* 2 */
-	
-		/* padding: 0 .5rem;  */
-	}
+img {
+/*	max-width: 100%;*/
+/*max-height: min(70vh, calc(var(--width) * 1.77));  1 */
+	max-height: min(50vh, calc(var(--width) * 1.77));
+	height: auto;
+}
+
+/** 
+* 1. Center the main element horizontally.
+* 2. Set the width of the element to 640px, with padding for mobile screens.
+*/
+main {
+	min-height: 55vh;
+	margin: 0 auto;
+	padding: 2.5rem .1rem;
+}
+
+main, header h1 {
+	max-width: var(--width);; /* 2 */
+	width: 100%; /* 2 */
+
+/* padding: 0 .5rem;  */
+}
 	

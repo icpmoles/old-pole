@@ -10,6 +10,7 @@ Renders a menu for the given menu ID.
 {{- $page := .page }}
 {{- $menuID := .menuID }}
 {{- $firstLine := .firstLine }}
+{{- $lastline := .lastLine }}
 {{- $typeOfParent_ph := .typeOfParent }}
 
 {{- with index site.Menus $menuID }}
@@ -17,6 +18,7 @@ Renders a menu for the given menu ID.
     {{ (printf "<%s>" (default "ul" $typeOfParent_ph )) | safeHTML }}
       {{- with $firstLine }}{{. | safeHTML}}{{end}}
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+      {{- with $lastline }}{{. | safeHTML}}{{end}}
       {{ (printf "</%s>" (default "ul" $typeOfParent_ph)) | safeHTML }}
   </nav>
 {{- end }}
