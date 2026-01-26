@@ -790,6 +790,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 
 code:not(.codeblock code){
 	font-style: italic;
+	word-break: break-all;
 	/* text-underline-offset: 0.2em; */
 	/* text-decoration:  underline var(--cemph) dotted 2px; */
 }
