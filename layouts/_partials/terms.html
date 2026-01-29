@@ -9,10 +9,13 @@ For a given taxonomy, renders a list of terms assigned to the page.
 
 {{- $page := .page }}
 {{- $taxonomy := .taxonomy }}
+{{- $show_label := default  true .show_label }}
+{{- $label := "" }}
+{{- $cssClass := .cssClass }}
 
 {{- with $page.GetTerms $taxonomy }}
-  {{- $label := (index . 0).Parent.LinkTitle }}
-  <div>
+  {{ if  $show_label  }}{{- $label = printf "%s:" (index . 0).Parent.LinkTitle }}{{ end }}
+  <div class="tags-container {{$cssClass}}">
     <div>{{ $label }}:</div>
     <ul>
       {{- range . }}

@@ -15,7 +15,7 @@
 </ul>
 {{/*  I dont know how to self host this damn library, pls help  */}}
 {{ $lunrlibrary := resources.GetRemote "https://unpkg.com/lunr/lunr.js" | minify | fingerprint }}
-<script src="{{ $lunrlibrary.RelPermalink }}" integrity="{{ $lunrlibrary.Data.Integrity }}"></script>
+<script src="{{ $lunrlibrary.RelPermalink }}" integrity="{{ $lunrlibrary.Data.Integrity }}" defer></script>
 <script>let url = '/index.json?bts={{ time.Now.Unix }}';</script>
 {{- with resources.Get "js/searchv2.js" }}
   {{- if eq hugo.Environment "development" }}

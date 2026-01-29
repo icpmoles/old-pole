@@ -5,7 +5,7 @@
   {{ $dateHuman := .Date | time.Format ":date_long" }}
   <div class="post-info-container">
     <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-    <a href="{{ $.Site.Params.author.url }}" rel="author">{{ $.Site.Params.author.name }}</a>
+    <a href="{{ $.Site.Params.author.url }}"  rel="me author">{{ $.Site.Params.author.name }}</a>
   </div>
   {{ end }}
   {{ .TableOfContents }}

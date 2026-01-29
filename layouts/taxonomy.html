@@ -1,70 +1,6 @@
 {{ define "headHook"}}
-
-    {{/*  Inspired by https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/  */}}
-    
-<style>
-    details[open] summary ~ * {
-    animation: sweep .5s ease-in-out;
-    }
-
-    @keyframes sweep {
-        0%    {opacity: 0; transform: translateX(-10px)}
-        100%  {opacity: 1; transform: translateX(0)}
-    }
-    .tabbed-summary-grid summary {
-        grid-column: var(--n) / span 1;
-        grid-row: 1;
-        display: grid;
-        padding: 1rem;
-        border-bottom: 2px solid var(--cemph);
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .tabbed-summary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        grid-template-rows: auto 1fr;
-        column-gap: 1rem;
-    }
-
-    .tabbed-summary-grid details {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-row: 1 / span 2;
-        grid-template-columns: subgrid;
-        grid-template-rows: subgrid;
-    }
-
-    .tabbed-summary-grid details[open] :is(summary, .summary) {
-    font-weight: bold;
-    }
-
-    .tabbed-summary-grid details::details-content {
-        grid-row: 2;
-        grid-column: 1 / -1;
-        padding: 1rem;
-        border-bottom: 2px solid var(--cemph);
-        z-index: 1;
-    }
-
-    .tabbed-summary-grid details:not([open])::details-content {
-        display: none;
-    }
-
-    @media screen and (width < 40em) {
-        .tabbed-summary-grid  {
-            grid-template-columns: repeat(2, minmax(100px, 1fr));
-            column-gap: .5rem;
-        }
-
-        .tabbed-summary-grid summary,
-        .tabbed-summary-grid details::details-content {
-            padding: .5rem;
-        }
-    }
-</style>
-{{end}}
+    {{ partial "head/tabbed_details.html" }}
+{{ end }}
 
 
 {{ define "main" }}
@@ -72,7 +8,6 @@
 
     {{/*  Inspired by https://css-tricks.com/pure-css-tabs-with-details-grid-and-subgrid/  */}}
     {{ $taxonomyObject := .Data.Terms }}
-
     <div class="tabbed-summary-grid">
     <details open name="sorting"  style="--n: 1">
         <summary  class="tabbed-summary">Alphabetical</summary>

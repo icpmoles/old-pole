@@ -1,5 +1,10 @@
 <li class="archive-post h-entry">
-<time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
-<b class="archive-type">{{- if isset site.Params.archive "mainsymbol" }}{{- site.Params.archive.mainSymbol }}{{- else }}M{{- end }}</b>
-<a href="{{ .RelPermalink }}" class="permalink">{{ .Title }}</a>
+    <div>
+        <time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
+        <b class="archive-type">{{- if isset site.Params.archive "mainsymbol" }}{{- site.Params.archive.mainSymbol }}{{- else }}M{{- end }}</b>
+        {{ partial "terms_bits.html" (dict "taxonomy" "tags" "page" . "show_label" false "cssClass" "secondary-info") }}
+    </div>
+    <h3><a href="{{ .RelPermalink }}" class="u-url  p-summary permalink">{{.Title}}</a></h3>
+    {{ .Plain  | htmlUnescape  | truncate 80  }}
+    
 </li>

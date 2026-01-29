@@ -1,12 +1,17 @@
+{{ define "headHook"}}
+    {{ partial "head/tabbed_details.html" }}
+{{ end }}
+
 {{ define "main" }}
   <article class="h-feed">
     {{ .Content }}
-    <ul class="archive">
-    {{ $pages := ( where .Site.RegularPages "Section" "posts")  }}
-    {{ $bits := ( where .Site.RegularPages "Section" "bits")  }}
     {{ $isFirst := true }}
-    {{ range ( append $bits $pages  ).GroupByDate "2006" }}
-      <details class="yeargroup" {{if $isFirst }}open{{ end }}> 
+    <div class="tabbed-summary-grid">
+    <details open name="sorting"  style="--n: 1">
+        <summary  class="tabbed-summary">Posts</summary>
+        <ul class="no-bullets single-line">
+        {{- range ( where .Site.RegularPages "Section" "posts").GroupByDate "2006"  }}
+        <details class="yeargroup" open> 
         {{- $isFirst = false }}
         <summary>{{ .Key }}</summary>
           {{/*  {{ range .Pages }}
@@ -25,7 +30,38 @@
           {{ end }}
           {{ end }}
         </details>
-    {{ end }}
-    </ul>
+        {{- end }}
+        </ul>
+    </details>
+    {{- $isFirst = false }}
+    <details name="sorting" style="--n: 2">
+        <summary class="tabbed-summary">Bits</summary>
+        <ul class="no-bullets single-line">
+ 
+        {{- range ( where .Site.RegularPages "Section" "bits").GroupByDate "2006"  }}
+                  <details class="yeargroup" {{if $isFirst }}open{{ end }}> 
+        {{- $isFirst = false }}
+        <summary>{{ .Key }}</summary>
+          {{/*  {{ range .Pages }}
+            <li ><time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
+            <a href="{{ .RelPermalink }}" class="permalink">{{ .Title }}</a>
+            </li>
+          {{ end }}  */}}
+
+          {{ range .Pages }}
+          {{ $partialPath :=  printf "_partials/content/%s/archive.html" .Section }}
+          {{ if templates.Exists ( $partialPath ) }}
+            {{ $partialPathClean :=  printf "content/%s/archive.html" .Section }}
+            {{ partial $partialPathClean . }}
+          {{ else }}
+              {{ partial "_partials/content/archive.html" . }}
+          {{ end }}
+          {{ end }}
+        </details>
+        {{- end }}
+        </ul>
+    </details>
+    </div>
+
   </article>
 {{ end }}

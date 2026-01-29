@@ -109,7 +109,7 @@ blockquote,#TableOfContents {
 	padding: 0 0 0 1rem;
 }
 
-time, relative-time{ 
+time, relative-time, .secondary-info{ 
 	color: var(--cdark); 
 	font-weight: 100;
 	font-size: 0.9rem;
@@ -903,12 +903,19 @@ footer nav li{
 	padding: 0;
 }
 
-
-.yeargroup li {
+.yeargroup .bits-tags {
+	margin-top: unset;
+	display: inline;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.archive-post > *{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+} 
 
 /* .yeargroup time{ 
 	text-decoration: underline dotted var(--cemph);
@@ -940,10 +947,10 @@ footer nav li{
 
 }*/
 
-.yeargroup{
+/* .yeargroup{
 	border: .2rem solid var(--cfg);
 
-}
+} */
 
 .yeargroup summary{
 	padding: 1rem 0;
