@@ -42,7 +42,10 @@ a:hover, button:not([disabled]):hover, summary:hover {
 }
 
 /* lists */
-ul, ol, dl { margin: 1rem 0; padding: 0 2em 0 2em; }
+ul, ol, dl { 
+	margin: 1rem 0; 
+	padding: 0 0 0 2em;
+ }
 li:not(:last-child), dd:not(:last-child) { margin-bottom: 0.5rem; }
 dt { font-weight: bold; }
 
@@ -620,11 +623,11 @@ p>select { padding: 0;      margin: 0 .5em; }
   
 
   .codeIcon::before{
-	content: "<";
+	content: "</";
   }
 
   .codeIcon::after{
-	content: "/>";
+	content: ">";
   }
 
   .codelang {
@@ -915,8 +918,13 @@ footer nav li{
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	padding: 0.5rem 0;
+
 } 
 
+.archive-post {
+  padding: 1.5rem 0;
+}
 /* .yeargroup time{ 
 	text-decoration: underline dotted var(--cemph);
     text-underline-position: under;

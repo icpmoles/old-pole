@@ -14,12 +14,6 @@
         <details class="yeargroup" open> 
         {{- $isFirst = false }}
         <summary>{{ .Key }}</summary>
-          {{/*  {{ range .Pages }}
-            <li ><time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>
-            <a href="{{ .RelPermalink }}" class="permalink">{{ .Title }}</a>
-            </li>
-          {{ end }}  */}}
-
           {{ range .Pages }}
           {{ $partialPath :=  printf "_partials/content/%s/archive.html" .Section }}
           {{ if templates.Exists ( $partialPath ) }}
@@ -33,14 +27,14 @@
         {{- end }}
         </ul>
     </details>
-    {{- $isFirst = false }}
+    {{- $isFirst = true }}
     <details name="sorting" style="--n: 2">
         <summary class="tabbed-summary">Bits</summary>
         <ul class="no-bullets single-line">
  
         {{- range ( where .Site.RegularPages "Section" "bits").GroupByDate "2006"  }}
                   <details class="yeargroup" {{if $isFirst }}open{{ end }}> 
-        {{- $isFirst = false }}
+        {{- $isFirst = true }}
         <summary>{{ .Key }}</summary>
           {{/*  {{ range .Pages }}
             <li ><time content="{{ .Date.Format "2006-01-02"}}" >[{{ .Date.Format "2006/01/02" }}]</time>

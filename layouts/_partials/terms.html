@@ -14,7 +14,7 @@ For a given taxonomy, renders a list of terms assigned to the page.
 {{- $cssClass := .cssClass }}
 
 {{- with $page.GetTerms $taxonomy }}
-  {{ if  $show_label  }}{{- $label = printf "%s:" (index . 0).Parent.LinkTitle }}{{ end }}
+  {{ if  $show_label  }}{{- $label = printf "%s" (index . 0).Parent.LinkTitle }}{{ end }}
   <div class="tags-container {{$cssClass}}">
     <div>{{ $label }}:</div>
     <ul>

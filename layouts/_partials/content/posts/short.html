@@ -13,5 +13,6 @@
       <a href="{{ .RelPermalink }}">[Full article]</a>
     {{ end }}
     <a class="u-bridgy-fed" href="https://fed.brid.gy/" hidden="from-humans"></a>
+    {{ partial "terms_bits.html" (dict "taxonomy" "tags" "page" .) }}
     </div>
 </article>
