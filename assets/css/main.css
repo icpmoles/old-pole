@@ -1066,6 +1066,8 @@ article h1 {
 .bits-tags {
 	margin-top: 2rem;
 	display: flex;
+	flex-direction: row;
+  	flex-wrap: wrap;
 }
 
 .bits-tags a{
