@@ -5,6 +5,7 @@
         let dialog=document.getElementById("lb-"+id);
         dialog.showModal();
         let imgDOM = dialog.querySelector("img");
+        imgDOM.style.display = "initial"; // fix for chawan
         let imgwidth = parseInt(imgDOM.getAttribute("width"));
         let imgheight = parseInt(imgDOM.getAttribute("height"));
         
