@@ -1,3 +1,4 @@
-<li class="h-entry"><time content="{{ .Date.Format "2006-01-02"}}" class="dt-published">[{{ .Date.Format "2006/01/02" }}]</time>🎲
-<a href="{{ .RelPermalink }}" class="permalink u-url p-name">{{ .Title }}</a>
+<li class="h-entry">
+    <a href="{{ .RelPermalink }}" class="permalink u-url p-name">{{ .Title }}</a>
+    <time content="{{ .Date.Format "2006-01-02"}}" class="dt-published">[{{ .Date.Format "2006/01/02" }}]</time>🎲
 </li>
