@@ -1,10 +1,28 @@
+{{- $path := .Attributes.path }}
+{{- $path_prefix := .Attributes.prefix }}
+{{- $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
+{{- $file_type_decorator := "" }}
+{{- $path_decorator := "" }}
+{{- $path_suffix := "" }}
+{{- if in $terminal .Type  }}
+    {{- $file_type_decorator = "terminalIcon" }}
+    {{- $path_decorator = "terminalIcon" }}
+    {{- $path_suffix = "$>" }}
+{{- else }}
+    {{- $file_type_decorator = "codeIcon" }}
+{{- end }}
 <details class="codeblock" open>
-{{ $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
-{{ if in $terminal .Type  }}
-    <summary class="codelang terminalIcon">{{ .Type  }}</summary>
-{{ else }}
-    <summary class="codelang codeIcon">{{ .Type  }}</summary>
-{{ end }}
+<summary class=" codelang">
+    <span class="codeblock_file_type {{ $file_type_decorator | safeCSS }}">{{ .Type  }}</span>
+    {{- with $path }}
+        <span class="codeblock_file_path">
+            {{- with $path_prefix}}<i>({{.}})</i>{{- end}}
+            <b>{{.}}
+            <span class="{{ $path_decorator | safeCSS}}">{{- $path_suffix }}</span>
+            </b>
+        </span>
+    {{- end }}
+</summary>
 <div>
 {{ $result := transform.HighlightCodeBlock . }}
 {{ $result.Wrapped }}

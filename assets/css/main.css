@@ -806,6 +806,8 @@ code:not(.codeblock code){
 	display: flex;
 	justify-content: flex-end;
 	border-bottom-style: solid;
+	justify-content: space-between;
+	flex-direction:  row-reverse;
 
  }
  

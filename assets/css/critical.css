@@ -549,6 +549,9 @@ header nav menu > li:last-child { display: none; }
 	/* header	nav menu:hover > li:not(:last-child):not(.sticky) { display: block; float: none !important; } */
 }
 
+b {
+	font-weight: bold;
+}
 
 /*concrete.css */
 img {
