@@ -5,12 +5,12 @@
     
 
 	@page { margin: 1.5cm 2cm; } 
-	html {font-size: 9pt!important; } 
-	body { max-width: 27cm; }
+	html {font-size: 9pt !important;} 
+	body { max-width: 27cm;}
 	p { orphans: 2; widows: 2; }
 	caption, figcaption { page-break-before: avoid; }
-	h2, h3, h4, h5 { page-break-after: avoid;}
-	.noprint, body>nav, section:after { display: none; }
+	h2, h3, h4, h5 { page-break-after: avoid; }
+	.noprint, body>nav, section:after, header { display: none !important; }
 	.row { flex-direction: row; }
 
     main, body{
