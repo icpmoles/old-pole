@@ -34,10 +34,12 @@
 {{with .Params.headHook }}{{. | safeHTML}}{{end}}
 
 {{- if eq hugo.Environment "development" }}
-    {{- partial "head/css.html" . -}}
+    {{- partial "head/css_cached.html" . -}}
 {{- else }}
-    {{- partial "head/css.html" . -}}
+    {{- partialCached "head/css_cached.html" . -}}
 {{- end }}
+{{- partial "head/css_not_cached.html" . -}}
+
 <!-- MATH Rendering -->
 {{ partial "head/math.html" . }}
 {{ partial "head/yt-lite.html" . }}

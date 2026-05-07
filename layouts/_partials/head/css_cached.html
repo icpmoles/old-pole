@@ -1,0 +1,37 @@
+
+{{- $cssStart := "@charset 'UTF-8';@import 'hugo:vars';" }}
+{{- $cssImportHightlighter := (printf "@import 'css/chroma/%s.css';@import 'css/chroma/%s.css';" .Site.Params.syntaxDark .Site.Params.syntaxLight ) }}
+{{- $cssCustomImport := "" }}
+{{- $CustomImport := slice }}
+{{- range $CustomImport }}
+  {{ $cssCustomImport = printf "%s@import '%s';" $cssCustomImport .  }}
+{{- end }}
+{{- $CSSimport := printf "%s%s%s" $cssStart $cssImportHightlighter  $cssCustomImport | resources.FromString "tempcssd.css" }}
+
+
+
+{{ $opts := dict 
+  "loaders" (dict ".png" "dataurl" ".svg" "dataurl" ".woff2" "file" ".woff" "file") 
+  "vars" site.Params.theme.style
+}}
+
+{{- $CSSprint := resources.Get "css/print.css" }}
+{{- $CSSmain := resources.Get "css/main.css" }}
+{{/*  {{- with slice $main $darkcode $lightcode $print | resources.Concat "css/bundle.css"  }}  */}}
+{{- with slice $CSSimport $CSSmain  $CSSprint | resources.Concat "css/bundle.css" | css.Build  $opts }} 
+  {{- if eq hugo.Environment "development" }}
+  <link rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+  {{- else }}
+    {{- with . | minify | fingerprint }}
+    <link rel="preload" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+
+{{- with resources.Get "css/critical.css" | minify }}
+  <style>{{ .Content | safeCSS  }}</style>
+{{- end -}}
+
