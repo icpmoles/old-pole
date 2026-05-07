@@ -1,0 +1,15 @@
+{{- $cssCustomImport := "" }}
+{{- $CustomImport := . }}
+{{- range $CustomImport }}
+  {{- $tempFile := .}}
+  {{- with try (resources.Get $tempFile ) }}
+    {{- with .Err }}
+      {{- warnf "CSS FILE %s not found" $tempFile }}
+    {{- else with .Value }}
+      {{- $cssCustomImport = printf "%s@import '%s';" $cssCustomImport $tempFile  }}
+    {{- else }}
+      {{ warnf "Unable to get stylesheet %s" $tempFile }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{ return $cssCustomImport }}

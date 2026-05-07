@@ -1,15 +1,13 @@
 
 {{- $cssStart := "@charset 'UTF-8';@import 'hugo:vars';" }}
 {{- $cssImportHightlighter := (printf "@import 'css/chroma/%s.css';@import 'css/chroma/%s.css';" .Site.Params.syntaxDark .Site.Params.syntaxLight ) }}
-{{- $cssCustomImport := "" }}
-{{- $CustomImport := slice }}
-{{- range $CustomImport }}
-  {{ $cssCustomImport = printf "%s@import '%s';" $cssCustomImport .  }}
-{{- end }}
+{{- $cssCustomImport := partial "utils/get_css.html" site.Params.theme.additionalCss }}
 {{- $CSSimport := printf "%s%s%s" $cssStart $cssImportHightlighter  $cssCustomImport | resources.FromString "tempcssd.css" }}
 {{- $opts := dict 
-  "loaders" (dict ".png" "dataurl" ".svg" "dataurl" ".woff2" "file" ".woff" "file") 
+  "loaders" (dict ".png" "dataurl" ".svg" "dataurl") 
   "vars" site.Params.theme.style
+  "minify" (cond hugo.IsDevelopment false true)
+  "sourceMap" (cond hugo.IsDevelopment "linked" "none")
 }}
 {{- $CSSprint := resources.Get "css/print.css" }}
 {{- $CSSmain := resources.Get "css/main.css" }}
@@ -25,8 +23,16 @@
   {{- end }}
 {{- end }}
 
-
-{{- with resources.Get "css/critical.css" | minify }}
+{{- $opts := dict 
+  "loaders" (dict ".png" "dataurl" ".svg" "dataurl") 
+  "vars" site.Params.theme.style
+  "minify" (cond hugo.IsDevelopment false true)
+  "sourceMap" (cond hugo.IsDevelopment "linked" "none")
+}}
+{{- $cssCustomImportCritical := partial "utils/get_css.html" site.Params.theme.additionalCssCritical | resources.FromString "temp_critical_import.css" }}
+{{- $CSSCritical := resources.Get "css/critical.css" }}
+{{/*  {{- with resources.Get "css/critical.css" | minify }}  */}}
+{{- with slice $cssCustomImportCritical $CSSCritical  | resources.Concat "/css/bundle_crit.css" |  css.Build  $opts }} 
   <style>{{ .Content | safeCSS  }}</style>
 {{- end -}}
 
