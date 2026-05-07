@@ -8,18 +8,16 @@
 {{- $webpsrc2 := "" -}}
 {{- $jpgsrc2 := "" -}}
 {{- $webpsrc720 := "" -}}
-{{- $usedsrc:= $image -}}
+{{- $usedsrc:= "" -}}
 {{- $animated := false -}}
 {{- if ne $image.MediaType.SubType  "gif"  -}}
-{{- $jpgsrc = (($image.Resize "720x jpg" )).Permalink  -}}
-{{- $jpgsrc2 = (($image.Resize "1440x jpg" )).Permalink  -}}
-{{- $usedsrc = $jpgsrc}}
+    {{- $jpgsrc = ($image.Resize "720x jpg" ) -}}
+    {{- $jpgsrc2 = ($image.Resize "1440x jpg" )  -}}
+    {{- $usedsrc = $jpgsrc.Permalink }}
 {{- else -}}
-{{- $usedsrc = $image.Permalink   -}}
-{{- $animated = true  -}}
+    {{- $usedsrc = $image.Permalink   -}}
+    {{- $animated = true  -}}
 {{- end -}}
-<figure>
-{{- with .Title}}<div class="title-img">{{ . }}</div> {{ end -}}
 <img 
     src="{{- $usedsrc -}}" 
     {{- with .Text}}  alt="{{-  plainify  . | safeHTML}}" {{- end -}}   
@@ -27,6 +25,4 @@
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
     />
-    {{- with .Text}}<figcaption class="small" > {{ . | safeHTML}}</figcaption> {{ end -}}
-
-</figure>
+[{{- with .Title}}{{.}}{{ end -}}]
