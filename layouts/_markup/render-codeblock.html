@@ -1,5 +1,6 @@
 {{- $path := .Attributes.path }}
 {{- $path_prefix := .Attributes.prefix }}
+{{- $minimized := default false .Attributes.minimized }}
 {{- $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
 {{- $file_type_decorator := "" }}
 {{- $path_decorator := "" }}
@@ -11,7 +12,7 @@
 {{- else }}
     {{- $file_type_decorator = "codeIcon" }}
 {{- end }}
-<details class="codeblock" open>
+<details class="codeblock" {{ if $minimized }} close {{ else }} open {{ end }}>
 <summary class=" codelang">
     <span class="codeblock_file_type {{ $file_type_decorator | safeCSS }}">{{ .Type  }}</span>
     {{- with $path }}

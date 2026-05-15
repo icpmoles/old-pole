@@ -796,7 +796,8 @@ code:not(.codeblock code){
 	background-color: var(--cbg);
 	display: flex;
 	justify-content: flex-end;
-	border-bottom-style: solid;
+	padding-bottom: .1em;
+	border-bottom: .1em solid;
 	justify-content: space-between;
 	flex-direction:  row-reverse;
 
