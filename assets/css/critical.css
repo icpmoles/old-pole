@@ -1,124 +1,6 @@
-/* @font-face {
-	font-family: "IBM Plex Math";
-	src:
-		url('/fonts/IBMPlexMath-Regular.woff2') format('woff2');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap; 
-} */
-/* @font-face {
-	font-family: "TX-02";
-	src:
-		url('/fonts/TX-02-Data-Regular.woff2') format('woff2');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap; 
-} */
-
-
-
-@font-face {
-	font-family: "TX-02";
-	src:
-		url('/fonts/TX-02-Data-Bold.woff2') format('woff2');
-	font-weight: 150;
-	font-style: normal;
-	font-display: swap; 
-}
-
-@font-face {
-	font-family: "Berkeley Mono";
-	src:
-		url('/fonts/berkeleymono-regular-webfont.woff2') format('woff2'),
-		url('/fonts/berkeleymono-regular-webfont.woff') format('woff'),
-		url('/fonts/berkeleymono-regular-webfont.ttf') format('truetype');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap; 
-}
-
-@font-face {
-	font-family: "Berkeley Mono";
-	src:
-		url('/fonts/berkeleymono-bold-webfont.woff2') format('woff2'),
-		url('/fonts/berkeleymono-bold-webfont.woff') format('woff'),
-		url('/fonts/berkeleymono-bold-webfont.ttf') format('truetype');
-	font-weight: 150;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Berkeley Mono";
-	src:
-		url('/fonts/berkeleymono-italic-webfont.woff2') format('woff2'),
-		url('/fonts/berkeleymono-italic-webfont.woff') format('woff'),
-		url('/fonts/berkeleymono-italic-webfont.ttf') format('truetype');
-	font-weight: 100;
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Berkeley Mono Var";
-	src: 
-		url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2-variations');
-		/* url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff'),
-		url('/fonts/BerkeleyMonoVariable-Regular.ttf') format('truetype'); */
-	font-weight: 100 150;
-	font-style: normal;
-	font-display: swap;
-}
-
-/* @font-face {
-	font-family: "Berkeley Mono Var";
-	src: 
-		url('/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2-variations');
-	font-weight: 100 150;
-	font-style: italic;
-	font-display: optional;
-} */
-
-
-/* @font-face {
-  font-display: swap; 
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap; 
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-500.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap; 
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-600.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap; 
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/space_grotesk/space-grotesk-v21-latin-700.woff2') format('woff2');
-} */
-
-@font-face {
-  font-display: swap; 
-  font-family: 'Space Mono';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/space_mono/space-mono-v17-latin-700.woff2') format('woff2');
-}
+@import "../fonts/IoskeleyMono-Web/WOFF2/fonts.css";
+@import "../fonts/redhatmono_subsetting/fonts.css";
+@import "../fonts/xits/fonts.css";
 
 @font-face {
 	font-family: "Red Hat Mono Var";
@@ -130,72 +12,8 @@
 }
 
 
-/* red-hat-mono-300 - latin_latin-ext */
-/* https://gwfh.mranftl.com/fonts/red-hat-mono?subsets=latin,latin-ext */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Red Hat Mono';
-  font-style: normal;
-  font-weight: 300;
-  src: url('/fonts/redhatmono_subsetting/red-hat-mono-v16-latin_latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-/* red-hat-mono-500 - latin_latin-ext */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Red Hat Mono';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/redhatmono_subsetting/red-hat-mono-v16-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-/* red-hat-mono-700 - latin_latin-ext */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Red Hat Mono';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/redhatmono_subsetting/red-hat-mono-v16-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
 
 
-/* XITS from https://github.com/fred-wang/MathFonts/blob/main/XITS/mathfonts.css */
-
-@font-face {
-    font-family: XITS;
-    src: local('XITS'),
-         url('/fonts/xits/XITS-Regular.woff2'), url('/fonts/xits/XITS-Regular.woff');
-}
-/* @font-face {
-    font-family: XITS;
-    src: local('XITS Bold'), local('XITS-Bold'),
-         url('/fonts/xits/XITS-Bold.woff2'), url('/fonts/xits/XITS-Bold.woff');
-    font-weight: bold;
-}
-@font-face {
-    font-family: XITS;
-    src: local('XITS Italic'), local('XITS-Italic'),
-         url('/fonts/xits/XITS-Italic.woff2'), url('/fonts/xits/XITS-Italic.woff');
-    font-style: italic;
-}
-@font-face {
-    font-family: XITS;
-    src: local('XITS Bold Italic'), local('XITS-BoldItalic'),
-         url('/fonts/xits/XITS-BoldItalic.woff2'), url('/fonts/xits/XITS-BoldItalic.woff');
-    font-weight: bold;
-    font-style: italic;
-} */
-@font-face {
-    font-family: XITS Math;
-    src: local('XITS Math'), local('XITSMath-Regular'),
-         url('/fonts/xits/XITSMath-Regular.woff2') format(woff2), url('/fonts/xits/XITSMath-Regular.woff') format(woff);
-}
-@font-face {
-    font-family: XITS Math;
-    src: local('XITS Math Bold'), local('XITSMath-Bold'),
-         url('/fonts/xits/XITSMath-Bold.woff2')  format(woff2);
-    font-weight: bold;
-}
 /* 
 .htmlmathparagraph, m|mtext {
     font-family: XITS;
@@ -224,10 +42,10 @@ m|*.calligraphic {
 	--rem: clamp(12px, 1.1em, 17px);
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */
-	--h-font-family: 'Space Mono';
+	--h-font-family: 'Ioskeley Mono';
 	--font-main-size: 1rem;
 	--font-p: var(--font-main-size) "Red Hat Mono Var", 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: calc(var(--font-main-size) * 1.5) var(--headerfont), var(--h-font-family),'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+	--font-h: calc(var(--font-main-size) * 1.5) var(--h-font-family),'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
 	--font-c: var(--font-main-size)  monospace ,'DejaVu Sans Mono';
 	--border: 1px solid var(--cmed);
 	--ornament: "‹‹‹ ›››";
@@ -394,7 +212,7 @@ h1 {
 	margin-bottom: 2.4rem;
 }
 h2 { font-size: 1.8em; 
-	font-weight: 300; 
+	font-weight: 500; 
 	font-variant: small-caps; }
 h3 { font-size: 1.2em;
 	font-weight: 400; }
