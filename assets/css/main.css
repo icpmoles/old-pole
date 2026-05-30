@@ -792,7 +792,13 @@ code:not(.codeblock code){
 	user-select: none;
 	background-color: var(--cbg);
 }
- .codeblock summary{
+
+.codeblock {
+	margin: 2em 0
+}
+
+
+.codeblock summary{
 	background-color: var(--cbg);
 	display: flex;
 	justify-content: flex-end;
@@ -800,7 +806,6 @@ code:not(.codeblock code){
 	border-bottom: .1em solid;
 	justify-content: space-between;
 	flex-direction:  row-reverse;
-
  }
  
 .codeblock summary::marker{
