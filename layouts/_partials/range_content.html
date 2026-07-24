@@ -1,13 +1,7 @@
 <ul class="no-bullets">
     {{- range (.Paginate .Pages).Pages }}
         <li>
-        {{- $partialPath :=  printf "_partials/content/%s/short.html" .Section }}
-        {{- if templates.Exists ( $partialPath ) }}
-            {{- $partialPathClean :=  printf "content/%s/short.html" .Section }}
-            {{- partial $partialPathClean . }}
-        {{- else }}
-            {{- partial "content/short.html" . }}
-        {{- end }}
+        {{ .Render "short" }}
         </li>
     {{- end }}
 </ul>
