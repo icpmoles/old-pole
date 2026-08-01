@@ -3,7 +3,7 @@
   <ul class="no-bullets">
   {{ range (.Paginate (where site.RegularPages "Section" (.Site.Params.mainSection) )).Pages }}
     <li>
-    {{ partial "content/posts/short.html" . }}
+        {{ .Render "short" }}
     </li>
   {{ end }}
   </ul>

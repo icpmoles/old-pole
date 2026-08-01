@@ -15,13 +15,7 @@
         {{- $isFirst = false }}
         <summary>{{ .Key }}</summary>
           {{ range .Pages }}
-          {{ $partialPath :=  printf "_partials/content/%s/archive.html" .Section }}
-          {{ if templates.Exists ( $partialPath ) }}
-            {{ $partialPathClean :=  printf "content/%s/archive.html" .Section }}
-            {{ partial $partialPathClean . }}
-          {{ else }}
-              {{ partial "_partials/content/archive.html" . }}
-          {{ end }}
+           {{ .Render "archive" }}
           {{ end }}
         </details>
         {{- end }}
@@ -43,13 +37,7 @@
           {{ end }}  */}}
 
           {{ range .Pages }}
-          {{ $partialPath :=  printf "_partials/content/%s/archive.html" .Section }}
-          {{ if templates.Exists ( $partialPath ) }}
-            {{ $partialPathClean :=  printf "content/%s/archive.html" .Section }}
-            {{ partial $partialPathClean . }}
-          {{ else }}
-              {{ partial "_partials/content/archive.html" . }}
-          {{ end }}
+            {{ .Render "archive" }}
           {{ end }}
         </details>
         {{- end }}
