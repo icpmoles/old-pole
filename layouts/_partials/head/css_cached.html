@@ -1,6 +1,6 @@
 
 {{- $cssStart := "@charset 'UTF-8';@import 'hugo:vars';" }}
-{{- $cssImportHightlighter := (printf "@import 'css/chroma/%s.css';@import 'css/chroma/%s.css';" .Site.Params.syntaxDark .Site.Params.syntaxLight ) }}
+{{- $cssImportHightlighter := (printf "@import 'css/chroma/%s.css';@import 'css/chroma/%s.css';" .Site.Params.syntaxLight .Site.Params.syntaxDark ) }}
 {{- $cssCustomImport := partial "utils/get_css.html" site.Params.theme.additionalCss }}
 {{- $CSSimport := printf "%s%s%s" $cssStart $cssImportHightlighter  $cssCustomImport | resources.FromString "tempcssd.css" }}
 {{- $opts := dict 

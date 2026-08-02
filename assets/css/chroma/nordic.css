@@ -1,5 +1,5 @@
 /* Generated using: hugo gen chromastyles --style nordic */
-
+@media (prefers-color-scheme: dark) {
 /* Background */ .bg { color: var(--cfg); background-color: var(--cbg); }
 /* PreWrapper */ .chroma { color: var(--cfg); background-color: var(--cbg); }
 /* Other */ .chroma .x {  }
@@ -86,3 +86,4 @@
 /* GenericTraceback */ .chroma .gt { color:#c5727a }
 /* GenericUnderline */ .chroma .gl {  }
 /* TextWhitespace */ .chroma .w {  }
+}
