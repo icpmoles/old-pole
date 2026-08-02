@@ -4,10 +4,23 @@ declare -a arr=( "abap" "algol" "algol_nu" "arduino" "autumn" "average" "base16-
 for i in "${arr[@]}"
 do
    echo "$i"
-   hugo gen chromastyles --style "$i" > "$i".css
+   hugo gen chromastyles --style "$i" > "$i".dark.css
    # or do whatever with individual element of the array
 done
 
 # then replace with regex in vscode:
 # \.(bg|chroma) \{ ((background-|)color:#.{3,6};)+ \}
 # .$1 { color: var(--cfg); background-color: var(--cbg); }
+
+### to create dark mode variants:
+# regex: \/\*\s*Generated using:\s*hugo gen chromastyles --style \S+\s*\*\/
+# sub with: @media (prefers-color-scheme: dark) {
+
+# close the file with:
+## ([\s\S]*)
+## $
+
+# sub with:
+# $1
+# }
+

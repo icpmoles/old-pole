@@ -578,14 +578,12 @@ p>select { padding: 0;      margin: 0 .5em; }
   }
 
   .chroma{
-	overflow-x: hidden;
-    width: fit-content;
+	overflow-x: auto;
+    width: 100%;
 	margin: 0;
   }
 
-  .highlight{
-	overflow-x: auto;
-  }
+
   
   .terminalIcon::after, .alert-heading::after{
 	animation: blink-animation 2s infinite both;
