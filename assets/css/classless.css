@@ -32,7 +32,11 @@ Table of Contents:
 /* 2. Reset –––––––––––––––––––––––––––––––––––––––––––– */
 
 /* reset block elements  */
-* { box-sizing: border-box; border-spacing: 0; margin: 0; padding: 0;}
+* { box-sizing: border-box; 
+	border-spacing: 0; 
+	margin: 0; 
+	padding: 0;
+}
 header, footer, figure, table, video, details, blockquote,
 ul, ol, dl, fieldset, pre, pre > code, caption {
 	display: block;

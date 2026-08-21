@@ -84,7 +84,7 @@ figure > *:not(:last-child) {
 .codeblock{
   margin: 0;
   position: relative;
-  padding: 0.2rem 0.8rem;
+  padding: 0.2rem 0px;
   border-left: .4rem solid var(--cemph);
   font-weight: 100;
   background-color: var(--cbg);
@@ -94,6 +94,7 @@ figure > *:not(:last-child) {
 .chroma code{
   background-color: unset;
   min-width: 100%;
+  margin-left: var(--block-tabulation);
 }
 kbd { border: 1px solid var(--cmed); }
 
@@ -550,7 +551,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 	blockquote , #TableOfContents {
 	margin-left: 0; /* 1 */
 	margin-right: 0; /* 1 */
-	padding: 1rem 1.6rem; /* 1 */
+	padding: 1rem var(--block-tabulation); /* 1 */
 	border-left: .2rem solid var(--cfg); /* 2 */
 	overflow-y: hidden; /* 3 */
   }
@@ -577,7 +578,7 @@ p>select { padding: 0;      margin: 0 .5em; }
     width: fit-content;
   }
 
-  .chroma{
+  .highlight{
 	overflow-x: auto;
     width: 100%;
 	margin: 0;
