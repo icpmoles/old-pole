@@ -40,7 +40,7 @@ m|*.calligraphic {
 
 :root, html[data-theme='light'] {
 	--block-tabulation:  clamp(1vw, 1rem, 4vw);
-
+	--block-vertical-spacing: clamp(1vh,.5rem,4vh);
 	--rem: clamp(12px, 1.1em, 17px);
 	--width: 60rem;
 	--navpos: absolute;  /* fixed | absolute */

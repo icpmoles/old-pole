@@ -82,19 +82,22 @@ figure > *:not(:last-child) {
 /* code */
 /* pre > code { */
 .codeblock{
-  margin: 0;
   position: relative;
-  padding: 0.2rem 0px;
+  padding: 0px;
   border-left: .4rem solid var(--cemph);
   font-weight: 100;
   background-color: var(--cbg);
   margin: 1rem auto;
 }
 
+.chroma {
+  padding: var(--block-vertical-spacing) 0px;
+}
+
 .chroma code{
   background-color: unset;
   min-width: 100%;
-  margin-left: var(--block-tabulation);
+  padding-left: var(--block-tabulation);
 }
 kbd { border: 1px solid var(--cmed); }
 
@@ -582,6 +585,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 	overflow-x: auto;
     width: 100%;
 	margin: 0;
+
   }
 
 
@@ -792,15 +796,14 @@ code:not(.codeblock code){
 	background-color: var(--cbg);
 }
 
-.codeblock {
-	margin: 2em 0
-}
 
 
 .codeblock summary{
 	background-color: var(--cbg);
 	display: flex;
 	justify-content: flex-end;
+	padding-left: var(--block-tabulation);
+	padding-right: var(--block-tabulation);
 	padding-bottom: .1em;
 	border-bottom: .1em solid;
 	justify-content: space-between;
