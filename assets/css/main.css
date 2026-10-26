@@ -1153,7 +1153,23 @@ article h1 {
 	direction: rtl;
 }
 
-.copy_button {
+.copy_feedback {
+	margin-left: .2em;
+	filter: grayscale(1);
+	opacity: .4;
+}
+
+.copy_feedback.copied {
+	animation: copy-feedback 3s ease-in forwards;
+}
+
+/* green for 2s, then fade back to gray over 1s */
+@keyframes copy-feedback {
+	0%, 66% { filter: none; opacity: 1; }
+	100% { filter: grayscale(1); opacity: .4; }
+}
+
+.copy_button , .copy_feedback {
 	/* height: 1rem; */
 	font-size: 0.8rem;
 	padding: 0;

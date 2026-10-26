@@ -29,6 +29,7 @@
         {{ $result := transform.HighlightCodeBlock . }}
         {{ $result.Wrapped }}
         <div class="copy_interaction">
+            <span class="copy_feedback" aria-hidden="true" hidden>&#x2705;</span>
             <button type="button" class="copy_button" title="Copy code" aria-label="Copy code" hidden>&#x1F4CB;</button>
             <noscript>
                 <button type="button" title="Copying needs JavaScript: select the code manually" aria-label="Copying needs JavaScript: select the code manually" disabled>&#x1F4CB;</button>
@@ -51,6 +52,7 @@
         {{ $result := transform.HighlightCodeBlock . }}
         {{ $result.Wrapped }}
         <div class="copy_interaction">
+            <span class="copy_feedback" aria-hidden="true" hidden>&#x2705;</span>
             <button type="button" class="copy_button" title="Copy code" aria-label="Copy code" hidden>&#x1F4CB;</button>
             <noscript>
                 <button type="button" title="Copying needs JavaScript: select the code manually" aria-label="Copying needs JavaScript: select the code manually" disabled>&#x1F4CB;</button>
