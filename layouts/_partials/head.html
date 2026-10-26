@@ -62,3 +62,5 @@
 {{- if .Params.noindex }}
 <meta name="robots" content="noindex">
 {{- end }}
+
+{{ partialCached "head/clipboard.html" . }}

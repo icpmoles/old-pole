@@ -1,6 +1,7 @@
 {{- $path := .Attributes.path }}
 {{- $path_prefix := .Attributes.prefix }}
 {{- $minimized := default false .Attributes.minimized }}
+{{- $uniqueId := .Inner | hash.XxHash }}
 {{- $terminal := slice "shell" "powershell" "bash" "sh" "ksh" "zsh" "shell" "fish" "fishshell" "pwsh" "posh" "tcsh" "csh" "vsh" "vshell" }}
 {{- $file_type_decorator := "" }}
 {{- $path_decorator := "" }}
@@ -12,19 +13,38 @@
 {{- else }}
     {{- $file_type_decorator = "codeIcon" }}
 {{- end }}
-<details class="codeblock" {{ if $minimized }} close {{ else }} open {{ end }}>
-<summary class=" codelang">
-    <span class="codeblock_file_type {{ $file_type_decorator | safeCSS }}">{{ .Type  }}</span>
-    {{- with $path }}
-        <span class="codeblock_file_path">
-            {{- with $path_prefix}}<i>({{.}})</i>{{- end}}
-            <b>{{.}}
-            <span class="{{ $path_decorator | safeCSS}}">{{- $path_suffix }}</span>
-            </b>
-        </span>
-    {{- end }}
-</summary>
-{{ $result := transform.HighlightCodeBlock . }}
-{{ $result.Wrapped }}
-</details>
-
+{{ if not $path  }}
+    <details class="codeblock" {{ if $minimized }} close {{ else }} open {{ end }} data-clipboard-id="{{ $uniqueId }}">
+        <summary class=" codelang">
+            <span class="codeblock_file_type {{ $file_type_decorator | safeCSS }}">{{ .Type  }}</span>
+            {{- with $path }}
+                <span class="codeblock_file_path">
+                    {{- with $path_prefix}}<i>({{.}})</i>{{- end}}
+                    <b>{{.}}
+                    <span class="{{ $path_decorator | safeCSS}}">{{- $path_suffix }}</span>
+                    </b>
+                </span>
+            {{- end }}
+        </summary>
+        {{ $result := transform.HighlightCodeBlock . }}
+        {{ $result.Wrapped }}
+        <div class="copy_interaction"> </div>
+    </details>
+{{ else }}
+    <div class="codeblock"     data-clipboard-id="{{ $uniqueId }}" >
+        <div class=" codelang">
+            <span class="codeblock_file_type {{ $file_type_decorator | safeCSS }}">{{ .Type  }}</span>
+            {{- with $path }}
+                <span class="codeblock_file_path">
+                    {{- with $path_prefix}}<i>({{.}})</i>{{- end}}
+                    <b>{{.}}
+                    <span class="{{ $path_decorator | safeCSS}}">{{- $path_suffix }}</span>
+                    </b>
+                </span>
+            {{- end }}
+        </div>
+        {{ $result := transform.HighlightCodeBlock . }}
+        {{ $result.Wrapped }}
+        <div class="copy_interaction"> </div>
+    </div>
+{{ end }}
