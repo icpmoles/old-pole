@@ -17,8 +17,7 @@
   <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
   {{- else }}
     {{- with . | minify | fingerprint }}
-    <link rel="preload" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+    <link rel="preload" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" as="style">
     {{- end }}
   {{- end }}
 {{- end }}

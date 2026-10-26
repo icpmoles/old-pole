@@ -88,14 +88,14 @@
   {{ end }}  */}}
      
     <img 
-    class="post-img u-photo" 
+    class="post-img u-photo lightboxEnabled" 
     src="{{ $universal_src }}"   
     {{ with .Text}}  alt="{{  plainify  . | safeHTML}}" {{ end }} 
     {{/*  {{ with .Title}} title="{{  plainify  . | safeHTML}}"{{ end }}   */}}
     loading="lazy"
     width="{{$used.Width}}" 
     height="{{$used.Height}}"
-    onclick="openLightbox(this, {{ $uniqueId  }} )"
+    data-lightbox-id="{{ $uniqueId }}"
 
     style="
     background-image:
