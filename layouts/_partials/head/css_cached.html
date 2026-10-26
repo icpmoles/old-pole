@@ -13,11 +13,12 @@
 {{- $CSSmain := resources.Get "css/main.css" }}
 {{- with slice $CSSimport $CSSmain  $CSSprint | resources.Concat "css/bundle.css" | css.Build  $opts }} 
   {{- if eq hugo.Environment "development" }}
-  <link rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+    <link rel="preload" href="{{ .RelPermalink }}" as="style">
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
   {{- else }}
     {{- with . | minify | fingerprint }}
     <link rel="preload" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" as="style">
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
     {{- end }}
   {{- end }}
 {{- end }}
