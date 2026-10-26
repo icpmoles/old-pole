@@ -28,7 +28,12 @@
         </summary>
         {{ $result := transform.HighlightCodeBlock . }}
         {{ $result.Wrapped }}
-        <div class="copy_interaction"> </div>
+        <div class="copy_interaction">
+            <button type="button" class="copy_button" title="Copy code" aria-label="Copy code" hidden>&#x1F4CB;</button>
+            <noscript>
+                <button type="button" title="Copying needs JavaScript: select the code manually" aria-label="Copying needs JavaScript: select the code manually" disabled>&#x1F4CB;</button>
+            </noscript>
+            </div>
     </details>
 {{ else }}
     <div class="codeblock"     data-clipboard-id="{{ $uniqueId }}" >
@@ -45,6 +50,11 @@
         </div>
         {{ $result := transform.HighlightCodeBlock . }}
         {{ $result.Wrapped }}
-        <div class="copy_interaction"> </div>
+        <div class="copy_interaction">
+            <button type="button" class="copy_button" title="Copy code" aria-label="Copy code" hidden>&#x1F4CB;</button>
+            <noscript>
+                <button type="button" title="Copying needs JavaScript: select the code manually" aria-label="Copying needs JavaScript: select the code manually" disabled>&#x1F4CB;</button>
+            </noscript>
+        </div>
     </div>
 {{ end }}
